@@ -11,8 +11,23 @@
 |
 */
 
+// Sijamil resource 
+Route::resource('sijamil', RemajaController::class);
+Route::resource('bumil', BumilController::class);
+
+// Dashboard
+Route::resource('dashboard', DashboardController::class);
+
+// Login
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::get('/', function () {
-    return view('dashboard');
+    return view('pages/user-pages/index');
+});
+
+Route::get('/datawarga', function () {
+    return view('pages/warga-data/index');
 });
 
 Route::group(['prefix' => 'email'], function(){

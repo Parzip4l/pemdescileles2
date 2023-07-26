@@ -17,7 +17,7 @@ License: For each use you must have a valid license purchased only from above li
 	<meta name="author" content="NobleUI">
 	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, laravel, theme, front-end, ui kit, web">
 
-  <title>Cileles Smart - Smart Villages</title>
+  <title>Cileles Smart - Smart Village Cileles</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,12 +29,15 @@ License: For each use you must have a valid license purchased only from above li
   <meta name="_token" content="{{ csrf_token() }}">
   
   <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
-
+<style>
+    .main-wrapper .page-wrapper-user {
+        width : 100%;
+        margin-left : 0;
+    }
+</style>
   <!-- plugin css -->
   <link href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
-  <link href="{{ asset('assets/plugins/@mdi/css/materialdesignicons.min.css') }}" rel="stylesheet" />
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
   <!-- end plugin css -->
 
   @stack('plugin-styles')
@@ -50,18 +53,18 @@ License: For each use you must have a valid license purchased only from above li
   <script src="{{ asset('assets/js/spinner.js') }}"></script>
 
   <div class="main-wrapper" id="app">
-    @include('layout.sidebar')
-    <div class="page-wrapper">
-      @include('layout.header')
-      <div class="page-content">
-        @yield('content')
-      </div>
-      @include('layout.footer')
+    <div class="page-wrapper-user">
+        @include('layout.headeruser')
+        <div class="page-content">
+            @yield('content')
+        </div>
+        <div class="container">
+            @include('layout.footer')
+        </div>
     </div>
   </div>
 
     <!-- base js -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('assets/plugins/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
