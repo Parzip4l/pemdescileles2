@@ -4,27 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use App\UserSettings;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
-    {
+
+    public function index() {
+        if($warga = Auth::user()){
+            if($warga->level == '1'){
+                return redirect()->intended('dashboard');
+            }
+        }
         return view('pages.auth.login');
     }
 
-    public function login(Request $request)
+    public function proses(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
+        $credentials = $request->only('email', 'password');
+
         if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            return redirect()->intended('/dashboard'); // Change '/dashboard' to your desired landing page after successful login.
-        } else {
-            return redirect()->route('login')->with('error', 'Invalid credentials. Please try again.');
+           $request->session()->regenerate();
+           $warga = Auth::user();
+                if($warga->level == '1'){
+                    return redirect()->intended('dashboard');
+                }
+            return redirect()->intended('/');    
         }
+
+        return back()->withErrors([
+            'email' => 'Email Atau Password Salah'
+        ])->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

@@ -11,17 +11,35 @@
 |
 */
 
-// Sijamil resource 
-Route::resource('sijamil', RemajaController::class);
-Route::resource('bumil', BumilController::class);
+// Middleware
+Route::middleware('auth.user')->group(function () {
+    // Dahsboard
+    Route::resource('dashboard', DashboardController::class);
+    // Sijamil resource 
+    Route::resource('sijamil', RemajaController::class);
+    Route::resource('bumil', BumilController::class);
+    // Berita
+    Route::resource('berita', BeritaController::class);
+    Route::resource('kategoriberita', KategoriBeritaController::class);
+    // User Settings
+    Route::resource('user-settings', UserSettingsController::class);
+    Route::resource('user-level', UserLevelController::class);
+    // Layanan Darurat
+    Route::resource('layanan-darurat', LayananDaruratController::class);
+});
 
-// Dashboard
-Route::resource('dashboard', DashboardController::class);
+// Auth
+Route::controller(LoginController::class)->group(function(){
+    Route::get('login','index')->name('login');
+    Route::post('login/proses','proses');
+});
 
-// Login
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
 
+// Index User
 Route::get('/', function () {
     return view('pages/user-pages/index');
 });

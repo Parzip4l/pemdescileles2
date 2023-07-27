@@ -201,10 +201,12 @@
             <div class="mb-3">
               <img class="wd-80 ht-80 rounded-circle" src="{{ url('https://via.placeholder.com/80x80') }}" alt="">
             </div>
+            @if(Auth::check())
             <div class="text-center">
-              <p class="tx-16 fw-bolder">Amiah Burton</p>
-              <p class="tx-12 text-muted">amiahburton@gmail.com</p>
+              <p class="tx-16 fw-bolder">{{ Auth::user()->name }}</p>
+              <p class="tx-12 text-muted">{{ Auth::user()->email }}</p>
             </div>
+            @endif
           </div>
           <ul class="list-unstyled p-1">
             <li class="dropdown-item py-2">
@@ -226,10 +228,13 @@
               </a>
             </li>
             <li class="dropdown-item py-2">
-              <a href="javascript:;" class="text-body ms-0">
+            <form action="{{ route('logout') }}" method="POST" id="logout_admin">
+            @csrf
+              <a href="#" class="text-body ms-0" onClick="submitForm()">
                 <i class="me-2 icon-md" data-feather="log-out"></i>
                 <span>Log Out</span>
               </a>
+            </form>
             </li>
           </ul>
         </div>
@@ -237,3 +242,9 @@
     </ul>
   </div>
 </nav>
+
+<script>
+function submitForm() {
+  document.getElementById("logout_admin").submit();
+}
+</script>

@@ -5,3 +5,43 @@
 .text-right {
     text-align :right;
 }
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* User Pages */
+
+.welcome-wrap {
+    height: 100vh;
+    position: relative
+}
+
+.content-welcome {
+    position: absolute;
+    top: 40%;
+}
+
+.btn-custom {
+    padding : 10px 45px!important;
+    background-color: #66B82E!important;
+    border: none!important;
+}
+
+a.nav-link {
+    font-size: 16px;
+}
+
+li.nav-item {
+    margin-right: 20px;
+}
+
+.overlay {
+    background: #000;
+    height: 100%;
+    opacity: 0.5;
+}

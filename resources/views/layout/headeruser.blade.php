@@ -1,12 +1,12 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-4">
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
-    <a class="navbar-brand me-2" href="https://mdbgo.com/">
+    <a class="navbar-brand me-2" href="">
       <img
-        src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-        height="16"
+        src="{{ asset('assets/images/logosumedang.png') }}"
+        height="55"
         alt="MDB Logo"
         loading="lazy"
         style="margin-top: -1px;"
@@ -29,7 +29,7 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarButtonsExample">
       <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="#">Beranda</a>
         </li>
@@ -52,7 +52,7 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <button type="button" class="btn btn-primary me-3">
+        <button type="button" class="btn btn-custom btn-primary ms-3">
           Login
         </button>
       </div>

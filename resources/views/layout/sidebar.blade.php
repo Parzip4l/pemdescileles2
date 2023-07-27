@@ -12,7 +12,7 @@
   <div class="sidebar-body">
     <ul class="nav">
       <li class="nav-item nav-category">Main</li>
-      <li class="nav-item {{ active_class(['/dashboard']) }}">
+      <li class="nav-item {{ active_class(['dashboard']) }}">
         <a href="{{ url('/dashboard') }}" class="nav-link">
           <i class="link-icon" data-feather="box"></i>
           <span class="link-title">Dashboard</span>
@@ -63,11 +63,63 @@
           <span class="link-title">Si Bangenan</span>
         </a>
       </li>
-      <li class="nav-item nav-category">Data Lainnya</li>
+      <li class="nav-item nav-category">Informasi Publik</li>
+      <li class="nav-item {{ active_class(['berita']) }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#beritacomponent" role="button" aria-expanded="{{ is_active_route(['berita']) }}" aria-controls="beritacomponent">
+          <i class="link-icon" data-feather="file-text"></i>
+          <span class="link-title">Berita</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse {{ show_class(['berita']) }}" id="beritacomponent">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="{{ url('berita/create') }}" class="nav-link {{ active_class(['berita/create']) }}">Buat Berita</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('berita') }}" class="nav-link {{ active_class(['berita']) }}">Semua Berita</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/kategoriberita') }}" class="nav-link {{ active_class(['kategoriberita']) }}">Kategori Berita</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item {{ active_class(['Kegiatan/']) }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#kegiatan" role="button" aria-expanded="{{ is_active_route(['kegiatan/*']) }}" aria-controls="kegiatan">
+          <i class="link-icon" data-feather="camera"></i>
+          <span class="link-title">Kegiatan</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse {{ show_class(['Kegiatan/*']) }}" id="kegiatan">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="{{ url('/ui-components/accordion') }}" class="nav-link {{ active_class(['ui-components/accordion']) }}">Buat Kegiatan</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/ui-components/alerts') }}" class="nav-link {{ active_class(['ui-components/alerts']) }}">Semua Kegiatan</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/ui-components/badges') }}" class="nav-link {{ active_class(['ui-components/badges']) }}">Kategori Kegiatan</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item {{ active_class(['umkm']) }}">
+        <a href="{{ url('/umkm') }}" class="nav-link">
+          <i class="link-icon" data-feather="shopping-bag"></i>
+          <span class="link-title">UMKM</span>
+        </a>
+      </li>
+      <li class="nav-item {{ active_class(['layanan-darurat']) }}">
+        <a href="{{ url('/layanan-darurat') }}" class="nav-link">
+          <i class="link-icon" data-feather="alert-triangle"></i>
+          <span class="link-title">Layanan Darurat</span>
+        </a>
+      </li>
       <li class="nav-item {{ active_class(['ui-components/*']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="{{ is_active_route(['ui-components/*']) }}" aria-controls="uiComponents">
           <i class="link-icon" data-feather="alert-triangle"></i>
-          <span class="link-title">Layanan Darurat</span>
+          <span class="link-title">Others Page</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse {{ show_class(['ui-components/*']) }}" id="uiComponents">
@@ -289,7 +341,7 @@
         <div class="collapse {{ show_class(['auth/*']) }}" id="auth">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ url('/auth/login') }}" class="nav-link {{ active_class(['auth/login']) }}">Login</a>
+              <a href="{{ url('login') }}" class="nav-link {{ active_class(['login']) }}">Login</a>
             </li>
             <li class="nav-item">
               <a href="{{ url('/auth/register') }}" class="nav-link {{ active_class(['auth/register']) }}">Register</a>
@@ -314,13 +366,32 @@
           </ul>
         </div>
       </li>
+      @if(Auth::check() && Auth::user()->level == 1)
       <li class="nav-item nav-category">App Settings</li>
+      <li class="nav-item {{ active_class(['usersettings']) }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#UserSettings" role="button" aria-expanded="{{ is_active_route(['usersettings']) }}" aria-controls="UserSettings">
+          <i class="link-icon" data-feather="lock"></i>
+          <span class="link-title">User Settings</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse {{ show_class(['usersettings']) }}" id="UserSettings">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="{{ url('user-settings') }}" class="nav-link {{ active_class(['user-settings']) }}">Semua User</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('user-level') }}" class="nav-link {{ active_class(['user-level']) }}">User Level</a>
+            </li>
+          </ul>
+        </div>
+      </li>
       <li class="nav-item">
         <a href="https://www.nobleui.com/laravel/documentation/docs.html" target="_blank" class="nav-link">
-          <i class="link-icon" data-feather="hash"></i>
+          <i class="link-icon" data-feather="settings"></i>
           <span class="link-title">Settings</span>
         </a>
       </li>
+      @endif
     </ul>
   </div>
 </nav>
