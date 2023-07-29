@@ -106,3 +106,13 @@ h4.judul-berita {
     text-overflow: ellipsis;
     height: 1.2em;
 }
+
+@media (max-width:685px){
+    div#navbarButtonsExample .btn-custom {
+        width: 100%;
+        margin-left: 0!important;
+    }
+    div#navbarButtonsExample {
+        margin-top: 40px;
+    }
+}
