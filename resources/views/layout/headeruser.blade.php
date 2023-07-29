@@ -48,9 +48,6 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Sibangenen</a>
         </li>
-        <li class="nav-item">
-          <a href="{{('/login')}}" class="btn btn-custom btn-primary ms-3">LOGIN</a>
-        </li>
       </ul>
       <!-- Left links -->
 
