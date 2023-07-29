@@ -23,7 +23,7 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <i class="fas fa-bars"></i>
+      <i data-feather="menu"></i>
     </button>
 
     <!-- Collapsible wrapper -->
@@ -47,6 +47,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Sibangenen</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{('/login')}}" class="btn btn-custom btn-primary ms-3">LOGIN</a>
         </li>
       </ul>
       <!-- Left links -->
