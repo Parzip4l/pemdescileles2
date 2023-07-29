@@ -52,9 +52,7 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <button type="button" class="btn btn-custom btn-primary ms-3">
-          Login
-        </button>
+        <a href="{{('/login')}}" class="btn btn-custom btn-primary ms-3">LOGIN</a>
       </div>
     </div>
     <!-- Collapsible wrapper -->
