@@ -27,7 +27,7 @@
               <img src="{{ asset('assets/images/foto1.png') }}" alt="" class="w-100">
           </div>
       </div>
-      <div class="col-md-6 align-self-center">
+      <div class="col-md-6 align-self-center pt-4">
           <div class="content-sambutan">
               <h2 class="text-uppercase">Sambutan Kepala Desa Cileles</h2>
               <div class="divider my-4"></div>
