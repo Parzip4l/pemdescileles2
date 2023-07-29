@@ -19,12 +19,12 @@
     </div>
 </div>
 <!-- Sambutan Kades -->
-<div class="sambutan-kades-wrap m-6">
+<div class="sambutan-kades-wrap">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
           <div class="foto-kades">
-              <img src="{{ asset('assets/images/foto1.png') }}" alt="">
+              <img src="{{ asset('assets/images/foto1.png') }}" alt="" class="w-100">
           </div>
       </div>
       <div class="col-md-6 align-self-center">
