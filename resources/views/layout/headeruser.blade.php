@@ -7,7 +7,7 @@
       <img
         src="{{ asset('assets/images/logosumedang.png') }}"
         height="55"
-        alt="MDB Logo"
+        alt="Cileles Smart Logo"
         loading="lazy"
         style="margin-top: -1px;"
       />
@@ -17,8 +17,8 @@
     <button
       class="navbar-toggler"
       type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarButtonsExample"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarButtonsExample"
       aria-controls="navbarButtonsExample"
       aria-expanded="false"
       aria-label="Toggle navigation"
