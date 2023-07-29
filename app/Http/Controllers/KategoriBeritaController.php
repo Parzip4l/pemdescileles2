@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\KategoriBerita;
+use App\Kategoriberita;
 
 class KategoriBeritaController extends Controller
 {
@@ -14,7 +14,7 @@ class KategoriBeritaController extends Controller
      */
     public function index()
     {
-        $kategori = KategoriBerita::all();
+        $kategori = Kategoriberita::all();
         return view('pages.berita.kategori.index', compact('kategori'));
     }
 
@@ -40,7 +40,7 @@ class KategoriBeritaController extends Controller
             'kategori' => 'required',
         ]);
 
-        $bumil = new KategoriBerita();
+        $bumil = new Kategoriberita();
         $bumil->kategori = $request['kategori'];
         $bumil->deskripsi = $request['deskripsi'];
         $bumil->save();
@@ -83,7 +83,7 @@ class KategoriBeritaController extends Controller
             'kategori' => 'required',
         ]);
 
-        $kategori = KategoriBerita::find($id);
+        $kategori = Kategoriberita::find($id);
         $kategori->kategori = $request->kategori;
         $kategori->deskripsi = $request->deskripsi;
         $kategori->save();
@@ -99,7 +99,7 @@ class KategoriBeritaController extends Controller
      */
     public function destroy($id)
     {
-        $kategori = KategoriBerita::find($id);
+        $kategori = Kategoriberita::find($id);
         $kategori->delete();
         return redirect()->route('kategoriberita.index')->with('success', 'Kategori Berita berhasil dihapus.');
     }

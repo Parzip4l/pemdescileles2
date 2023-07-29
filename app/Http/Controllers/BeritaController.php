@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Berita;
-use App\KategoriBerita;
+use App\Kategoriberita;
 
 class BeritaController extends Controller
 {
@@ -26,7 +26,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        $kategori = KategoriBerita::all();
+        $kategori = Kategoriberita::all();
         return view('pages.berita.create', compact('kategori'));
     }
 
