@@ -14,6 +14,18 @@
     text-align: center;
 }
 
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.bg-custom-ijo {
+    background-color: #66B82E;
+}
+
+.normal-line-height {
+    line-height: 1.4rem;
+}
+
 /* User Pages */
 
 .welcome-wrap {
@@ -44,4 +56,53 @@ li.nav-item {
     background: #000;
     height: 100%;
     opacity: 0.5;
+}
+
+.divider {
+    display: block;
+    height: 5px;
+    width: 15%;
+    background-color: #66B82E;
+}
+
+.featured-image-kegiatan {
+    position: relative;
+    height: 300px;
+}
+
+.featured-image-kegiatan img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.kategori-kegiatan {
+    position: absolute;
+    top: 30px;
+    background: #66B82E;
+    padding: 6px 40px;
+    border-radius: 20px;
+    right: 30px;
+    color: #fff;
+}
+
+.metadata p svg {
+    height: 16px;
+    width: 16px;
+    margin-top: -5px;
+    margin-right: 5px;
+}
+
+.konten-singkat p {
+    line-height: 1.4rem;
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 3em;
+}
+
+h4.judul-berita {
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1.2em;
 }

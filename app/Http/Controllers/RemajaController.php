@@ -58,48 +58,26 @@ class RemajaController extends Controller
     }
 
     // Filter Data
-    public function getRemajaData(Request $request)
+    public function filterData(Request $request)
     {
-        $query = Remaja::query();
+        $rt = $request->input('rt');
+        $rw = $request->input('rw');
+        $jenisKelamin = $request->input('jenis_kelamin');
 
-        if ($request->has('usia')) {
-            $query->where('usia', $request->usia);
-        }
-
-        if ($request->has('jenis_kelamin')) {
-            $query->where('jenis_kelamin', $request->jenis_kelamin);
-        }
-
-        if ($request->has('rw')) {
-            $query->where('rw', 'like', '%' . $request->rw . '%');
-        }
-
-        if ($request->has('rt')) {
-            $query->where('rt', 'like', '%' . $request->rt . '%');
-        }
-
-        return DataTables::of($query)
-            ->addColumn('DT_RowIndex', function($data) {
-                return '';
+        $data = YourModel::when($rt, function ($query) use ($rt) {
+                return $query->where('rt', $rt);
             })
-            ->addColumn('action', function($data) {
-                return '<div class="dropdown">
-                            <button class="btn btn-link p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item d-flex align-items-center" href="' . route('sijamil.edit', $data->id) . '"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                                <a class="dropdown-item d-flex align-items-center" href=""><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View Detail</span></a>
-                                <form action="' . route('sijamil.destroy', $data->id) . '" method="POST" id="delete_remaja" class="hapusremaja">
-                                    ' . csrf_field() . '
-                                    ' . method_field('DELETE') . '
-                                    <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog()"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                                </form>
-                            </div>
-                        </div>';
+            ->when($rw, function ($query) use ($rw) {
+                return $query->where('rw', $rw);
             })
-            ->rawColumns(['DT_RowIndex', 'action'])
-            ->make(true);
+            ->when($jenisKelamin, function ($query) use ($jenisKelamin) {
+                return $query->where('jenis_kelamin', $jenisKelamin);
+            })
+            ->get();
+
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     /**
