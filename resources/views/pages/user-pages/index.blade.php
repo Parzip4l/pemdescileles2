@@ -19,7 +19,7 @@
     </div>
 </div>
 <!-- Sambutan Kades -->
-<div class="sambutan-kades-wrap">
+<div class="sambutan-kades-wrap my-6">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
