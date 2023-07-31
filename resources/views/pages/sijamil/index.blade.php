@@ -437,7 +437,8 @@
         </div>
     </div>
 </div>
-<!-- Modal View Details Data Bumil --> @foreach ($bumil as $data) <div class="modal fade bd-example-modal-lg bumil" id="bumildatadetail{{ $data->id}}" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<!-- Modal View Details Data Bumil --> 
+@foreach ($bumil as $data) <div class="modal fade bd-example-modal-lg bumil" id="bumildatadetail{{ $data->id}}" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content p-4">
             <div class="modal-header">

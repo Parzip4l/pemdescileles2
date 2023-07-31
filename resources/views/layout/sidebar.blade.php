@@ -42,6 +42,12 @@
           <span class="link-title">Data Warga</span>
         </a>
       </li>
+      <li class="nav-item {{ active_class(['sibangenan']) }}">
+        <a href="{{ url('/sibangenan') }}" class="nav-link">
+          <i class="link-icon" data-feather="briefcase"></i>
+          <span class="link-title">Si Bangenan</span>
+        </a>
+      </li>
       <li class="nav-item {{ active_class(['sijamilaal']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#sijamilcomponent" role="button" aria-expanded="{{ is_active_route(['sijamilaal']) }}" aria-controls="sijamilcomponent">
           <i class="link-icon" data-feather="user-check"></i>
@@ -66,12 +72,6 @@
         <a href="{{ url('/apps/calendar') }}" class="nav-link">
           <i class="link-icon" data-feather="clipboard"></i>
           <span class="link-title">Data Kesehatan</span>
-        </a>
-      </li>
-      <li class="nav-item {{ active_class(['apps/calendar']) }}">
-        <a href="{{ url('/apps/calendar') }}" class="nav-link">
-          <i class="link-icon" data-feather="layers"></i>
-          <span class="link-title">Si Bangenan</span>
         </a>
       </li>
       <li class="nav-item nav-category">Informasi Publik</li>
@@ -146,8 +146,8 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item">
-        <a href="https://www.nobleui.com/laravel/documentation/docs.html" target="_blank" class="nav-link">
+      <li class="nav-item {{ active_class(['setting-page']) }}">
+        <a href="{{ url('setting-page') }}" class="nav-link">
           <i class="link-icon" data-feather="settings"></i>
           <span class="link-title">Settings</span>
         </a>

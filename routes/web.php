@@ -28,6 +28,13 @@ Route::middleware('auth.user')->group(function () {
     Route::resource('user-level', UserLevelController::class);
     // Layanan Darurat
     Route::resource('layanan-darurat', LayananDaruratController::class);
+    // Setting User Pages
+    Route::resource('setting-page', SettingPageUserController::class);
+    // sibangenan
+    Route::resource('sibangenan', SibangenanController::class);
+    Route::get('/pengajuan-ditolak', 'SibangenanController@ditolak')->name('ditolak');
+    Route::post('/tolak-usulan/{id}', 'SibangenanController@updateStatusTolak')->name('tolak.usulan');
+    Route::post('/setujui-usulan/{id}', 'SibangenanController@updateStatusSetuju')->name('setujui.usulan');
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth
