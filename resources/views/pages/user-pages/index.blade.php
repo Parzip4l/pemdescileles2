@@ -139,6 +139,41 @@
         </div>
     </div>
 </div>
+<!-- Informasi UMKM -->
+<div class="berita-wrap py-6">
+    <div class="container">
+        <div class="berita-content">
+            <div class="title-berita-wrap mb-4">
+                <h2 class="text-uppercase text-center">UMKM Warga Desa Cileles</h2>
+                <div class="divider my-4 mx-auto"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-2">
+                    <div class="card">
+                        <div class="featured-image-kegiatan">
+                            <img src="{{ asset('assets/images/noimage.png') }}" class="card-img-top" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="metadata mb-2 d-flex justify-content-between">
+                            </div>
+                            <h4 class="mb-2 judul-berita">Sistik Kabayan</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center  mt-4">
+                    <li class="page-item"><a class="page-link" href="#"><i data-feather="chevron-left"></i></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#"><i data-feather="chevron-right"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
 @endsection
 @push('plugin-styles')
   <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />

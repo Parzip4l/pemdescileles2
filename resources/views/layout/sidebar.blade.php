@@ -54,10 +54,10 @@
               <a href="{{ url('sijamil') }}" class="nav-link {{ active_class(['sijamil']) }}">Semua Data</a>
             </li>
             <li class="nav-item">
-              <a href="{{ url('berita') }}" class="nav-link {{ active_class(['berita']) }}">Data Remaja</a>
+              <a href="{{ url('remajadata') }}" class="nav-link {{ active_class(['remajadata']) }}">Data Remaja</a>
             </li>
             <li class="nav-item">
-              <a href="{{ url('/kategoriberita') }}" class="nav-link {{ active_class(['kategoriberita']) }}">Data Ibu Hamil</a>
+              <a href="{{ url('/bumildata') }}" class="nav-link {{ active_class(['bumildata']) }}">Data Ibu Hamil</a>
             </li>
           </ul>
         </div>

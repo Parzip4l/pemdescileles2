@@ -20,6 +20,12 @@ class RemajaController extends Controller
         return view('pages.sijamil.index', compact('remaja','bumil'));
     }
 
+    public function dataremaja()
+    {
+        $remaja = Remaja::all();
+        return view ('pages.sijamil.indexremaja', compact('remaja'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

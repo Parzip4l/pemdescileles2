@@ -18,6 +18,12 @@ class BumilController extends Controller
         return view('pages.sijamil.index', compact('bumil'));
     }
 
+    public function databumil()
+    {
+        $bumil = Bumil::all();
+        return view('pages.sijamil.indexbumil', compact('bumil'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

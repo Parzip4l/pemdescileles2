@@ -50,9 +50,7 @@
         <div class="page-content">
             @yield('content')
         </div>
-        <div class="container">
-            @include('layout.footer')
-        </div>
+            @include('layout.footeruser')
     </div>
   </div>
 

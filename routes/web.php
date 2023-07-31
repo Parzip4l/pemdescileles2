@@ -18,6 +18,8 @@ Route::middleware('auth.user')->group(function () {
     // Sijamil resource 
     Route::resource('sijamil', RemajaController::class);
     Route::resource('bumil', BumilController::class);
+    Route::get('/remajadata', 'RemajaController@dataremaja')->name('remaja');
+    Route::get('/bumildata', 'BumilController@databumil')->name('bumil');
     // Berita
     Route::resource('berita', BeritaController::class);
     Route::resource('kategoriberita', KategoriBeritaController::class);

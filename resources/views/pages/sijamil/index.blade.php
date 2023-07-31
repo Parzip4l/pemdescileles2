@@ -563,6 +563,7 @@
                 "language": {
                     search: ""
                 }
+                responsive: true;
             });
             $('#dataTablesIbuhamil').each(function() {
                 var datatable = $(this);
