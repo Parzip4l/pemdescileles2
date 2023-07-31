@@ -1,5 +1,13 @@
+body {
+    background-color: #fff!important;
+}
 .modal-data-view-remaja p, .data-detail-ibuhamil p {
     font-weight: bold;
+}
+
+.margin-section {
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
 
 .text-right {
@@ -31,6 +39,18 @@
 .welcome-wrap {
     height: 100vh;
     position: relative
+}
+
+.welcome-wrap-2 {
+    height: 450px;
+    position: relative
+}
+
+.welcome-wrap-2 .content-welcome {
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    transform: translate(0px, 20px);
 }
 
 .content-welcome {
@@ -107,6 +127,44 @@ h4.judul-berita {
     height: 1.2em;
 }
 
+.menu-footer ul {
+    padding-left: 0;
+}
+
+.menu-footer ul li {
+    list-style: none;
+    padding-bottom: 5px;
+}
+
+.wa-kepo-wrap {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.wa-kepo-wrap img {
+    height: 70px;
+}
+
+/* Profile */
+.content-body-wrap {
+    position: relative;
+    top: -80px;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+}
+
+.number {
+    margin-right: 15px;
+    height: 36px;
+    color: #fff;
+    padding: 14px;
+    border-radius: 50%;
+}
+.number p {
+    margin-top: -5px;
+    transform: translate(0px, 0px);
+}
 @media (max-width:685px){
     div#navbarButtonsExample .btn-custom {
         width: 100%;

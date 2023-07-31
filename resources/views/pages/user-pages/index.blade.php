@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-md-6">
           <div class="foto-kades">
-              <img src="{{ asset('assets/images/foto1.png') }}" alt="" class="w-100">
+              <img src="{{ asset('assets/images/fototes.png') }}" alt="kepala desa cileles" class="w-100">
           </div>
       </div>
       <div class="col-md-6 align-self-center pt-4">

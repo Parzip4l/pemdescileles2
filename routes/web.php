@@ -43,6 +43,8 @@ Route::post('/logout', function () {
 
 // Index User
 Route::resource('/', HomeController::class);
+// Profile Desa User Pages
+Route::resource('profile-desa-cileles', ProfileDesaController::class);
 
 Route::get('/datawarga', function () {
     return view('pages/warga-data/index');
