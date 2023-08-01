@@ -40,6 +40,7 @@ Route::middleware('auth.user')->group(function () {
     // Warga Data
     Route::resource('warga', WargaController::class);
     Route::get('/remaja/autocomplete', 'RemajaController@autocomplete')->name('remaja.autocomplete');
+    Route::get('/bumil/autocomplete', 'BumilController@autocomplete2')->name('bumil.autocomplete2');
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth

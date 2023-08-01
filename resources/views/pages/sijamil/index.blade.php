@@ -86,7 +86,7 @@
                     </div> @endif @if (session('error')) <div class="alert alert-danger">
                         {{ session('error') }}
                     </div> @endif <div class="tambah-button-wrap mb-2">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bumil">Tambah Data</button>
+                        <a href="{{route('bumil.create')}}" class="btn btn-primary">Tambah Data Ibu Hamil</a>
                     </div>
                     <table id="dataTablesIbuhamil" class="table">
                         <thead>
@@ -626,47 +626,4 @@
         });
     }
 </script> 
-<!-- Auto Complate -->
-<script>
-  $('#namaremaja').autocomplete({
-        minLength: 1,
-        source: function(request, response){
-            $.ajax({
-                url: "{{ route('remaja.autocomplete') }}",
-                dataType: "json",
-                data: {
-                    term: request.term
-                },
-                success: function(data){
-                    response($.map(data, function(item){
-                        return {
-                            id: item.id,
-                            value: item.value,
-                            nik: item.nik,
-                            nokk: item.nokk,
-                            jk: item.jk,
-                            rt: item.rt,
-                            rw: item.rw,
-                            nama_ayah: item.nama_ayah,
-                            nama_ibu: item.nama_ibu,
-                            nomortelepon: item.nomortelepon
-                        }
-                    }));
-                }
-            });
-        },
-        select: function(event, ui){
-            $('#namaremaja').val(ui.item.value);
-            $('#nikremaja').val(ui.item.nik);
-            $('#nokkremaja').val(ui.item.nokk);
-            $('#jkremaja').val(ui.item.jk);
-            $('#rtremaja').val(ui.item.rt);
-            $('#rwremaja').val(ui.item.rw);
-            $('#nomorteleponremaja').val(ui.item.nomortelepon);
-            $('#nama_ayahremaja').val(ui.item.nama_ayah);
-            $('#nama_iburemaja').val(ui.item.nama_ibu);
-            return false;
-        }
-    });
-</script>
 @endpush

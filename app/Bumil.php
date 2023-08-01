@@ -10,4 +10,9 @@ class Bumil extends Model
     use HasFactory;
     protected $table = 'bumils';
     protected $fillable = ['nik','nomorkk','nama', 'tanggallahir'];
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class);
+    }
 }

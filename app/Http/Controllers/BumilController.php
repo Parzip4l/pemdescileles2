@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bumil;
+use App\Warga;
 use Illuminate\Http\Request;
 
 class BumilController extends Controller
@@ -24,6 +25,32 @@ class BumilController extends Controller
         return view('pages.sijamil.indexbumil', compact('bumil'));
     }
 
+    public function autocomplete2(Request $request)
+    {
+        $term = $request->input('term');
+        $warga = Warga::select('id', 'nama', 'nik', 'nokk', 'jk', 'rt', 'rw', 'nomortelepon','nama_ayah','nama_ibu')
+            ->where('nik', 'LIKE', '%' . $term . '%')
+            ->get();
+        
+        $response = array();
+        foreach($warga as $user){
+            $response[] = array(
+                'id' => $user->id,
+                'value' => $user->nama,
+                'nik' => $user->nik,
+                'nokk' => $user->nokk,
+                'jk' => $user->jk,
+                'rt' => $user->rt,
+                'rw' => $user->rw,
+                'nomortelepon' => $user->nomortelepon,
+                'nama_ayah' => $user->nama_ayah,
+                'nama_ibu' => $user->nama_ibu
+            );
+        }
+        
+        return response()->json($response);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +58,7 @@ class BumilController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.sijamil.tambahbumil');
     }
 
     /**
