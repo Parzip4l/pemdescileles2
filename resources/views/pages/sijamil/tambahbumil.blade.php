@@ -27,7 +27,7 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label class="form-label">NIK</label>
-                            <input type="number" class="form-control" placeholder="NIK" name="nik" id="nikbumil">
+                            <input type="number" class="form-control" placeholder="NIK" name="nik" id="nik">
                         </div>
                     </div>
                     <!-- Col -->
@@ -154,7 +154,7 @@
 @push('custom-scripts')
   <script src="{{ asset('assets/js/tinymce.js') }}"></script>
   <script>
-  $('#nikbumil').autocomplete({
+  $('#nik').autocomplete({
         minLength: 1,
         source: function(request, response){
             $.ajax({
@@ -175,11 +175,14 @@
                             tanggal_lahir: item.tanggal_lahir
                         }
                     }));
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error(textStatus + ': ' + errorThrown);
                 }
             });
         },
         select: function(event, ui){
-            $('#nikbumil').val(ui.item.nik);
+            $('#nik').val(ui.item.nik);
             $('#namabumil').val(ui.item.value);
             $('#nokkbumil').val(ui.item.nokk);
             $('#rtbumil').val(ui.item.rt);

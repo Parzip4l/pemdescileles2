@@ -28,23 +28,20 @@ class BumilController extends Controller
     public function autocomplete2(Request $request)
     {
         $term = $request->input('term');
-        $warga = Warga::select('id', 'nama', 'nik', 'nokk', 'jk', 'rt', 'rw', 'nomortelepon','nama_ayah','nama_ibu')
+        $warga = Warga::select('id', 'nama', 'nik', 'nokk', 'jk', 'rt', 'rw','tanggal_lahir')
             ->where('nik', 'LIKE', '%' . $term . '%')
             ->get();
         
         $response = array();
-        foreach($warga as $user){
+        foreach($warga as $data){
             $response[] = array(
-                'id' => $user->id,
-                'value' => $user->nama,
-                'nik' => $user->nik,
-                'nokk' => $user->nokk,
-                'jk' => $user->jk,
-                'rt' => $user->rt,
-                'rw' => $user->rw,
-                'nomortelepon' => $user->nomortelepon,
-                'nama_ayah' => $user->nama_ayah,
-                'nama_ibu' => $user->nama_ibu
+                'id' => $data->id,
+                'value' => $data->nama,
+                'nik' => $data->nik,
+                'nokk' => $data->nokk,
+                'rt' => $data->rt,
+                'rw' => $data->rw,
+                'tanggal_lahir' => $data->tanggal_lahir
             );
         }
         
