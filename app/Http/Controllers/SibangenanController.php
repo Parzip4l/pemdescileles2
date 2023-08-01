@@ -94,6 +94,15 @@ class SibangenanController extends Controller
         return redirect()->route('sibangenan.index')->with('success', 'Pengajuan Berhasil Dibuat');
     }
 
+    public function download($id)
+    {
+        $sibangenan = Sibangenan::findOrFail($id);
+
+        $file_path = storage_path('app/' .$sibangenan->dokumen_pendukung);
+
+        return response()->download($file_path);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -136,6 +145,8 @@ class SibangenanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sibangenan = Sibangenan::find($id);
+        $sibangenan->delete();
+        return redirect()->route('sibangenan.index')->with('success', 'Data Pengajuan berhasil dihapus.');
     }
 }

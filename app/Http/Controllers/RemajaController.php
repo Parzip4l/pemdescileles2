@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Remaja;
 use App\Bumil;
+use App\Warga;
 use Illuminate\Http\Request;
 
 class RemajaController extends Controller
@@ -26,6 +27,36 @@ class RemajaController extends Controller
         return view ('pages.sijamil.indexremaja', compact('remaja'));
     }
 
+    public function autocomplete(Request $request)
+    {
+        $term = $request->input('term');
+        $warga = Warga::select('id', 'nama', 'nik', 'nokk', 'jk', 'rt', 'rw', 'nomortelepon','nama_ayah','nama_ibu')
+            ->where('nik', 'LIKE', '%' . $term . '%')
+            ->get();
+        
+        $response = array();
+        foreach($warga as $user){
+            $response[] = array(
+                'id' => $user->id,
+                'value' => $user->nama,
+                'nik' => $user->nik,
+                'nokk' => $user->nokk,
+                'jk' => $user->jk,
+                'rt' => $user->rt,
+                'rw' => $user->rw,
+                'nomortelepon' => $user->nomortelepon,
+                'nama_ayah' => $user->nama_ayah,
+                'nama_ibu' => $user->nama_ibu
+            );
+        }
+        
+        return response()->json($response);
+    }
+
+    public function create ()
+    {
+        return view('pages.sijamil.tambahremaja');
+    }
     /**
      * Store a newly created resource in storage.
      *

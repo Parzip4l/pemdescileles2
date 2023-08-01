@@ -35,6 +35,11 @@ Route::middleware('auth.user')->group(function () {
     Route::get('/pengajuan-ditolak', 'SibangenanController@ditolak')->name('ditolak');
     Route::post('/tolak-usulan/{id}', 'SibangenanController@updateStatusTolak')->name('tolak.usulan');
     Route::post('/setujui-usulan/{id}', 'SibangenanController@updateStatusSetuju')->name('setujui.usulan');
+    // Download Dokumen Pendukung
+    Route::get('sibangenan/{id}/download', 'SibangenanController@download')->name('sibangenan.download');
+    // Warga Data
+    Route::resource('warga', WargaController::class);
+    Route::get('/remaja/autocomplete', 'RemajaController@autocomplete')->name('remaja.autocomplete');
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth

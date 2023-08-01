@@ -36,8 +36,8 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{ active_class(['datawarga']) }}">
-        <a href="{{ url('/datawarga') }}" class="nav-link">
+      <li class="nav-item {{ active_class(['warga']) }}">
+        <a href="{{ url('/warga') }}" class="nav-link">
           <i class="link-icon" data-feather="users"></i>
           <span class="link-title">Data Warga</span>
         </a>

@@ -22,12 +22,17 @@
                 </ul>
             </div>
             <div class="tab-content border border-top-0 p-3" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> @if(session('success')) <div class="alert alert-success">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> 
+                    @if(session('success')) 
+                    <div class="alert alert-success">
                         {{ session('success') }}
-                    </div> @endif @if (session('error')) <div class="alert alert-danger">
+                    </div> @endif @if (session('error')) 
+                    <div class="alert alert-danger">
                         {{ session('error') }}
-                    </div> @endif <div class="tambah-button-wrap mb-2">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".remaja">Tambah Data</button>
+                    </div> 
+                    @endif 
+                    <div class="tambah-button-wrap mb-2">
+                        <a href="{{route('sijamil.create')}}" class="btn btn-primary">Tambah Data Remaja</a>
                     </div>
                     <table id="dataTableExample" class="table">
                         <thead>
@@ -62,7 +67,10 @@
                                                 <i data-feather="eye" class="icon-sm me-2"></i>
                                                 <span class="">View Detail</span>
                                             </a>
-                                            <form action="{{ route('sijamil.destroy', $data->id) }}" method="POST" id="delete_remaja" class="hapusremaja"> @csrf @method('DELETE') <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog()">
+                                            <form action="{{ route('sijamil.destroy', $data->id) }}" method="POST" id="delete_remaja" class="hapusremaja">
+                                                 @csrf
+                                                  @method('DELETE')
+                                                   <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog()">
                                                     <i data-feather="trash" class="icon-sm me-2"></i>
                                                     <span class="">Delete</span>
                                                 </a>
@@ -138,13 +146,13 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputUsername1" class="form-label">NIK</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" autocomplete="off" name="nik" placeholder="NIK">
+                            <input type="number" class="form-control" id="nikremaja" name="nik" placeholder="NIK">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nomor KK</label>
-                            <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Nomor KK" name="nomorkk">
+                            <input type="number" class="form-control" id="nokkremaja" placeholder="Nomor KK" name="nomorkk">
                         </div>
                     </div>
                 </div>
@@ -152,13 +160,13 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="nama" autocomplete="off" placeholder="Nama Lengkap">
+                            <input type="text" class="form-control" id="namaremaja" name="nama" autocomplete="off" placeholder="Nama Lengkap">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputUsername1" class="form-label">Usia</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" autocomplete="off" name="usia" placeholder="Usia">
+                            <input type="number" class="form-control" id="usia" autocomplete="off" name="usia" placeholder="Usia">
                         </div>
                     </div>
                 </div>
@@ -166,7 +174,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
-                            <select name="jenis_kelamin" class="form-control" id="">
+                            <select name="jenis_kelamin" class="form-control" id="jkremaja">
                                 <option value="LAKI-LAKI">LAKI-LAKI</option>
                                 <option value="PEREMPUAN">PEREMPUAN</option>
                             </select>
@@ -175,7 +183,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Nomor Telepon</label>
-                            <input type="number" class="form-control" id="exampleInputPassword1" autocomplete="off" name="nomor_telepon" placeholder="nomortelpeon">
+                            <input type="number" class="form-control" id="nomorteleponremaja" autocomplete="off" name="nomor_telepon" placeholder="nomortelpeon">
                         </div>
                     </div>
                 </div>
@@ -183,7 +191,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">RT</label>
-                            <select name="rt" class="form-control" id="">
+                            <select name="rt" class="form-control" id="rtremaja">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -196,7 +204,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">RW</label>
-                            <select name="rw" class="form-control" id="">
+                            <select name="rw" class="form-control" id="rwremaja">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -215,13 +223,13 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Nama Ayah</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" autocomplete="off" name="nama_ayah" placeholder="Nama Ayah">
+                            <input type="text" class="form-control" id="nama_ayahremaja" autocomplete="off" name="nama_ayah" placeholder="Nama Ayah">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Nama Ibu</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" autocomplete="off" name="nama_ibu" placeholder="Nama Ibu">
+                            <input type="text" class="form-control" id="nama_iburemaja" autocomplete="off" name="nama_ibu" placeholder="Nama Ibu">
                         </div>
                     </div>
                 </div>
@@ -543,7 +551,9 @@
 </div> 
 @endforeach @endsection 
 @push('plugin-scripts') 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
 <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
@@ -564,7 +574,6 @@
                 "language": {
                     search: ""
                 }
-                responsive: true;
             });
             $('#dataTablesIbuhamil').each(function() {
                 var datatable = $(this);
@@ -617,4 +626,47 @@
         });
     }
 </script> 
+<!-- Auto Complate -->
+<script>
+  $('#namaremaja').autocomplete({
+        minLength: 1,
+        source: function(request, response){
+            $.ajax({
+                url: "{{ route('remaja.autocomplete') }}",
+                dataType: "json",
+                data: {
+                    term: request.term
+                },
+                success: function(data){
+                    response($.map(data, function(item){
+                        return {
+                            id: item.id,
+                            value: item.value,
+                            nik: item.nik,
+                            nokk: item.nokk,
+                            jk: item.jk,
+                            rt: item.rt,
+                            rw: item.rw,
+                            nama_ayah: item.nama_ayah,
+                            nama_ibu: item.nama_ibu,
+                            nomortelepon: item.nomortelepon
+                        }
+                    }));
+                }
+            });
+        },
+        select: function(event, ui){
+            $('#namaremaja').val(ui.item.value);
+            $('#nikremaja').val(ui.item.nik);
+            $('#nokkremaja').val(ui.item.nokk);
+            $('#jkremaja').val(ui.item.jk);
+            $('#rtremaja').val(ui.item.rt);
+            $('#rwremaja').val(ui.item.rw);
+            $('#nomorteleponremaja').val(ui.item.nomortelepon);
+            $('#nama_ayahremaja').val(ui.item.nama_ayah);
+            $('#nama_iburemaja').val(ui.item.nama_ibu);
+            return false;
+        }
+    });
+</script>
 @endpush

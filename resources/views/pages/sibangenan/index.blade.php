@@ -2,6 +2,7 @@
 
 @push('plugin-styles')
   <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -109,7 +110,7 @@
                                     <form id="setujui-usulan-form-{{ $d->id }}" action="{{ route('setujui.usulan', ['id' => $d->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <form action="{{ route('bumil.destroy', $d->id) }}" method="POST" id="delete_bumil" class="hapusremaja"> @csrf @method('DELETE') <a class="dropdown-item d-flex align-items-center" href="#" onClick="DeleteBumilDialog()">
+                                    <form action="{{ route('sibangenan.destroy', $d->id) }}" method="POST" id="delete_sibangenan" class="sibangenandelete"> @csrf @method('DELETE') <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog()">
                                             <i data-feather="trash" class="icon-sm me-2"></i>
                                             <span class="">Delete</span>
                                         </a>
@@ -210,6 +211,54 @@
                 <h4>Detail Data Pengajuan {{$d->namapemohon}} || RW {{$d->rw}}</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
+            <div class="detail-pengajuan-sibangenan p-4">
+                <div class="row mb-4">
+                    <div class="col-md-4">                        
+                        <div class="form-group">
+                            <h5 class="mb-2">Nama Pemohon</h5>
+                            <p>{{ $d->namapemohon }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">                        
+                        <div class="form-group">
+                            <h5 class="mb-2">Asal RW</h5>
+                            <p>{{ $d->rw }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">                        
+                        <div class="form-group">
+                            <h5 class="mb-2">Jenis Urusan</h5>
+                            <p>{{ $d->urusan }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4">                        
+                        <div class="form-group">
+                            <h5 class="mb-2">Usulan</h5>
+                            <p>{{ $d->usulan }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">                        
+                        <div class="form-group">
+                            <h5 class="mb-2">Lokasi</h5>
+                            <p>{{ $d->lokasi }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">                        
+                        <div class="form-group">
+                            <h5 class="mb-2">Status Pengajuan</h5>
+                            <p>{{ $d->status_pengajuan }}</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ route('sibangenan.download', $d->id) }}" class="mt-4">
+                    <div class="download-file-pendukung d-flex">
+                        <img src="{{ asset('assets/icons/download-file.png') }}" alt="">
+                        <h5 class="align-self-center">Download File Pendukung</h5>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </div> 
@@ -219,8 +268,26 @@
 @push('plugin-scripts')
   <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
   <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
+  <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 @endpush
 
 @push('custom-scripts')
   <script src="{{ asset('assets/js/data-table.js') }}"></script>
+  <script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
+  <script>
+    function showDeleteDataDialog() {
+        Swal.fire({
+            title: 'Hapus Data',
+            text: 'Anda Yakin Akan Menghapus Data Ini?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Perform the delete action here (e.g., send a request to delete the data)
+                document.getElementById("delete_sibangenan").submit();
+            }
+        });
+    }
+</script>
 @endpush

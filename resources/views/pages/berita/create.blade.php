@@ -24,7 +24,7 @@
         @csrf
           <div class="mb-3">
             <label for="exampleInputNumber1" class="form-label">Judul Berita</label>
-            <input type="text" class="form-control" name="judul">
+            <input type="text" class="form-control" name="judul" id="nama">
           </div>
 
           <div class="mb-3">
@@ -61,6 +61,9 @@
 @endsection
 
 @push('plugin-scripts')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script>
 @endpush
 

@@ -10,4 +10,11 @@ class Remaja extends Model
     use HasFactory;
     protected $table = 'remajas';
     protected $fillable = ['nik','nomorkk','nama', 'tanggallahir'];
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class);
+    }
 }
+
+
