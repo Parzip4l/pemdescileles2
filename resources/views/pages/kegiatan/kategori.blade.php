@@ -8,8 +8,8 @@
 @section('content')
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Berita</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Kategori Berita</li>
+    <li class="breadcrumb-item"><a href="#">Kegiatan</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Kategori Kegiatan</li>
   </ol>
 </nav>
 
@@ -19,13 +19,13 @@
       <div class="card-body">
         <div class="row pb-4">
             <div class="col-md-4">
-                <h6 class="card-title align-self-center">Buat Kategori Berita</h6>
+                <h6 class="card-title align-self-center">Buat Kategori Kegiatan</h6>
                 <form action="{{ route('kategoriberita.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="mb-3">
                             <label for="exampleInputUsername1" class="form-label">Nama Kategori</label>
                             <input type="text" class="form-control" id="namakategori" autocomplete="off" name="kategori" placeholder="Nama kategori">
-                            <input type="hidden" class="form-control" id="namakategori" autocomplete="off" name="parent_kategori" value="Berita" placeholder="Nama kategori">
+                            <input type="hidden" class="form-control" id="namakategori" autocomplete="off" name="parent_kategori" value="Kegiatan" placeholder="Nama kategori">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Deskripsi</label>
@@ -36,7 +36,7 @@
                 </form>
             </div>
             <div class="col-md-8">
-                <h6 class="card-title align-self-center">Data Kategori Berita</h6>
+                <h6 class="card-title align-self-center">Data Kategori Kegiatan</h6>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}

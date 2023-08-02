@@ -47,54 +47,22 @@
         </div>
         <div class="content-kegiatan-wrap">
             <div class="row">
+                @foreach ($kegiatan as $kegiatan)
                 <div class="col-md-3 mb-2">
                     <div class="card">
                         <div class="featured-image-kegiatan">
-                            <img src="{{ asset('assets/images/noimage.png') }}" class="card-img-top" alt="...">
-                            <div class="kategori-kegiatan">PKK</div>
+                            <img src="{{ asset('images/'. $kegiatan->gambar) }}" class="card-img-top" alt="{{$kegiatan->judul}}">
+                            <div class="kategori-kegiatan">{{$kegiatan->kategori}}</div>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Judul Kegiatan</h4>
-                            <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="" class="custom-text-color">
+                                <h4 class="card-title">{{$kegiatan->judul}}</h4>
+                            </a>
+                            <p class="card-text mb-3">{!! $kegiatan->keterangan_singkat!!}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-2">
-                    <div class="card">
-                        <div class="featured-image-kegiatan">
-                            <img src="{{ asset('assets/images/noimage.png') }}" class="card-img-top" alt="...">
-                            <div class="kategori-kegiatan">PKK</div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Judul Kegiatan</h4>
-                            <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <div class="card">
-                        <div class="featured-image-kegiatan">
-                            <img src="{{ asset('assets/images/noimage.png') }}" class="card-img-top" alt="...">
-                            <div class="kategori-kegiatan">PKK</div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Judul Kegiatan</h4>
-                            <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <div class="card">
-                        <div class="featured-image-kegiatan">
-                            <img src="{{ asset('assets/images/noimage.png') }}" class="card-img-top" alt="...">
-                            <div class="kategori-kegiatan">PKK</div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Judul Kegiatan</h4>
-                            <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="button-all-kegiatan-wrap text-center my-4">
                 <a href="" class="btn btn-warning text-white">Lihat Semua Kegiatan</a>
@@ -127,7 +95,7 @@
                             <div class="konten-singkat mb-2">
                                 {!! $data->konten !!}
                             </div>
-                            <a href="" class="mt-4 text-primary">Selengkapnya ...</a>
+                            <a href="{{ route('berita.show', $data->judul) }}" class="mt-4 text-primary">Selengkapnya ...</a>
                         </div>
                     </div>
                 </div>

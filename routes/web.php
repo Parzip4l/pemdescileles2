@@ -44,6 +44,10 @@ Route::middleware('auth.user')->group(function () {
 
     // Setting Page
     Route::resource('setting-urusan-sibangenan', UrusansibangenanController::class);
+
+    // Kegiatan
+    Route::resource('kegiatan', KegiatanController::class);
+    Route::get('kategori-kegiatan', 'KategoriBeritaController@indexkategori')->name('kategori-kegiatan');
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth
@@ -61,6 +65,11 @@ Route::post('/logout', function () {
 Route::resource('/', HomeController::class);
 // Profile Desa User Pages
 Route::resource('profile-desa-cileles', ProfileDesaController::class);
+
+// Berita Page
+Route::get('berita-desa', 'HomeController@beritapage')->name('berita-desa');
+Route::get('berita-desa/search', 'HomeController@beritasearch')->name('berita.search');
+Route::get('berita-desa/{judul}', 'HomeController@single')->name('berita.single');
 
 Route::get('/datawarga', function () {
     return view('pages/warga-data/index');

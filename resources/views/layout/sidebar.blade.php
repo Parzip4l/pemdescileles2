@@ -104,13 +104,13 @@
         <div class="collapse {{ show_class(['Kegiatan/*']) }}" id="kegiatan">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ url('/ui-components/accordion') }}" class="nav-link {{ active_class(['ui-components/accordion']) }}">Buat Kegiatan</a>
+              <a href="{{ url('kegiatan/create') }}" class="nav-link {{ active_class(['kegiatan/create']) }}">Buat Kegiatan</a>
             </li>
             <li class="nav-item">
-              <a href="{{ url('/ui-components/alerts') }}" class="nav-link {{ active_class(['ui-components/alerts']) }}">Semua Kegiatan</a>
+              <a href="{{ url('kegiatan') }}" class="nav-link {{ active_class(['kegiatan']) }}">Semua Kegiatan</a>
             </li>
             <li class="nav-item">
-              <a href="{{ url('/ui-components/badges') }}" class="nav-link {{ active_class(['ui-components/badges']) }}">Kategori Kegiatan</a>
+              <a href="{{ url('kategori-kegiatan') }}" class="nav-link {{ active_class(['kategori-kegiatan']) }}">Kategori Kegiatan</a>
             </li>
           </ul>
         </div>

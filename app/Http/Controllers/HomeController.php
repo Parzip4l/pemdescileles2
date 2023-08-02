@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Berita;
+use App\Kegiatan;
 
 class HomeController extends Controller
 {
@@ -15,72 +16,31 @@ class HomeController extends Controller
     public function index()
     {
         $berita = Berita::all();
-        return view ('pages.user-pages.index', compact('berita'));
+        $kegiatan = Kegiatan::paginate(4);
+        return view ('pages.user-pages.index', compact('berita','kegiatan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function beritapage()
     {
-        //
+        $berita = Berita::paginate(9);
+        return view ('pages.berita.indexuser', compact('berita'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function beritasearch(Request $request)
     {
-        //
+        $searchTerm = $request->input('search');
+
+        $beritas = Berita::where('judul', 'LIKE', "%$searchTerm%")
+            ->orWhere('kategori', 'LIKE', "%$searchTerm%")
+            ->latest()
+            ->paginate(10);
+
+        return view('pages.berita.indexwarga', compact('beritas', 'searchTerm'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function single($judul)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $berita = Berita::where('judul', $judul)->firstOrFail();
+        return view('pages.berita.single', compact('berita'));
     }
 }

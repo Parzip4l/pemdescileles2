@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Kategoriberita;
 
-class KategoriBeritaController extends Controller
+class UserpageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class KategoriBeritaController extends Controller
      */
     public function index()
     {
-        $kategori = Kategoriberita::all();
-        return view('pages.berita.kategori.index', compact('kategori'));
+        //
     }
 
     /**
@@ -36,17 +34,7 @@ class KategoriBeritaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'kategori' => 'required',
-        ]);
-
-        $data = new Kategoriberita();
-        $data->kategori = $request['kategori'];
-        $data->deskripsi = $request['deskripsi'];
-        $data->parent_kategori = $request['parent_kategori'];
-        $data->save();
-
-        return redirect()->route('kategoriberita.index')->with('success', 'Kategori Berita berhasil ditambahkan.');
+        //
     }
 
     /**
@@ -71,12 +59,6 @@ class KategoriBeritaController extends Controller
         //
     }
 
-    public function indexkategori()
-    {
-        $kategori = Kategoriberita::where('parent_kategori', 'Kegiatan')->get();
-        return view('pages.kegiatan.kategori',compact('kategori'));
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -86,16 +68,7 @@ class KategoriBeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'kategori' => 'required',
-        ]);
-
-        $kategori = Kategoriberita::find($id);
-        $kategori->kategori = $request->kategori;
-        $kategori->deskripsi = $request->deskripsi;
-        $kategori->save();
-
-        return redirect()->route('kategoriberita.index')->with('success', 'Data Kategori berhasil diperbaharui.');
+        //
     }
 
     /**
@@ -106,8 +79,6 @@ class KategoriBeritaController extends Controller
      */
     public function destroy($id)
     {
-        $kategori = Kategoriberita::find($id);
-        $kategori->delete();
-        return redirect()->route('kategoriberita.index')->with('success', 'Kategori Berita berhasil dihapus.');
+        //
     }
 }

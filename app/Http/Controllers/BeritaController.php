@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Berita;
 use App\Kategoriberita;
+use App\Kegiatan;
 
 class BeritaController extends Controller
 {
@@ -67,9 +68,12 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($judul)
     {
-        //
+        $kegiatan = Kegiatan::orderBy('tanggal_kegiatan', 'asc')->paginate(3);
+        $beritaterbaru = Berita::orderBy('created_at', 'asc')->paginate(3);
+        $berita = Berita::where('judul', $judul)->firstOrFail();
+        return view('pages.berita.single', compact('berita','kegiatan','beritaterbaru'));
     }
 
     /**
