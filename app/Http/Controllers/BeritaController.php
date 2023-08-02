@@ -80,7 +80,9 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $berita = Berita::find($id);
+        $kategori = Kategoriberita::all();
+        return view('pages.berita.edit', compact('berita','kategori'));
     }
 
     /**
@@ -92,7 +94,24 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $berita = Berita::find($id);
+            $berita->judul = $request->judul;
+            $berita->konten = $request->konten;
+            $berita->kategori = $request->kategori;
+            $berita->penulis = $request->penulis;
+            if ($request->hasFile('gambar')) {
+                $image = $request->file('gambar');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/images');
+                $image->move($destinationPath, $filename);
+                $berita->gambar = $filename;
+            }
+            $berita->save();
+            return redirect()->route('berita.index')->with('success', 'Data Berita Berhasil Diupdate.');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors());
+        }
     }
 
     /**

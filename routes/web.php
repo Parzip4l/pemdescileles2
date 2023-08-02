@@ -41,6 +41,9 @@ Route::middleware('auth.user')->group(function () {
     Route::resource('warga', WargaController::class);
     Route::get('/remaja/autocomplete', 'RemajaController@autocomplete')->name('remaja.autocomplete');
     Route::get('/bumil/create/autocomplete', 'BumilController@autocomplete2')->name('bumil.autocomplete2');
+
+    // Setting Page
+    Route::resource('setting-urusan-sibangenan', UrusansibangenanController::class);
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth

@@ -1,5 +1,5 @@
 <div class="wa-kepo-wrap">
-    <a href="">
+    <a href="https://api.whatsapp.com/send?phone=6281122202220&text=%23simpati">
         <img src="{{ asset('assets/images/walogo.png') }}" alt="wa kepo">
     </a>
 </div>

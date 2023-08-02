@@ -25,7 +25,7 @@
                     <a href="" class="btn btn-primary btn-md w-100"> Pengajuan</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="" class="btn btn-warning btn-md w-100"> Monitor</a>
+                    <a href="" class="btn btn-warning btn-md w-100 text-white"> Monitor</a>
                 </div>
                 <div class="col-md-3">
                     <a href="{{ url('pengajuan-ditolak') }}" class="btn btn-danger btn-md w-100"> Usulan Ditolak</a>
@@ -47,6 +47,16 @@
                         {{ session('error') }}
                     </div>
                 @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             <div class="table-responsive">
                 <table id="dataTableExample" class="table">
                     <thead>
@@ -57,9 +67,10 @@
                         <th>Tanggal Dibuat</th>
                         <th>Permasalahan</th>
                         <th>Indikasi / Gagasan</th>
+                        <th>Lokasi</th>
                         <th>Usul Ke</th>
                         <th>Status Pengajuan</th>
-                        <th>More Action</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -73,6 +84,7 @@
                         <td>{{ $d->rw}}</td>
                         <td>{{ $d->created_at->format('d M Y')}}</td>
                         <td>{{ $d->permasalahan}}</td>
+                        <td>{{$d->lokasi}}</td>
                         <td>{{ $d->usulan}}</td>
                         <td>{{ $d->urusan}}</td>
                         <td>
@@ -86,7 +98,7 @@
                                     <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('sibangenan.edit', $d->id) }}">
+                                    <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#EditPengajuan{{ $d->id}}">
                                         <i data-feather="edit-2" class="icon-sm me-2"></i>
                                         <span class="">Edit</span>
                                     </a>
@@ -179,8 +191,9 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Urusan</label>
                             <select name="urusan" class="form-control" id="" required>
-                                <option value="Pendidikan">Pendidikan</option>
-                                <option value="Pembangunan">Pembangunan</option>
+                                @foreach($urusan as $urusan)
+                                <option value="{{$urusan->nama}}">{{$urusan->nama}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -262,6 +275,90 @@
         </div>
     </div>
 </div> 
+@endforeach
+
+<!-- Edit Modal -->
+@foreach ($data as $d)
+<div class="modal fade bd-example-modal-lg sibangenan" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="EditPengajuan{{$d->id}}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-4">
+            <h4 class="pb-2">Edit Pengajuan</h4>
+            <hr>
+            <form class="forms-sample" action="{{ route('sibangenan.update', $d->id) }}" method="POST" enctype="multipart/form-data"> 
+                @csrf 
+                @method('PUT')
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Nama Pemohon</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('namapemohon', $d->namapemohon) }}" required>
+                            @error('namapemohon')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Asal RW</label>
+                            <select name="rw" id="" class="form-control" required>
+                                <option value="1" {{ $d->rw == '1' ? 'selected' : '' }}>1</option>
+                                <option value="2" {{ $d->rw == '2' ? 'selected' : '' }}>2</option>
+                                <option value="3" {{ $d->rw == '3' ? 'selected' : '' }}>3</option>
+                                <option value="4" {{ $d->rw == '4' ? 'selected' : '' }}>4</option>
+                                <option value="5" {{ $d->rw == '5' ? 'selected' : '' }}>5</option>
+                                <option value="6" {{ $d->rw == '6' ? 'selected' : '' }}>6</option>
+                                <option value="7" {{ $d->rw == '7' ? 'selected' : '' }}>7</option>
+                                <option value="8" {{ $d->rw == '8' ? 'selected' : '' }}>8</option>
+                                <option value="9" {{ $d->rw == '9' ? 'selected' : '' }}>9</option>
+                                <option value="10" {{ $d->rw == '10' ? 'selected' : '' }}>10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Permasalahan</label>
+                            <textarea name="permasalahan" id="" cols="15" rows="5" class="form-control" value="" required>{{$d->permasalahan}}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Alamat</label>
+                            <textarea name="lokasi" id="" cols="15" rows="5" class="form-control" required>{{$d->lokasi}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Urusan</label>
+                            <select name="urusan" class="form-control" id="" required>
+                                <option value="Pendidikan">Pendidikan</option>
+                                <option value="Pembangunan">Pembangunan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Dokumen Pendukung</label>
+                            <input type="file" class="form-control" name="dokumen_pendukung" value><pre>{{$d->dokumen_pendukung}}</pre>
+                            <p class="text-danger">Upload Dokumen Pendukung Dalam Bentuk Zip/Rar</p>
+                            <input type="hidden" name="status_pengajuan" value="Diajukan">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Usulan</label>
+                            <textarea name="usulan" id="" cols="30" rows="10" class="form-control" required>{{$d->usulan}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary me-2 w-100">Edit Pengajuan</button>
+            </form>
+        </div>
+    </div>
+</div>
 @endforeach
 @endsection
 

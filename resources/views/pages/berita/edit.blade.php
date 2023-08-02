@@ -6,7 +6,7 @@
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Berita</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Buat Berita</li>
+    <li class="breadcrumb-item active" aria-current="page">Edit Berita</li>
   </ol>
 </nav>
 
@@ -14,44 +14,45 @@
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h6 class="card-title">Buat Berita</h6>
+        <h6 class="card-title">Detail Berita</h6>
         @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
-        <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
           <div class="mb-3">
             <label for="exampleInputNumber1" class="form-label">Judul Berita</label>
-            <input type="text" class="form-control" name="judul" id="nama">
+            <input type="text" class="form-control" name="judul" value="{{$berita->judul}}" required>
           </div>
 
           <div class="mb-3">
             <label for="exampleInputNumber1" class="form-label">Kategori</label>
-            <select name="kategori" id="" class="form-control">
-              @foreach ($kategori as $data)
-              <option value="{{$data->kategori}}">{{$data->kategori}}</option>
-              @endforeach
+            <select name="kategori" class="form-control" id="">
+                @foreach ($kategori as $data)
+                <option value="{{$data->kategori}} {{ $data->kategori == $berita->kategori ? 'selected' : '' }}">{{$data->kategori}}</option>
+                @endforeach
             </select>
           </div>
 
           <div class="mb-3">
             <label for="exampleInputNumber1" class="form-label">Konten</label>
-            <textarea class="form-control" name="konten" id="tinymceExample" rows="10"></textarea>
+            <textarea name="konten" id="tinymceExample" cols="30" rows="10" class="form-control">{{$berita->konten}}</textarea>
           </div>
 
           <div class="mb-3">
-            <label for="exampleInputNumber1" class="form-label">Gambar</label>
-            <input type="file" class="form-control" name="gambar">
-          </div>
-          
-          <div class="mb-3">
-            <input type="hidden" class="form-control" name="penulis" value="{{ Auth::user()->name }}" readonly>
+            <label for="exampleInputNumber1" class="form-label">Penulis</label>
+            <input type="text" class="form-control" name="penulis" value="{{$berita->penulis}}" required>
           </div>
 
-          <button class="btn btn-primary" type="submit">Simpan Data</button>
-          <button class="btn btn-danger" type="reset">Reset Data</button>
+          <div class="mb-3">
+            <label for="exampleInputNumber1" class="form-label">Featured Images</label>
+            <input type="file" class="form-control" name="gambar" value="{{$berita->gambar}}" require>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Update Data</button>
         </form>
       </div>
     </div>
@@ -60,9 +61,6 @@
 @endsection
 
 @push('plugin-scripts')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script>
 @endpush
 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sibangenan;
+use App\Urusansibangenan;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SibangenanController extends Controller
 {
@@ -15,7 +18,8 @@ class SibangenanController extends Controller
     public function index()
     {
         $data = Sibangenan::all();
-        return view ('pages.sibangenan.index', compact('data'));
+        $urusan = urusansibangenan::all();
+        return view ('pages.sibangenan.index', compact('data','urusan'));
     }
 
     public function ditolak()
@@ -73,8 +77,11 @@ class SibangenanController extends Controller
             'dokumen_pendukung' => 'required|mimes:jpeg,png,pdf|max:2048',
             'status_pengajuan' => 'required'
         ]);
+
+        $uuid = Str::uuid()->toString();
         
         $sibangenan = new Sibangenan();
+        $sibangenan->id = $uuid;
         $sibangenan->namapemohon = $request->input('namapemohon');
         $sibangenan->rw = $request->input('rw');
         $sibangenan->permasalahan = $request->input('permasalahan');
@@ -122,7 +129,7 @@ class SibangenanController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -134,7 +141,32 @@ class SibangenanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $sibangenan = Sibangenan::findOrFail($id);
+            $sibangenan->namapemohon = $request->namapemohon;
+            $sibangenan->rw = $request->rw;
+            $sibangenan->permasalahan = $request->permasalahan;
+            $sibangenan->urusan = $request->urusan;
+            $sibangenan->lokasi = $request->lokasi;
+            if ($request->hasFile('dokumen_pendukung')) {
+                $image = $request->file('dokumen_pendukung');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/files');
+                $image->move($destinationPath, $filename);
+                $sibangenan->dokumen_pendukung = $filename;
+            }
+            $sibangenan->save();
+            return redirect()->route('sibangenan.index')->with('success', 'Data Pengajuan Berhasil Diupdate.');
+        } catch (ModelNotFoundException $e) {
+            // Handle the case where the record with the specified $id is not found
+            return redirect()->back()->withErrors('Data not found.');
+        } catch (ValidationException $e) {
+            // Handle the case where validation fails
+            return redirect()->back()->withErrors($e->errors());
+        } catch (\Exception $e) {
+            // Handle other unexpected errors
+            return redirect()->back()->withErrors('An error occurred while updating the data.');
+        }
     }
 
     /**

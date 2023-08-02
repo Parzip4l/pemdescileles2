@@ -66,7 +66,7 @@ class RemajaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nik' => 'required',
+            'nik' => 'required|unique:remaja',
             'nomorkk' => 'required',
             'nama' => 'required',
             'usia' => 'required|numeric',

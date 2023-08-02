@@ -34,6 +34,25 @@ body {
     line-height: 1.4rem;
 }
 
+.custom-button-setting {
+    box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.custom-button-setting a {
+    color: #000092;
+}
+
+.custom-button-setting:hover{
+    transform: translate(0, 10px);
+    transition: all .3s;
+    cursor: pointer;
+}
+
 /* User Pages */
 
 .welcome-wrap {
