@@ -33,7 +33,7 @@ Route::middleware('auth.user')->group(function () {
     // sibangenan
     Route::resource('sibangenan', SibangenanController::class);
     Route::get('/pengajuan-ditolak', 'SibangenanController@ditolak')->name('ditolak');
-    Route::post('/tolak-usulan/{id}', 'SibangenanController@updateStatusTolak')->name('tolak.usulan');
+    Route::post('/tolak-usulan/{id}', 'SibangenanController@updateStatusTolakC')->name('penolakan.usulan');
     Route::post('/setujui-usulan/{id}', 'SibangenanController@updateStatusSetuju')->name('setujui.usulan');
     // Download Dokumen Pendukung
     Route::get('sibangenan/{id}/download', 'SibangenanController@download')->name('sibangenan.download');
@@ -48,6 +48,9 @@ Route::middleware('auth.user')->group(function () {
     // Kegiatan
     Route::resource('kegiatan', KegiatanController::class);
     Route::get('kategori-kegiatan', 'KategoriBeritaController@indexkategori')->name('kategori-kegiatan');
+
+    // Pengurus
+    Route::resource('pengurus', PengurusController::class);
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth
@@ -69,7 +72,7 @@ Route::resource('profile-desa-cileles', ProfileDesaController::class);
 // Berita Page
 Route::get('berita-desa', 'HomeController@beritapage')->name('berita-desa');
 Route::get('berita-desa/search', 'HomeController@beritasearch')->name('berita.search');
-Route::get('berita-desa/{judul}', 'HomeController@single')->name('berita.single');
+Route::get('berita-desa/{judul}', 'BeritaController@single')->name('berita.single');
 
 Route::get('/datawarga', function () {
     return view('pages/warga-data/index');

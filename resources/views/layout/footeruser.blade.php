@@ -23,9 +23,10 @@
           <h4>Menu</h4>
           <div class="menu-footer mt-4">
             <ul>
-                <li>Beranda</li>
-                <li>Profile</li>
-                <li>UMKM</li>
+                <li><a href="{{ url('/')}}" class="text-white">Beranda</a></li>
+                <li><a href="{{ url('profile-desa-cileles')}}" class="text-white">Profile</a></li>
+                <li><a href="{{ url('#')}}" class="text-white">UMKM</a></li>
+                <li><a href="{{ url('berita-desa')}}" class="text-white">Berita</a></li>
             </ul>
           </div>
         </div>

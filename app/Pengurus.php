@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sibangenan extends Model
+class Pengurus extends Model
 {
     use HasFactory;
-    protected $table = 'sibangenan';
+    protected $table = 'pengurus';
     protected $primaryKey = 'id'; // Primary key column name
     public $incrementing = false; // Disable auto-incrementing
     protected $keyType = 'string';
-    protected $fillable = ['id','namapemohon','rw','permasalahan', 'urusan', 'usulan', 'lokasi', 'dokumen_pendukung','keterangan_penolakan'];
+    protected $fillable = ['id','nama','jabatan','jk','nip', 'tanggal_lahir', 'tempat_lahir','foto','status_perkawinan'];
 }

@@ -32,7 +32,7 @@
               <h2 class="text-uppercase">Sambutan Kepala Desa Cileles</h2>
               <div class="divider my-4"></div>
               <p class="normal-line-height">Lorem ipsum dolor sit amet consectetur. Ullamcorper dui aliquam et praesent egestas ultrices auctor. Tempor porttitor viverra sed sit aliquam ac. Ullamcorper vitae aliquet donec dolor. Elit id viverra egestas odio diam at est nullam. Tellus ultrices amet est dictumst interdum condimentum. Eu elementum condimentum sodales eget. Arcu quis pellentesque viverra risus faucibus.</p>
-              <a href="" class="btn btn-custom text-white my-4">LIHAT PROFILE DESA</a>
+              <a href="{{ url('profile-desa-cileles') }}" class="btn btn-custom text-white my-4">LIHAT PROFILE DESA</a>
           </div>
       </div>
     </div>
@@ -95,14 +95,14 @@
                             <div class="konten-singkat mb-2">
                                 {!! $data->konten !!}
                             </div>
-                            <a href="{{ route('berita.show', $data->judul) }}" class="mt-4 text-primary">Selengkapnya ...</a>
+                            <a href="{{ route('berita.single', $data->judul) }}" class="mt-4 text-primary">Selengkapnya ...</a>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
             <div class="button-all-kegiatan-wrap text-center my-4">
-                <a href="" class="btn btn-custom text-white">Lihat Semua Berita & Informasi</a>
+                <a href="{{ url('berita-desa') }}" class="btn btn-custom text-white">Lihat Semua Berita & Informasi</a>
             </div>
         </div>
     </div>

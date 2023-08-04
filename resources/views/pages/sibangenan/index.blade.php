@@ -106,20 +106,17 @@
                                         <i data-feather="eye" class="icon-sm me-2"></i>
                                         <span class="">View Detail</span>
                                     </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('setujui.usulan', ['id' => $d->id]) }}" onclick="event.preventDefault(); document.getElementById('setujui-usulan-form-{{ $d->id }}').submit();">
+                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('setujui.usulan', $d->id) }}" onclick="event.preventDefault(); document.getElementById('setujui-usulan-form-{{ $d->id }}').submit();">
                                         <i data-feather="check" class="icon-sm me-2"></i>
                                         <span class="">Setujui Usulan</span>
                                     </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('tolak.usulan', ['id' => $d->id]) }}" onclick="event.preventDefault(); document.getElementById('tolak-usulan-form-{{ $d->id }}').submit();">
+                                    <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#TolakPengajuan{{ $d->id}}">
                                         <i data-feather="x" class="icon-sm me-2"></i>
                                         <span class="">Tolak Usulan</span>
                                     </a>
 
                                     <!-- Add a hidden form to trigger the POST request -->
-                                    <form id="tolak-usulan-form-{{ $d->id }}" action="{{ route('tolak.usulan', ['id' => $d->id]) }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                    <form id="setujui-usulan-form-{{ $d->id }}" action="{{ route('setujui.usulan', ['id' => $d->id]) }}" method="POST" style="display: none;">
+                                    <form id="setujui-usulan-form-{{ $d->id }}" action="{{ route('setujui.usulan', $d->id) }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                     <form action="{{ route('sibangenan.destroy', $d->id) }}" method="POST" id="delete_sibangenan" class="sibangenandelete"> @csrf @method('DELETE') <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog()">
@@ -228,40 +225,48 @@
                 <div class="row mb-4">
                     <div class="col-md-4">                        
                         <div class="form-group">
-                            <h5 class="mb-2">Nama Pemohon</h5>
-                            <p>{{ $d->namapemohon }}</p>
+                            <label for="exampleInputUsername1" class="form-label">Nama Pemohon</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('namapemohon', $d->namapemohon) }}" required disabled>
                         </div>
                     </div>
                     <div class="col-md-4">                        
                         <div class="form-group">
-                            <h5 class="mb-2">Asal RW</h5>
-                            <p>{{ $d->rw }}</p>
+                            <label for="exampleInputUsername1" class="form-label">Asal RW</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('rw', $d->rw) }}" required disabled>
                         </div>
                     </div>
                     <div class="col-md-4">                        
                         <div class="form-group">
-                            <h5 class="mb-2">Jenis Urusan</h5>
-                            <p>{{ $d->urusan }}</p>
+                            <label for="exampleInputUsername1" class="form-label">Jenis Urusan</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('urusan', $d->urusan) }}" required disabled>
                         </div>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col-md-4">                        
                         <div class="form-group">
-                            <h5 class="mb-2">Usulan</h5>
-                            <p>{{ $d->usulan }}</p>
+                            <label for="exampleInputUsername1" class="form-label">Usulan</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('usulan', $d->usulan) }}" required disabled>
                         </div>
                     </div>
                     <div class="col-md-4">                        
                         <div class="form-group">
-                            <h5 class="mb-2">Lokasi</h5>
-                            <p>{{ $d->lokasi }}</p>
+                            <label for="exampleInputUsername1" class="form-label">Lokasi</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('lokasi', $d->lokasi) }}" required disabled>
                         </div>
                     </div>
                     <div class="col-md-4">                        
                         <div class="form-group">
-                            <h5 class="mb-2">Status Pengajuan</h5>
-                            <p>{{ $d->status_pengajuan }}</p>
+                            <label for="exampleInputUsername1" class="form-label">Status Pengajuan</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('status_pengajuan', $d->status_pengajuan) }}" required disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row @if($d->status_pengajuan == 'Ditolak') d-block @elseif($d->status_pengajuan == 'Disetujui') badge d-none @endif mb-2">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Keterangan Penolakan</label>
+                            <textarea id="" cols="30" rows="10" class="form-control" required readonly disabled>{{$d->keterangan_penolakan}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -355,6 +360,33 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary me-2 w-100">Edit Pengajuan</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+
+<!-- Penolakan Modal -->
+@foreach ($data as $d)
+<div class="modal fade bd-example-modal-lg sibangenan" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="TolakPengajuan{{$d->id}}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-4">
+            <h4 class="pb-2">Tolak Pengajuan</h4>
+            <p>Berikan Catatan Alasan Penolakan</p>
+            <hr>
+            <form class="forms-sample" action="{{ route('penolakan.usulan',$d->id) }}" method="POST" enctype="multipart/form-data"> 
+                @csrf 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Keterangan Penolakan</label>
+                            <textarea name="keterangan_penolakan" class="form-control" id="" cols="30" rows="10" required></textarea>
+                            <input type="hidden" name="status_pengajuan" value="Ditolak">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-danger me-2 w-100">Tolak Pengajuan</button>
             </form>
         </div>
     </div>

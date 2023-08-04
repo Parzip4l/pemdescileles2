@@ -76,6 +76,14 @@ class BeritaController extends Controller
         return view('pages.berita.single', compact('berita','kegiatan','beritaterbaru'));
     }
 
+    public function single($judul)
+    {
+        $kegiatan = Kegiatan::orderBy('tanggal_kegiatan', 'asc')->paginate(3);
+        $beritaterbaru = Berita::orderBy('created_at', 'asc')->paginate(3);
+        $berita = Berita::where('judul', $judul)->firstOrFail();
+        return view('pages.berita.single', compact('berita','kegiatan','beritaterbaru'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

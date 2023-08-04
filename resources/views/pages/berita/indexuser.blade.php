@@ -68,7 +68,7 @@
                                 <div class="konten-singkat mb-2">
                                     {!! $data->konten !!}
                                 </div>
-                                <a href="{{ route('berita.show', $data->judul) }}" class="mt-4 text-primary">Selengkapnya ...</a>
+                                <a href="{{ route('berita.single', $data->judul) }}" class="mt-4 text-primary">Selengkapnya ...</a>
                             </div>
                         </div>
                     </div>

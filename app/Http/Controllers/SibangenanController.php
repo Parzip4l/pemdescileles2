@@ -28,16 +28,7 @@ class SibangenanController extends Controller
         return view ('pages.sibangenan.ditolak', compact('rejectedData'));
     }
 
-    public function updateStatusTolak($id)
-    {
-        $sibangenan = Sibangenan::findOrFail($id);
-        if ($sibangenan->status_pengajuan !== 'Ditolak') {
-            $sibangenan->status_pengajuan = 'Ditolak';
-            $sibangenan->save();
-        }
-
-        return redirect()->back()->with('success', 'Usulan berhasil ditolak.');
-    }
+    
 
     public function updateStatusSetuju($id)
     {
@@ -46,7 +37,7 @@ class SibangenanController extends Controller
             $sibangenan->status_pengajuan = 'Disetujui';
             $sibangenan->save();
         }
-        return redirect()->back()->with('success', 'Usulan berhasil disetujui.');
+        return redirect()->route('sibangenan.index')->with('success', 'Data Pengajuan Berhasil Diupdate.');
     }
 
     /**
@@ -167,6 +158,21 @@ class SibangenanController extends Controller
             // Handle other unexpected errors
             return redirect()->back()->withErrors('An error occurred while updating the data.');
         }
+    }
+
+    public function updateStatusTolakC(Request $request, $id)
+    {
+        try {
+            $sibangenan = Sibangenan::findOrFail($id);
+            $sibangenan->keterangan_penolakan = $request->keterangan_penolakan;
+            $sibangenan->status_pengajuan = $request->status_pengajuan;
+            $sibangenan->save();
+            return redirect()->route('sibangenan.index')->with('success', 'Data Pengajuan Berhasil Diupdate.');
+        }catch (\Exception $e) {
+            // Handle other unexpected errors
+            return redirect()->back()->withErrors('An error occurred while updating the data.');
+        }
+        
     }
 
     /**
