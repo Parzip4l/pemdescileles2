@@ -190,6 +190,25 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Golongan Darah</label>
+                            <select name="golongan_darah" class="form-control" id="goldar">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="O">O</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Nomor Telepon</label>
+                            <input type="number" class="form-control" id="nomorteleponremaja" autocomplete="off" name="nomor_telepon" placeholder="nomortelpeon">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">RT</label>
                             <select name="rt" class="form-control" id="rtremaja">
                                 <option value="1">1</option>

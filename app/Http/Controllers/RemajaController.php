@@ -6,6 +6,8 @@ use App\Remaja;
 use App\Bumil;
 use App\Warga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class RemajaController extends Controller
 {
@@ -30,7 +32,7 @@ class RemajaController extends Controller
     public function autocomplete(Request $request)
     {
         $term = $request->input('term');
-        $warga = Warga::select('id', 'nama', 'nik', 'nokk', 'jk', 'rt', 'rw', 'nomortelepon','nama_ayah','nama_ibu')
+        $warga = Warga::select('id', 'nama', 'nik', 'nokk', 'jk', 'rt', 'rw', 'nomortelepon','nama_ayah','nama_ibu','golongan_darah')
             ->where('nik', 'LIKE', '%' . $term . '%')
             ->get();
         
@@ -46,7 +48,8 @@ class RemajaController extends Controller
                 'rw' => $user->rw,
                 'nomortelepon' => $user->nomortelepon,
                 'nama_ayah' => $user->nama_ayah,
-                'nama_ibu' => $user->nama_ibu
+                'nama_ibu' => $user->nama_ibu,
+                'golongan_darah' => $user->golongan_darah
             );
         }
         
@@ -76,9 +79,15 @@ class RemajaController extends Controller
             'nama_ayah' => 'required',
             'nama_ibu' => 'required',
             'nomor_telepon' => 'required',
+            'tambahan_darah' => 'required',
+            'pemeriksaan_anemia' => 'required',
+            'golongan_darah' => 'required'
         ]);
 
+        $uuid = Str::uuid()->toString();
+
         $remaja = new Remaja();
+        $remaja->id = $uuid;
         $remaja->nik = $request['nik'];
         $remaja->nomorkk = $request['nomorkk'];
         $remaja->nama = $request['nama'];
@@ -89,6 +98,10 @@ class RemajaController extends Controller
         $remaja->nama_ayah = $request['nama_ayah'];
         $remaja->nama_ibu = $request['nama_ibu'];
         $remaja->nomor_telepon = $request['nomor_telepon'];
+        $remaja->tambahan_darah = $request['tambahan_darah'];
+        $remaja->pemeriksaan_anemia = $request['pemeriksaan_anemia'];
+        $remaja->hasilpemeriksaan_anemia = $request['hasilpemeriksaan_anemia'];
+        $remaja->golongan_darah = $request['golongan_darah'];
         $remaja->save();
 
         return redirect()->route('sijamil.index')->with('success', 'Data remaja berhasil ditambahkan.');

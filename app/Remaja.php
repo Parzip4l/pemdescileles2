@@ -9,7 +9,9 @@ class Remaja extends Model
 {
     use HasFactory;
     protected $table = 'remajas';
-    protected $fillable = ['nik','nomorkk','nama', 'tanggallahir'];
+    protected $primaryKey = 'id'; // Primary key column name
+    public $incrementing = false; // Disable auto-incrementing
+    protected $fillable = ['id','nik','nomorkk','nama', 'tanggallahir','pemeriksaan_anemia','tambahan_darah'];
 
     public function warga()
     {

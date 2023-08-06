@@ -65,7 +65,8 @@ class WargaController extends Controller
                 'statusperkawinan'   => $request->statusperkawinan,
                 'nomortelepon'   => $request->nomortelepon,
                 'nama_ayah'     => $request->nama_ayah,
-                'nama_ibu'     => $request->nama_ibu
+                'nama_ibu'     => $request->nama_ibu,
+                'golongan_darah'     => $request->golongan_darah
             ]);
             
             //redirect to index
@@ -74,17 +75,6 @@ class WargaController extends Controller
                 $errorMessage = $exception->validator->errors()->first(); // ambil pesan error pertama dari validator
                 redirect()->route('warga.index')->with('error', 'Gagal menyimpan data. ' . $errorMessage); // tambahkan alert error
             }
-    }
-
-    public function autocomplete(Request $request)
-    {
-        $term = $request->input('term');
-        $warga = Warga::where('nik', 'LIKE', '%'.$term.'%')->get();
-        $data = array();
-        foreach ($warga as $user) {
-            $data[] = array('value' => $user->nik, 'id' => $user->id);
-        }
-        return response()->json($data);
     }
 
     /**

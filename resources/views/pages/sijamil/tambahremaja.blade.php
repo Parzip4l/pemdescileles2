@@ -70,6 +70,46 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Golongan Darah</label>
+                        <select name="golongan_darah" class="form-control" id="goldar">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Riwayat Penambahan Darah</label>
+                        <select name="tambahan_darah" class="form-control" id="penambahan_darah">
+                            <option value="Ya">Ya</option>
+                            <option value="Tidak">Tidak</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Pemeriksaan Anemia</label>
+                        <select name="pemeriksaan_anemia" class="form-control" id="goldar">
+                            <option value="Ya">Ya</option>
+                            <option value="Tidak">Tidak</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Hasil Pemeriksaan Anemia</label>
+                        <p class="text-danger">Kosongkan Jika Tidak Pernah</p>
+                        <textarea name="hasilpemeriksaan_anemia" id="" cols="30" class="form-control" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">RT</label>
                         <select name="rt" class="form-control" id="rtremaja">
                             <option value="1">1</option>
@@ -152,7 +192,8 @@
                             rw: item.rw,
                             nama_ayah: item.nama_ayah,
                             nama_ibu: item.nama_ibu,
-                            nomortelepon: item.nomortelepon
+                            nomortelepon: item.nomortelepon,
+                            golongan_darah: item.golongan_darah
                         }
                     }));
                 }
@@ -168,6 +209,7 @@
             $('#nomorteleponremaja').val(ui.item.nomortelepon);
             $('#nama_ayahremaja').val(ui.item.nama_ayah);
             $('#nama_iburemaja').val(ui.item.nama_ibu);
+            $('#goldar').val(ui.item.golongan_darah);
             return false;
         }
     });
