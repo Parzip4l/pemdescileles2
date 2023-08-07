@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Sibangenan;
 use App\Urusansibangenan;
+use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class SibangenanController extends Controller
 {
@@ -19,6 +21,8 @@ class SibangenanController extends Controller
      */
     public function index()
     {
+        $userLevel = Auth::user()->level; 
+        // Filter Tahun
         $years = Sibangenan::selectRaw('YEAR(created_at) as year')
             ->distinct()
             ->pluck('year');
@@ -29,10 +33,15 @@ class SibangenanController extends Controller
             return $query->whereYear('created_at', $selectedYear);
         })->get();
         $urusan = Urusansibangenan::all();
-        $data = DB::table('sibangenan')
-        ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
-        ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
-        ->get();
+        $query = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
+
+        if ($userLevel !== 1) {
+            $query->where('sibangenan.namapemohon', Auth::user()->name); // Ganti 'nama_pemohon' dengan kolom yang sesuai
+        }
+
+        $data = $query->get();
         return view ('pages.sibangenan.index', compact('data','urusan','years','data2'));
     }
 

@@ -89,6 +89,7 @@
                     <tbody>
                         @php
                         $nomor = 1;
+                        $userLevel = Auth::user()->level; // Ambil role user yang login
                         @endphp
                         @foreach ($data as $d)
                     <tr>
@@ -119,14 +120,17 @@
                                         <i data-feather="eye" class="icon-sm me-2"></i>
                                         <span class="">View Detail</span>
                                     </a>
+                                    @if($userLevel === 1)
                                     <a class="dropdown-item d-flex align-items-center" href="{{ route('setujui.usulan', $d->id) }}" onclick="event.preventDefault(); document.getElementById('setujui-usulan-form-{{ $d->id }}').submit();">
                                         <i data-feather="check" class="icon-sm me-2"></i>
                                         <span class="">Setujui Usulan</span>
                                     </a>
+                                    
                                     <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#TolakPengajuan{{ $d->id}}">
                                         <i data-feather="x" class="icon-sm me-2"></i>
                                         <span class="">Tolak Usulan</span>
                                     </a>
+                                    
 
                                     <!-- Add a hidden form to trigger the POST request -->
                                     <form id="setujui-usulan-form-{{ $d->id }}" action="{{ route('setujui.usulan', $d->id) }}" method="POST" style="display: none;">
@@ -139,6 +143,7 @@
                                             <span class="">Delete</span>
                                         </a>
                                     </form>
+                                    @endif
                                 </div>
                             </div>
                         </td>
@@ -230,7 +235,7 @@
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Dokumen Pendukung</label>
                             <input type="file" class="form-control" name="dokumen_pendukung[]" multiple>
-                            <p class="text-danger">Upload 3 Dokumen Pendukung Dalam Bentuk PDF</p>
+                            <p class="text-danger">Upload 3 Dokumen Pendukung Dalam Bentuk PDF <br>(SURAT PENGANTAR RW,RENCANA ANGGARAN BIAYA(RAB) & FOTO LOKASI)</p>
                             <input type="hidden" name="status_pengajuan" value="Verifikasi">
                         </div>
                     </div>
@@ -268,13 +273,13 @@
                             <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('rw', $d->rw) }}" required disabled>
                         </div>
                     </div>
-                    <div class="col-md-6">                        
+                    <div class="col-md-12 mb-3">                        
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="form-label">Jenis Urusan</label>
                             <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('urusan', $d->nama_urusan) }}" required disabled>
                         </div>
                     </div>
-                    <div class="col-md-6">                        
+                    <div class="col-md-12">                        
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="form-label">Sub Urusan</label>
                             <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('urusan', $d->suburusan) }}" required disabled>
@@ -289,7 +294,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">                        
-                        <div class="form-group">
+                        <div class="form-group ">
                             <label for="exampleInputUsername1" class="form-label">Lokasi</label>
                             <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('lokasi', $d->lokasi) }}" required disabled>
                         </div>
@@ -301,7 +306,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row @if($d->status_pengajuan == 'Ditolak') d-block @elseif($d->status_pengajuan == 'Disetujui') badge d-none @endif mb-2">
+                <div class="row @if($d->status_pengajuan == 'Ditolak') d-block @elseif($d->status_pengajuan == 'Direvisi') d-block @else d-none @endif mb-2">
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Keterangan Penolakan</label>
@@ -309,6 +314,7 @@
                         </div>
                     </div>
                 </div>
+                @if($userLevel === 1)
                 <div class="row">
                     <div class="col-md-4">
                         <a href="{{ route('sibangenan.download', $d->id) }}" class="mt-4">
@@ -325,6 +331,7 @@
                         <a class="btn btn-danger w-100" href="#" data-bs-toggle="modal" data-bs-target="#TolakPengajuan{{ $d->id}}">Tolak</a>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
