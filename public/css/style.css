@@ -27,7 +27,7 @@ body {
 }
 
 .bg-custom-ijo {
-    background-color: #66B82E;
+    background-color: #069550;
 }
 
 .custom-text-color {
@@ -82,10 +82,29 @@ body {
     top: 40%;
 }
 
+.text-link {
+    color : #1D5D9B;
+}
+
 .btn-custom {
     padding : 10px 45px!important;
-    background-color: #66B82E!important;
+    background-color: #069550!important;
     border: none!important;
+}
+
+.btn-custom-white {
+    padding : 10px 45px!important;
+    background-color: #fff!important;
+    color: #069550!important;
+    border: none!important;
+    font-weight: bold!important;
+    transition: all 0.5s;
+}
+
+.btn-custom-white:hover {
+    transform: translateY(20px);
+    transition: all 0.5s;
+    font-weight: bold;
 }
 
 a.nav-link {
@@ -106,7 +125,7 @@ li.nav-item {
     display: block;
     height: 5px;
     width: 15%;
-    background-color: #66B82E;
+    background-color: #069550;
 }
 
 .featured-image-kegiatan {
@@ -122,7 +141,7 @@ li.nav-item {
 .kategori-kegiatan {
     position: absolute;
     top: 30px;
-    background: #66B82E;
+    background: #069550;
     padding: 5px 25px;
     border-radius: 20px;
     right: 30px;
@@ -211,11 +230,11 @@ h4.judul-berita {
 }
 
 .kontent-kegiatan-aside-body a {
-    color: #66B82E;
+    color: #069550;
 }
 
 .kontent-kegiatan-aside-body a:hover {
-    color: #66B82E;
+    color: #069550;
 }
 
 .judul-terbatas {

@@ -176,7 +176,6 @@
             margin: 20,
             paginationSpeed : 400,
             loop : true,
-            nav:true,
 
             responsive:{
                 0:{

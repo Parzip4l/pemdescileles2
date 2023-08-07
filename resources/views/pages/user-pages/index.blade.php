@@ -13,25 +13,29 @@
         <div class="content-welcome" style="text-white">
             <div class="col-md-6">
                 <h1 class="text-white mb-2">SELAMAT DATANG DI PORTAL CILELES SMART</h1>
-                <p class="text-light">Lorem ipsum dolor sit amet consectetur. Diam diam nibh aliquam amet orci. Suspendisse massa posuere senectus tincidunt odio volutpat et tellus. Molestie purus arcu sed bibendum quam imperdiet etiam interdum nisl. Phasellus dapibus vulputate maecenas libero a consequat scelerisque etiam potenti. Feugiat mattis eget amet amet.</p>
+                <p class="text-light">Cileles Smart adalah sebuah platform informasi yang ditujukan untuk warga Desa Cileles. Dengan fokus pada remaja dan ibu hamil, website ini menyediakan beragam konten yang relevan dan bermanfaat untuk Cileles Folks. </p>
             </div> 
         </div>
     </div>
 </div>
 <!-- Sambutan Kades -->
-<div class="sambutan-kades-wrap my-6">
+<div class="sambutan-kades-wrap py-6">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
           <div class="foto-kades">
-              <img src="{{ asset('assets/images/fototes.png') }}" alt="kepala desa cileles" class="w-100">
+              <img src="{{ asset('assets/images/kadeswithnama.png') }}" alt="kepala desa cileles" class="w-100">
           </div>
       </div>
       <div class="col-md-6 align-self-center pt-4">
           <div class="content-sambutan">
               <h2 class="text-uppercase">Sambutan Kepala Desa Cileles</h2>
               <div class="divider my-4"></div>
-              <p class="normal-line-height">Lorem ipsum dolor sit amet consectetur. Ullamcorper dui aliquam et praesent egestas ultrices auctor. Tempor porttitor viverra sed sit aliquam ac. Ullamcorper vitae aliquet donec dolor. Elit id viverra egestas odio diam at est nullam. Tellus ultrices amet est dictumst interdum condimentum. Eu elementum condimentum sodales eget. Arcu quis pellentesque viverra risus faucibus.</p>
+              <p class="normal-line-height">Dengan berbagai informasi, program, dan kegiatan yang akan dihadirkan melalui website ini, semoga kita dapat saling menginspirasi, berbagi pengetahuan, dan bersama-sama mencapai tujuan mulia kita. Bersama, kita akan mengukir sejarah perubahan yang positif dan membawa Desa Cileles Smart menuju masa depan yang gemilang.
+
+Terima kasih kepada semua pihak yang telah berkontribusi dalam pembuatan dan pengembangan website ini. Mari kita terus bekerja bersama, berkomunikasi, dan berkolaborasi demi Desa Cileles Smart yang lebih cerdas, berdaya saing, dan penuh harapan.
+
+Salam Cileles Smart!</p>
               <a href="{{ url('profile-desa-cileles') }}" class="btn btn-custom text-white my-4">LIHAT PROFILE DESA</a>
           </div>
       </div>
@@ -39,7 +43,7 @@
   </div>
 </div>
 <!-- Agenda Kegiatan -->
-<div class="agenda-kegiatan-wrap bg-custom-ijo py-6">
+<div class="agenda-kegiatan-wrap bg-custom-ijo py-6" style="background-image: url('assets/images/bg-jabar.svg');background-repeat: no-repeat;background-position: 95% 100%;">
     <div class="container">
         <div class="title-agenda">
             <h2 class="text-center text-uppercase text-white">Agenda Kegiatan</h2>
@@ -65,7 +69,7 @@
                 @endforeach
             </div>
             <div class="button-all-kegiatan-wrap text-center my-4">
-                <a href="" class="btn btn-warning text-white">Lihat Semua Kegiatan</a>
+                <a href="" class="btn btn-custom-white">Lihat Semua Kegiatan</a>
             </div>
         </div>
     </div>
@@ -95,7 +99,7 @@
                             <div class="konten-singkat mb-2">
                                 {!! $data->konten !!}
                             </div>
-                            <a href="{{ route('berita.single', $data->judul) }}" class="mt-4 text-primary">Selengkapnya ...</a>
+                            <a href="{{ route('berita.single', $data->judul) }}" class="mt-4 text-link">Selengkapnya ...</a>
                         </div>
                     </div>
                 </div>
@@ -108,7 +112,7 @@
     </div>
 </div>
 <!-- Informasi UMKM -->
-<div class="berita-wrap py-6">
+<!-- <div class="berita-wrap py-6">
     <div class="container">
         <div class="berita-content">
             <div class="title-berita-wrap mb-4">
@@ -116,32 +120,35 @@
                 <div class="divider my-4 mx-auto"></div>
             </div>
             <div class="row">
-                <div class="col-md-3 mb-2">
-                    <div class="card">
-                        <div class="featured-image-kegiatan">
-                            <img src="{{ asset('assets/images/noimage.png') }}" class="card-img-top" alt="">
-                        </div>
-                        <div class="card-body">
-                            <div class="metadata mb-2 d-flex justify-content-between">
-                            </div>
-                            <h4 class="mb-2 judul-berita">Sistik Kabayan</h4>
+                <div class="col-md-12 mb-2">
+                    <img src="{{ asset('assets/images/umkm.png') }}" class="w-100" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Laporan -->
+<div class="laporan-wrap py-6">
+    <div class="container">
+        <div class="berita-content">
+            <div class="title-berita-wrap mb-4">
+                <h2 class="text-uppercase text-center">Layanan Aspirasi dan Pengaduan Online Rakyat</h2>
+                <div class="divider my-4 mx-auto"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 align-self-center">
+                    <div class="content-lapor">
+                        <h5 class="normal-line-height text-center">Kami melayani dengan sepenuh hati tanpa gratifikasi dan pungli.<br> Klik tombol dibawah apabila menemukan pelayanan yang menyimpang</h5>
+                        <div class="button-lapor text-center mt-4">
+                            <a href="https://www.lapor.go.id/" class="btn btn-danger btn-lg text-center" target="_blank">LAPORKAN !</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center  mt-4">
-                    <li class="page-item"><a class="page-link" href="#"><i data-feather="chevron-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i data-feather="chevron-right"></i></a></li>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
-
 @endsection
 @push('plugin-styles')
   <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
