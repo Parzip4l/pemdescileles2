@@ -5,7 +5,7 @@
     <!-- Navbar brand -->
     <a class="navbar-brand me-2" href="">
       <img
-        src="{{ asset('assets/images/logosumedang.png') }}"
+        src="{{ asset('assets/images/logocilelessmart.png') }}"
         height="55"
         alt="Cileles Smart Logo"
         loading="lazy"
@@ -37,16 +37,13 @@
           <a class="nav-link" href="{{ url('profile-desa-cileles') }}">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Layanan</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#">Informasi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sijamil</a>
+          <a class="nav-link" href="{{ url('/login') }}">Sijamil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sibangenen</a>
+          <a class="nav-link" href="{{ url('/login') }}">Sibangenan</a>
         </li>
       </ul>
       <!-- Left links -->

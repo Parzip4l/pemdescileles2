@@ -35,7 +35,7 @@
                     <div class="col-md-8 align-self-center">
                         <div class="title-visi-misi align-self-center">
                             <h3 class="mb-2">Visi</h3>
-                            <h5 class="normal-line-height">Terwujudnya Jawa Barat Juara Lahir Batin dengan Inovasi dan Kolaborasi</h5>
+                            <h5 class="normal-line-height">Terwujudnya Masyarakat Desa Cileles Yang Berakhlakul Karimah, Sejahtera, Maju, Dan Mandiri</h5>
                         </div>
                     </div>
                 </div>
@@ -50,22 +50,61 @@
                                     <p>1</p>
                                 </div>
                                 <div class="content-misi">
-                                    <h4 class="mb-2">Lorem ipsum dolor sit amet consectetur. </h4>
-                                    <p class="normal-line-height">Lorem ipsum dolor sit amet consectetur. Ullamcorper dui aliquam et praesent egestas ultrices auctor. Tempor porttitor viverra sed sit aliquam ac. Ullamcorper vitae aliquet donec dolor.</p>
+                                    <h5 class="mb-2">Terselenggaranya Tata Kelola Pemerintah Desa Yang Profesional dan SMART (Sigap, Melayani, Agamis, Ramah, Terpercaya) </h5>
                                 </div>
                             </div>
                             <div class="content-misi d-flex mb-4">
                                 <div class="number mr-4 bg-custom-ijo">
-                                    <p>1</p>
+                                    <p>2</p>
                                 </div>
                                 <div class="content-misi">
-                                    <h4 class="mb-2">Lorem ipsum dolor sit amet consectetur. </h4>
-                                    <p class="normal-line-height">Lorem ipsum dolor sit amet consectetur. Ullamcorper dui aliquam et praesent egestas ultrices auctor. Tempor porttitor viverra sed sit aliquam ac. Ullamcorper vitae aliquet donec dolor.</p>
+                                    <h5 class="mb-2">Mewujudkan Generasi Desa Cileles yang Sholeh, Sehat, Cerdas, dan Berdaya Saing</h5>
+                                </div>
+                            </div>
+
+                            <div class="content-misi d-flex mb-4">
+                                <div class="number mr-4 bg-custom-ijo">
+                                    <p>3</p>
+                                </div>
+                                <div class="content-misi">
+                                    <h5 class="mb-2">Terciptanya Sistem Ekonomi Desa Yang Mampu Menjadi Poros Perekonomian Masyarakat Desa Cileles dan Terlahirnya Produk Ungglan Desa Yang Dapat Meningkatkan Kesejahteraan dan Kemandirian Masyarakat </h5>
+                                </div>
+                            </div>
+                            <div class="content-misi d-flex mb-4">
+                                <div class="number mr-4 bg-custom-ijo">
+                                    <p>4</p>
+                                </div>
+                                <div class="content-misi">
+                                    <h5 class="mb-2">Tersedianya Sarana dan Prasarana Umum Yang Memadai Serta Berjejaring Sehingga Memudahkan Aktifitas Masyarakat.</h5>
+                                </div>
+                            </div>
+                            <div class="content-misi d-flex mb-4">
+                                <div class="number mr-4 bg-custom-ijo">
+                                    <p>5</p>
+                                </div>
+                                <div class="content-misi">
+                                    <h5 class="mb-2">Terciptanya Kondisi Masyarakat Yang Tertib, Aman, Nyaman, Bersih dan Harmonis </h5>
+                                </div>
+                            </div>
+                            <div class="content-misi d-flex mb-4">
+                                <div class="number mr-4 bg-custom-ijo">
+                                    <p>6</p>
+                                </div>
+                                <div class="content-misi">
+                                    <h5 class="mb-2">Tergalinya Potensi Olahraga, Budaya, Adat Istiadat, Serta Kesenian Tradisional yang Bermanfaat Bagi Masyarakat Desa Cileles.</h5>
+                                </div>
+                            </div>
+                            <div class="content-misi d-flex mb-4">
+                                <div class="number mr-4 bg-custom-ijo">
+                                    <p>7</p>
+                                </div>
+                                <div class="content-misi">
+                                    <h5 class="mb-2">Terselenggaranya Pelayanan Sosial dasar Bagi Masyarakat Terutama Masyarakat Tidak Mampu.</h5>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 align-self-center">
                         <img src="{{ asset('assets/images/noimage.png') }}" class="w-100" alt="">
                     </div>
                 </div>
@@ -77,13 +116,15 @@
                 </div>
                 <div class="col-md-12 grid-margin stretch-card mt-4">
                     <div class="owl-carousel owl-theme owl-basic" id="slider-home">
+                        @foreach ($pengurus as $pengurus)
                         <div class="item">
-                            <img src="{{ asset('assets/images/noimage.png') }}" alt="">
+                            <img src="{{ asset('/images/'.$pengurus->foto) }}" alt="">
                             <div class="title-kepengurusan mt-2 text-center">
-                                <h4>Nama</h4>
-                                <h5>Jabatan</h5>
+                                <h4>{{$pengurus->nama}}</h4>
+                                <h5>{{$pengurus->jabatan}}</h5>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

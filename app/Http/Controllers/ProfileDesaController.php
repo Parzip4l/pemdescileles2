@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pengurus;
 
 class ProfileDesaController extends Controller
 {
@@ -13,7 +14,8 @@ class ProfileDesaController extends Controller
      */
     public function index()
     {
-        return view ('pages.user-pages.profile');
+        $pengurus = Pengurus::orderBy('created_at', 'asc')->get();
+        return view ('pages.user-pages.profile', compact('pengurus'));
     }
 
     /**
