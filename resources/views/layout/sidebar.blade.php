@@ -18,6 +18,7 @@
           <span class="link-title">Dashboard</span>
         </a>
       </li>
+      @if(Auth::check() && Auth::user()->level == 1)
       <li class="nav-item nav-category">Master Data</li>
       <li class="nav-item {{ active_class(['email/*']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#email" role="button" aria-expanded="{{ is_active_route(['email/*']) }}" aria-controls="email">
@@ -36,12 +37,15 @@
           </ul>
         </div>
       </li>
+      @endif
+      @if(Auth::check() && Auth::user()->level == 1)
       <li class="nav-item {{ active_class(['warga']) }}">
         <a href="{{ url('/warga') }}" class="nav-link">
           <i class="link-icon" data-feather="users"></i>
           <span class="link-title">Data Warga</span>
         </a>
       </li>
+      @endif
       <li class="nav-item {{ active_class(['sibangenan']) }}">
         <a href="{{ url('/sibangenan') }}" class="nav-link">
           <i class="link-icon" data-feather="briefcase"></i>
@@ -56,9 +60,11 @@
         </a>
         <div class="collapse {{ show_class(['sijamil']) }}" id="sijamilcomponent">
           <ul class="nav sub-menu">
+            @if(Auth::check() && Auth::user()->level == 1)
             <li class="nav-item">
               <a href="{{ url('sijamil') }}" class="nav-link {{ active_class(['sijamil']) }}">Semua Data</a>
             </li>
+            @endif
             <li class="nav-item">
               <a href="{{ url('remajadata') }}" class="nav-link {{ active_class(['remajadata']) }}">Data Remaja</a>
             </li>
@@ -68,12 +74,14 @@
           </ul>
         </div>
       </li>
+      @if(Auth::check() && Auth::user()->level == 1)
       <li class="nav-item {{ active_class(['apps/calendar']) }}">
         <a href="{{ url('/apps/calendar') }}" class="nav-link">
           <i class="link-icon" data-feather="clipboard"></i>
           <span class="link-title">Data Kesehatan</span>
         </a>
       </li>
+      @endif
       <li class="nav-item nav-category">Informasi Publik</li>
       <li class="nav-item {{ active_class(['berita']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#beritacomponent" role="button" aria-expanded="{{ is_active_route(['berita']) }}" aria-controls="beritacomponent">

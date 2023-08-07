@@ -41,7 +41,9 @@
                             <th>#</th>
                             <th>Nama Lengkap</th>
                             <th>Usia</th>
+                            @if(Auth::check() && Auth::user()->level == 1)
                             <th>More Action</th>
+                            @endif
                         </tr>
                         </thead>
                         <tbody>
@@ -53,6 +55,7 @@
                             <td>{{ $nomor++ }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->usia }} Tahun</td>
+                            @if(Auth::check() && Auth::user()->level == 1)
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,6 +71,7 @@
                                         </div>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                         </tbody>
