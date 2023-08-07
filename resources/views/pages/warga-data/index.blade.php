@@ -80,7 +80,7 @@
                           <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item d-flex align-items-center" href="{{ route('sijamil.edit', $data->id) }}">
+                          <a class="dropdown-item d-flex align-items-center" href="#">
                               <i data-feather="edit-2" class="icon-sm me-2"></i>
                               <span class="">Edit</span>
                           </a>
