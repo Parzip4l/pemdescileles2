@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Sibangenan;
 use App\Urusansibangenan;
 use App\User;
+use App\Subcategory;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
@@ -33,6 +34,7 @@ class SibangenanController extends Controller
             return $query->whereYear('created_at', $selectedYear);
         })->get();
         $urusan = Urusansibangenan::all();
+        $suburusan = Subcategory::all();
         $query = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
@@ -42,7 +44,7 @@ class SibangenanController extends Controller
         }
 
         $data = $query->get();
-        return view ('pages.sibangenan.index', compact('data','urusan','years','data2'));
+        return view ('pages.sibangenan.index', compact('data','urusan','years','data2','suburusan'));
     }
 
     public function ditolak()

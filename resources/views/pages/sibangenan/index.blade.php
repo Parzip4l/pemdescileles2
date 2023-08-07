@@ -394,16 +394,36 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Urusan</label>
-                            <select name="urusan" class="form-control" id="" required>
-                                <option value="Pendidikan">Pendidikan</option>
-                                <option value="Pembangunan">Pembangunan</option>
+                            <select name="urusan" class="form-control" id="category" required>
+                                <option value="">Pilih Urusan</option>
+                                @if(Auth::user()->level == 1)
+                                    @foreach($urusan as $u)
+                                        <option value="{{ $u->id }}" {{ $d->urusan == $u->id ? 'selected' : '' }}>{{ $u->nama }}</option>
+                                    @endforeach
+                                @else
+                                    @foreach($urusan as $u)
+                                        @if($u->level == Auth::user()->level)
+                                            <option value="{{ $u->id }}" {{ $d->urusan == $u->id ? 'selected' : '' }}>{{ $u->nama }}</option>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Sub Urusan</label>
+                            <select name="suburusan" class="form-control" id="category" required>
+                            @foreach($suburusan as $u)
+                                <option value="{{ $u->name }}" {{ $d->suburusan == $u->name ? 'selected' : '' }}>{{ $u->name }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Dokumen Pendukung</label>
-                            <input type="file" class="form-control" name="dokumen_pendukung" value><pre>{{$d->dokumen_pendukung}}</pre>
+                            <input type="file" class="form-control" name="dokumen_pendukung">
                             <p class="text-danger">Upload Dokumen Pendukung Dalam Bentuk Zip/Rar</p>
                             <input type="hidden" name="status_pengajuan" value="Diajukan">
                         </div>
@@ -534,30 +554,55 @@
 </script>
 
 <script>
-        $(document).ready(function() {
-            $('#category').change(function() {
-                var category_id = $(this).val();
-                if (category_id) {
-                    $('#subcategory').prop('disabled', false);
-                    $.ajax({
-                        url: '{{ route("subcategories.get") }}',
-                        type: 'GET',
-                        data: { category_id: category_id },
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#subcategory').html('<option value="">Select Subcategory</option>');
-                            $.each(data, function(key, value) {
-                                $('#subcategory').append('<option value="' + value.name + '">' + value.name + '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('#subcategory').prop('disabled', true);
-                    $('#subcategory').html('<option value="">Select Category First</option>');
-                }
-            });
+    $(document).ready(function() {
+        $('#category').change(function() {
+            var category_id = $(this).val();
+            if (category_id) {
+                $('#subcategory').prop('disabled', false);
+                $.ajax({
+                    url: '{{ route("subcategories.get") }}',
+                    type: 'GET',
+                    data: { category_id: category_id },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#subcategory').html('<option value="">Select Subcategory</option>');
+                        $.each(data, function(key, value) {
+                            $('#subcategory').append('<option value="' + value.name + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#subcategory').prop('disabled', true);
+                $('#subcategory').html('<option value="">Select Category First</option>');
+            }
         });
-    </script>
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#categoryedit').change(function() {
+            var category_id = $(this).val();
+            if (category_id) {
+                $('#subcategoryedit').prop('disabled', false);
+                $.ajax({
+                    url: '{{ route("subcategories.get") }}',
+                    type: 'GET',
+                    data: { category_id: category_id },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#subcategoryedit').html('<option value="">Select Subcategory</option>');
+                        $.each(data, function(key, value) {
+                            $('#subcategoryedit').append('<option value="' + value.name + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#subcategory').prop('disabled', true);
+                $('#subcategory').html('<option value="">Select Category First</option>');
+            }
+        });
+    });
+</script>
 <script>
         $(document).ready(function() {
             // Inisialisasi DataTable
