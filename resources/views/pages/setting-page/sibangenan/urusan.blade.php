@@ -24,11 +24,11 @@
                     @csrf
                         <div class="mb-3">
                             <label for="exampleInputUsername1" class="form-label">Nama Kategori</label>
-                            <input type="text" class="form-control" id="namakategori" autocomplete="off" name="nama" placeholder="Nama kategori">
+                            <input type="text" class="form-control" id="namakategori" autocomplete="off" name="nama" placeholder="Nama kategori" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Keterangan</label>
-                            <textarea name="keterangan" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="keterangan" id="deskripsi" cols="30" rows="10" class="form-control" required></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary me-2">Tambah Kategori Tujuan</button>

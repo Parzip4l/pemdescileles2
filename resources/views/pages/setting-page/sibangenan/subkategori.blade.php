@@ -8,8 +8,8 @@
 @section('content')
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">User Setting</a></li>
-    <li class="breadcrumb-item active" aria-current="page">User Level</li>
+    <li class="breadcrumb-item"><a href="{{url('setting-page')}}">Pages Seting</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Urusan Sibangenan</li>
   </ol>
 </nav>
 
@@ -18,27 +18,28 @@
     <div class="card">
       <div class="card-body">
         <div class="row pb-4">
-            <div class="col-md-4">
-                <h6 class="card-title align-self-center">Tambah Level User</h6>
-                <form action="{{ route('user-level.store') }}" method="POST" enctype="multipart/form-data">
+            <div class="col-md-4 mb-4">
+                <h6 class="card-title align-self-center">Buat Kategori Tujuan Urusan</h6>
+                <form action="{{ route('suburusan.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="mb-3">
-                            <label for="exampleInputUsername1" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="namakategori" autocomplete="off" name="nama" placeholder="Nama Level Hak Akses">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputUsername1" class="form-label">Level</label>
-                            <select name="level" class="form-control" id="">
-                                <option value="1">SUPERADMIN</option>
-                                <option value="2">BPD</option>
-                                <option value="3">KETUA RW</option>
+                            <label for="exampleInputUsername1" class="form-label">Urusan</label>
+                            <select name="category_id" id="" class="form-control">
+                                <option value="">Pilih Urusan Utama</option>
+                                @foreach ($kategori as $data)
+                                <option value="{{$data->id}}">{{$data->nama}}</option>
+                                @endforeach
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary me-2">Tambah User Level</button>
+                        <div class="mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Sub Urusan</label>
+                            <input type="text" class="form-control" id="namakategori" autocomplete="off" name="name" placeholder="Nama Sub Urusan" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Tambah Kategori Tujuan</button>
                 </form>
             </div>
             <div class="col-md-8">
-                <h6 class="card-title align-self-center">Data Level User</h6>
+                <h6 class="card-title align-self-center">Data Tujuan Sibangenan</h6>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -55,18 +56,18 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nama</th>
-                            <th>More Action</th>
+                            <th>Sub Urusan</th>
+                            <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
                             @php
                             $nomor = 1;
                             @endphp
-                            @foreach ($leveluser as $data)
+                            @foreach ($suburusan as $data)
                         <tr>
                             <td>{{ $nomor++ }}</td>
-                            <td>{{ $data->nama }}</td>
+                            <td>{{ $data->name }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-link p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,7 +75,7 @@
                                     </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#editkategori{{ $data->id}}"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                                                <form action="{{ route('user-level.destroy', $data->id) }}" method="POST" id="delete_kategori" class="hapusremaja">
+                                                <form action="{{ route('setting-urusan-sibangenan.destroy', $data->id) }}" method="POST" id="delete_kategori" class="hapusremaja">
                                                 @csrf
                                                 @method('DELETE')
                                                     <a class="dropdown-item d-flex align-items-center" href="#" onClick="DeleteKategoriBerita()"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
@@ -93,37 +94,6 @@
     </div>
   </div>
 </div>
-<!-- Edit Data Kategori -->
-@foreach ($leveluser as $data)
-<div class="modal fade bd-example-modal-lg remajaview" id="editkategori{{ $data->id }}" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content p-4">
-        <div class="modal-header mb-2">
-            <h4>Edit Level User {{ $data->nama }}</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-        </div>
-        <form action="{{ route('user-level.update', $data->id) }}" method="POST" enctype="multipart/form-data" class="px-2">
-            @csrf
-            @method('PUT')
-                <div class="mb-3">
-                    <label for="exampleInputUsername1" class="form-label">Nama Level</label>
-                    <input type="text" class="form-control" id="namakategori" autocomplete="off" value="{{$data->nama}}" name="nama" placeholder="Nama kategori">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Level</label>
-                    <select name="level" class="form-control" id="">
-                        <option value="1" {{ $data->level == '1' ? 'selected' : '' }}>1</option>
-                        <option value="2" {{ $data->level == '2' ? 'selected' : '' }}>2</option>
-                        <option value="3" {{ $data->level == '3' ? 'selected' : '' }}>3</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn btn-primary me-2">Edit Level</button>
-        </form>
-    </div>
-  </div>
-</div>
-@endforeach
 @endsection
 
 @push('plugin-scripts')

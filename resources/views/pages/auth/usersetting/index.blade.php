@@ -44,7 +44,6 @@
                 <th>#</th>
                 <th>Nama</th>
                 <th>Email</th>
-                <th>Level</th>
                 <th>More Action</th>
               </tr>
             </thead>
@@ -57,7 +56,6 @@
                 <td>{{$nomor++}}</td>
                 <td>{{$data->name}}</td>
                 <td>{{$data->email}}</td>
-                <td>{{$data->level}}</td>
                 <td>
                     <div class="dropdown">
                         <button class="btn btn-link p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

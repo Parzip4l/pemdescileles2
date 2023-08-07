@@ -28,7 +28,8 @@ class BumilController extends Controller
     public function autocomplete2(Request $request)
     {
         $term = $request->input('term');
-        $warga = Warga::select('id', 'nama', 'nik', 'nokk', 'jk', 'rt', 'rw','tanggal_lahir')
+        $warga = Warga::select('id', 'nama', 'nik', 'nokk', 'jk', 'rt', 'rw','tanggal_lahir','golongan_darah')
+            ->where('jk', '2')
             ->where('nik', 'LIKE', '%' . $term . '%')
             ->get();
         
@@ -41,7 +42,8 @@ class BumilController extends Controller
                 'nokk' => $data->nokk,
                 'rt' => $data->rt,
                 'rw' => $data->rw,
-                'tanggal_lahir' => $data->tanggal_lahir
+                'tanggal_lahir' => $data->tanggal_lahir,
+                'golongan_darah' => $data->golongan_darah
             );
         }
         
@@ -74,6 +76,10 @@ class BumilController extends Controller
             'rt' => 'required',
             'rw' => 'required',
             'nama_suami' => 'required',
+            'haid_terakhir' => 'required',
+            'umur_kehamilan' => 'required',
+            'kb_pasca_bersalin' => 'required',
+            'tambahan_darah' => 'required'
         ]);
 
         $bumil = new Bumil();
@@ -90,6 +96,11 @@ class BumilController extends Controller
         $bumil->nama_suami = $request['nama_suami'];
         $bumil->nomor_telepon_suami = $request->nomor_telepon_suami;
         $bumil->tanggal_kunjungan_terakhir = $request->tanggal_kunjungan_terakhir;
+        $bumil->haid_terakhir = $request->haid_terakhir;
+        $bumil->umur_kehamilan = $request->umur_kehamilan;
+        $bumil->kb_pasca_bersalin = $request->kb_pasca_bersalin;
+        $bumil->jenis_kb = $request->jenis_kb;
+        $bumil->tambahan_darah = $request->tambahan_darah;
         $bumil->save();
 
         return redirect()->route('sijamil.index')->with('success', 'Data Ibu Hamil berhasil ditambahkan.');

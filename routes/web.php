@@ -34,9 +34,13 @@ Route::middleware('auth.user')->group(function () {
     Route::resource('sibangenan', SibangenanController::class);
     Route::get('/pengajuan-ditolak', 'SibangenanController@ditolak')->name('ditolak');
     Route::post('/tolak-usulan/{id}', 'SibangenanController@updateStatusTolakC')->name('penolakan.usulan');
+    Route::post('/revisi-usulan/{id}', 'SibangenanController@updateStatusRevisi')->name('revisi.usulan');
     Route::post('/setujui-usulan/{id}', 'SibangenanController@updateStatusSetuju')->name('setujui.usulan');
+    Route::get('/subcategories', 'SubcategoryController@getSubcategories')->name('subcategories.get');
+    Route::resource('suburusan', SubcategoryController::class);
+
     // Download Dokumen Pendukung
-    Route::get('sibangenan/{id}/download', 'SibangenanController@download')->name('sibangenan.download');
+    Route::get('sibangenan/{id}/download', 'SibangenanController@downloadFiles')->name('sibangenan.download');
     // Warga Data
     Route::resource('warga', WargaController::class);
     Route::get('/remaja/autocomplete', 'RemajaController@autocomplete')->name('remaja.autocomplete');

@@ -13,4 +13,9 @@ class Urusansibangenan extends Model
     public $incrementing = false; // Disable auto-incrementing
     protected $keyType = 'string';
     protected $fillable = ['id','nama','keterangan'];
+
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategory::class);
+    }
 }

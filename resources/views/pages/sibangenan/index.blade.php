@@ -57,14 +57,27 @@
                         </ul>
                     </div>
                 @endif
+                <div class="mb-3">
+                    <label for="year_filter" class="form-label">Filter Berdasarkan Tahun :</label>
+                    <select class="form-select" id="year_filter">
+                    <option value="">Semua Data</option>
+                    @php
+                    $currentYear = date('Y');
+                    $endYear = $currentYear + 5; // Display the current year and the next five years
+                    @endphp
+                    @for ($year = $currentYear; $year <= $endYear; $year++)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                    @endfor
+                    </select>
+                </div>
             <div class="table-responsive">
                 <table id="dataTableExample" class="table">
                     <thead>
                     <tr>
                         <th>No</th>
+                        <th>Tanggal Pengajuan</th>
                         <th>Nama Pemohon</th>
                         <th>Asal RW</th>
-                        <th>Tanggal Dibuat</th>
                         <th>Permasalahan</th>
                         <th>Indikasi / Gagasan</th>
                         <th>Lokasi</th>
@@ -80,13 +93,13 @@
                         @foreach ($data as $d)
                     <tr>
                         <td>{{ $nomor++ }}</td>
+                        <td>{{ $d->created_at}}</td>
                         <td>{{ $d->namapemohon}}</td>
                         <td>{{ $d->rw}}</td>
-                        <td>{{ $d->created_at->format('d M Y')}}</td>
                         <td>{{ $d->permasalahan}}</td>
-                        <td>{{$d->lokasi}}</td>
+                        <td>{{ $d->lokasi}}</td>
                         <td>{{ $d->usulan}}</td>
-                        <td>{{ $d->urusan}}</td>
+                        <td>{{ $d->nama_urusan}}</td>
                         <td>
                             <div class="@if($d->status_pengajuan == 'Ditolak') badge bg-danger @elseif($d->status_pengajuan == 'Disetujui') badge bg-success @else badge bg-warning @endif">
                                 {{ $d->status_pengajuan}}
@@ -119,7 +132,9 @@
                                     <form id="setujui-usulan-form-{{ $d->id }}" action="{{ route('setujui.usulan', $d->id) }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <form action="{{ route('sibangenan.destroy', $d->id) }}" method="POST" id="delete_sibangenan" class="sibangenandelete"> @csrf @method('DELETE') <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog()">
+                                    <form action="{{ route('sibangenan.destroy', $d->id) }}" method="POST" id="delete_sibangenan" class="sibangenandelete"> 
+                                        @csrf @method('DELETE') 
+                                        <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog('{{ $d->id }}')">
                                             <i data-feather="trash" class="icon-sm me-2"></i>
                                             <span class="">Delete</span>
                                         </a>
@@ -148,7 +163,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputUsername1" class="form-label">Nama Pemohon</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="off" name="namapemohon" placeholder="Nama Pemohon" required>
+                            <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="off" name="namapemohon" value="{{ Auth::user()->name }}" placeholder="Nama Pemohon" required readonly>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -187,19 +202,36 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Urusan</label>
-                            <select name="urusan" class="form-control" id="" required>
-                                @foreach($urusan as $urusan)
-                                <option value="{{$urusan->nama}}">{{$urusan->nama}}</option>
-                                @endforeach
+                            <select name="urusan" class="form-control" id="category" required>
+                                <option value="">Pilih Urusan</option>
+                                @if(Auth::user()->level == 1)
+                                    @foreach($urusan as $u)
+                                        <option value="{{ $u->id }}">{{ $u->nama }}</option>
+                                    @endforeach
+                                @else
+                                    @foreach($urusan as $u)
+                                        @if($u->level == Auth::user()->level)
+                                            <option value="{{ $u->id }}">{{ $u->nama }}</option>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
+                            <label for="subcategory" class="form-label">Sub Urusan:</label>
+                            <select class="form-control" id="subcategory" name="suburusan" disabled>
+                                <option value="">Silahkan Pilih Urusan Terlebih Dahulu</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Dokumen Pendukung</label>
-                            <input type="file" class="form-control" name="dokumen_pendukung">
-                            <p class="text-danger">Upload Dokumen Pendukung Dalam Bentuk Zip/Rar</p>
-                            <input type="hidden" name="status_pengajuan" value="Diajukan">
+                            <input type="file" class="form-control" name="dokumen_pendukung[]" multiple>
+                            <p class="text-danger">Upload 3 Dokumen Pendukung Dalam Bentuk PDF</p>
+                            <input type="hidden" name="status_pengajuan" value="Verifikasi">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -214,7 +246,8 @@
         </div>
     </div>
 </div>
-@foreach ($data as $d) <div class="modal fade bd-example-modal-lg bumil" id="PengajuanDetail{{ $d->id}}" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+@foreach ($data as $d) 
+<div class="modal fade bd-example-modal-lg bumil" id="PengajuanDetail{{ $d->id}}" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content p-4">
             <div class="modal-header">
@@ -223,22 +256,28 @@
             </div>
             <div class="detail-pengajuan-sibangenan p-4">
                 <div class="row mb-4">
-                    <div class="col-md-4">                        
-                        <div class="form-group">
+                    <div class="col-md-6">                        
+                        <div class="form-group mb-3">
                             <label for="exampleInputUsername1" class="form-label">Nama Pemohon</label>
                             <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('namapemohon', $d->namapemohon) }}" required disabled>
                         </div>
                     </div>
-                    <div class="col-md-4">                        
-                        <div class="form-group">
+                    <div class="col-md-6">                        
+                        <div class="form-group mb-3">
                             <label for="exampleInputUsername1" class="form-label">Asal RW</label>
                             <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('rw', $d->rw) }}" required disabled>
                         </div>
                     </div>
-                    <div class="col-md-4">                        
+                    <div class="col-md-6">                        
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="form-label">Jenis Urusan</label>
-                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('urusan', $d->urusan) }}" required disabled>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('urusan', $d->nama_urusan) }}" required disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">                        
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="form-label">Sub Urusan</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('urusan', $d->suburusan) }}" required disabled>
                         </div>
                     </div>
                 </div>
@@ -270,12 +309,22 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('sibangenan.download', $d->id) }}" class="mt-4">
-                    <div class="download-file-pendukung d-flex">
-                        <img src="{{ asset('assets/icons/download-file.png') }}" alt="">
-                        <h5 class="align-self-center">Download File Pendukung</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="{{ route('sibangenan.download', $d->id) }}" class="mt-4">
+                            <div class="download-file-pendukung d-flex">
+                                <img src="{{ asset('assets/icons/download-file.png') }}" alt="">
+                                <h5 class="align-self-center">Download File Pendukung</h5>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                    <div class="col-md-4">
+                        <a href="" class="btn btn-warning w-100 text-white" href="#" data-bs-toggle="modal" data-bs-target="#RevisiPengajuan{{ $d->id}}">Revisi</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-danger w-100" href="#" data-bs-toggle="modal" data-bs-target="#TolakPengajuan{{ $d->id}}">Tolak</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -392,6 +441,33 @@
     </div>
 </div>
 @endforeach
+
+<!-- Revisi Modal -->
+@foreach ($data as $d)
+<div class="modal fade bd-example-modal-lg sibangenan" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="RevisiPengajuan{{$d->id}}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-4">
+            <h4 class="pb-2">Revisi Pengajuan</h4>
+            <p>Berikan Catatan Alasan Revisi</p>
+            <hr>
+            <form class="forms-sample" action="{{ route('revisi.usulan',$d->id) }}" method="POST" enctype="multipart/form-data"> 
+                @csrf 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Keterangan Revisi</label>
+                            <textarea name="keterangan_penolakan" class="form-control" id="" cols="30" rows="10" required></textarea>
+                            <input type="hidden" name="status_pengajuan" value="Direvisi">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-warning me-2 w-100 text-white">Revisi Pengajuan</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
 
 @push('plugin-scripts')
@@ -401,10 +477,9 @@
 @endpush
 
 @push('custom-scripts')
-  <script src="{{ asset('assets/js/data-table.js') }}"></script>
   <script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
   <script>
-    function showDeleteDataDialog() {
+    function showDeleteDataDialog(id) {
         Swal.fire({
             title: 'Hapus Data',
             text: 'Anda Yakin Akan Menghapus Data Ini?',
@@ -414,9 +489,87 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // Perform the delete action here (e.g., send a request to delete the data)
-                document.getElementById("delete_sibangenan").submit();
+                // Menggunakan ID yang diteruskan sebagai parameter ke dalam URL delete route
+                const deleteUrl = "{{ route('sibangenan.destroy', ':id') }}".replace(':id', id);
+                fetch(deleteUrl, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                }).then((response) => {
+                    // Handle the response as needed (e.g., show alert if data is deleted successfully)
+                    if (response.ok) {
+                        Swal.fire({
+                            title: 'Data Berhasil Dihapus',
+                            icon: 'success',
+                        }).then(() => {
+                            window.location.reload(); // Refresh halaman setelah menutup alert
+                        });
+                    } else {
+                        // Handle error response if needed
+                        Swal.fire({
+                            title: 'Gagal Menghapus Data',
+                            text: 'Terjadi kesalahan saat menghapus data.',
+                            icon: 'error',
+                        });
+                    }
+                }).catch((error) => {
+                    // Handle fetch error if needed
+                    Swal.fire({
+                        title: 'Gagal Menghapus Data',
+                        text: 'Terjadi kesalahan saat menghapus data.',
+                        icon: 'error',
+                    });
+                });
             }
         });
     }
 </script>
+
+<script>
+        $(document).ready(function() {
+            $('#category').change(function() {
+                var category_id = $(this).val();
+                if (category_id) {
+                    $('#subcategory').prop('disabled', false);
+                    $.ajax({
+                        url: '{{ route("subcategories.get") }}',
+                        type: 'GET',
+                        data: { category_id: category_id },
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#subcategory').html('<option value="">Select Subcategory</option>');
+                            $.each(data, function(key, value) {
+                                $('#subcategory').append('<option value="' + value.name + '">' + value.name + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#subcategory').prop('disabled', true);
+                    $('#subcategory').html('<option value="">Select Category First</option>');
+                }
+            });
+        });
+    </script>
+<script>
+        $(document).ready(function() {
+            // Inisialisasi DataTable
+            var dataTable = $('#dataTableExample').DataTable({
+                "aLengthMenu": [
+                    [10, 30, 50, -1],
+                    [10, 30, 50, "All"]
+                ],
+                "iDisplayLength": 10,
+                "language": {
+                    search: ""
+                }
+            });
+
+            // Tangani perubahan filter tahun
+            $('#year_filter').on('change', function() {
+                var year = $(this).val();
+                dataTable.column(1).search(year, true, false).draw();
+            });
+        });
+    </script>
 @endpush

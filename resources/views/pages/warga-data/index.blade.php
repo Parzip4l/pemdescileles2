@@ -120,14 +120,14 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label class="form-label">NIK</label>
-                            <input type="number" class="form-control" placeholder="NIK" name="nik">
+                            <input type="number" class="form-control" placeholder="NIK" name="nik" required>
                         </div>
                     </div>
                     <!-- Col -->
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label class="form-label">Nomor KK</label>
-                            <input type="number" class="form-control" placeholder="Nomor Kartu Keluarga" name="nokk">
+                            <input type="number" class="form-control" placeholder="Nomor Kartu Keluarga" name="nokk" required>
                         </div>
                     </div>
                     <!-- Col -->
@@ -136,13 +136,13 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama">
+                            <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Hubungan KK</label>
-                            <select name="hubungankk" id="" class="form-control">
+                            <select name="hubungankk" id="" class="form-control" required>
                                 <option value="1">Kepala Keluarga</option>
                                 <option value="2">Istri</option>
                                 <option value="3">Anak</option>
@@ -154,7 +154,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">RT</label>
-                            <select name="rt" class="form-control" id="">
+                            <select name="rt" class="form-control" id="" required>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -167,7 +167,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">RW</label>
-                            <select name="rw" class="form-control" id="">
+                            <select name="rw" class="form-control" id="" required>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -186,7 +186,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Jenis Kelamin</label>
-                            <select name="jk" id="" class="form-control">
+                            <select name="jk" id="" class="form-control" required>
                                 <option value="1">LAKI-LAKI</option>
                                 <option value="2">PEREMPUAN</option>
                             </select>
@@ -195,7 +195,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Agama</label>
-                            <select name="agama" id="" class="form-control">
+                            <select name="agama" id="" class="form-control" required>
                                 <option value="1">ISLAM</option>
                                 <option value="2">KRISTEN</option>
                                 <option value="3">KATHOLIK</option>
@@ -206,10 +206,23 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">Golongan Darah</label>
+                            <select name="golongan_darah" id="" class="form-control" required>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="O">O</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Pendidikan</label>
-                            <select name="pendidikan" id="" class="form-control">
+                            <select name="pendidikan" id="" class="form-control" required>
                                 <option value="1">Tidak Sekolah</option>
                                 <option value="2">Tidak Tamat SD/Sederajat</option>
                                 <option value="3">Tamat SD/Sederajat</option>
@@ -224,7 +237,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Pekerjaan</label>
-                            <select name="pekerjaan" id="" class="form-control">
+                            <select name="pekerjaan" id="" class="form-control" required>
                                 <option value="1">Tidak/Belum Bekerja</option>
                                 <option value="2">Petani</option>
                                 <option value="3">Nelayan</option>
@@ -243,13 +256,13 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Tempat Lahir</label>
-                            <input type="text" class="form-control" placeholder="Bandung" name="tempat_lahir">
+                            <input type="text" class="form-control" placeholder="Bandung" name="tempat_lahir" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Tanggal Lahir</label>
-                            <input type="date" class="form-control" placeholder="09/02/2000" name="tanggal_lahir">
+                            <input type="date" class="form-control" placeholder="09/02/2000" name="tanggal_lahir" required>
                         </div>
                     </div>
                 </div>
@@ -257,13 +270,13 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Nama Ayah</label>
-                            <input type="text" class="form-control" placeholder="Nama Ayah" name="nama_ayah">
+                            <input type="text" class="form-control" placeholder="Nama Ayah" name="nama_ayah" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Nama Ibu</label>
-                            <input type="text" class="form-control" placeholder="Nama Ibu" name="nama_ibu">
+                            <input type="text" class="form-control" placeholder="Nama Ibu" name="nama_ibu" required>
                         </div>
                     </div>
                 </div>
@@ -271,7 +284,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Status Perkawinan</label>
-                            <select name="statusperkawinan" id="" class="form-control">
+                            <select name="statusperkawinan" id="" class="form-control" required>
                                 <option value="1">Kawin</option>
                                 <option value="2">Belum Kawin</option>
                                 <option value="3">Cerai Hidup</option>
@@ -282,7 +295,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Nomor Telepon</label>
-                            <input type="text" class="form-control" placeholder="0812XXXXX" name="nomortelepon">
+                            <input type="text" class="form-control" placeholder="0812XXXXX" name="nomortelepon" required>
                         </div>
                     </div>
                 </div>

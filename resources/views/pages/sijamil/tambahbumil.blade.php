@@ -27,14 +27,14 @@
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label class="form-label">NIK</label>
-                            <input type="number" class="form-control" placeholder="NIK" name="nik" id="nik">
+                            <input type="number" class="form-control" placeholder="NIK" name="nik" id="nik" required>
                         </div>
                     </div>
                     <!-- Col -->
                     <div class="col-sm-6">
                         <div class="mb-3">
                             <label class="form-label">Nomor KK</label>
-                            <input type="number" class="form-control" placeholder="Nomor Kartu Keluarga" name="nomorkk" id="nokkbumil">
+                            <input type="number" class="form-control" placeholder="Nomor Kartu Keluarga" name="nomorkk" id="nokkbumil" required>
                         </div>
                     </div>
                     <!-- Col -->
@@ -43,13 +43,13 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" id="namabumil">
+                            <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" id="namabumil" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Usia</label>
-                            <input type="text" class="form-control" placeholder="Usia" name="usia" id="usiabumil">
+                            <input type="text" class="form-control" placeholder="Usia" name="usia" id="usiabumil" required>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">RT</label>
-                            <select name="rt" class="form-control" id="rtbumil">
+                            <select name="rt" class="form-control" id="rtbumil" required>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -70,7 +70,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">RW</label>
-                            <select name="rw" class="form-control" id="rwbumil">
+                            <select name="rw" class="form-control" id="rwbumil" required>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -89,21 +89,21 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Tanggal Lahir Ibu Hamil</label>
-                            <input type="date" class="form-control" placeholder="Nama Lengkap" name="tanggal_lahir" id="tanggallahirbumil">
+                            <input type="date" class="form-control" placeholder="Nama Lengkap" name="tanggal_lahir" id="tanggallahirbumil" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Perkiraan Kelahiran</label>
-                            <input type="date" class="form-control" placeholder="Usia" name="tanggal_perkiraan_lahir">
+                            <input type="date" class="form-control" placeholder="Usia" name="tanggal_perkiraan_lahir" required>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label">Golongan Darah</label>
-                            <select name="golongan_darah" id="golongandarah" class="form-control">
+                            <select name="golongan_darah" id="golongandarah" class="form-control" required>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="AB">AB</option>
@@ -111,10 +111,55 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">Riwayat Penambahan Darah</label>
+                            <select name="penambahan_darah" id="" class="form-control" required> 
+                                <option value="YA">YA</option>
+                                <option value="TIDAK">TIDAK</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label">Riwayat Kesehatan</label>
-                            <input type="text" class="form-control" placeholder="Riwayat Kesehatan" name="riwayat_kesehatan">
+                            <input type="text" class="form-control" placeholder="Riwayat Kesehatan" name="riwayat_kesehatan" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Tanggal Haid Terakhir</label>
+                            <input type="date" class="form-control" placeholder="Tanggal Haid Terakhir" name="haid_terakhir" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Umur Kehamilan</label>
+                            <input type="number" class="form-control" placeholder="Umur Kehamilan" name="umur_kehamilan" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">KB Pasca Bersalin</label>
+                            <select name="kb_pasca_bersalin" class="form-control" id="" required>
+                                <option value="YA">YA</option>
+                                <option value="TIDAK">TIDAK</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Jenis KB <p class="text-danger">Kosongkan Jika Tidak Melakukan KB Pasca Bersalin</p></label>
+                            <select name="jenis_kb" id="" class="form-control" required>
+                                <option value="-">-</option>
+                                <option value="Pil">Pil</option>
+                                <option value="Implan">KB Implan</option>
+                                <option value="Suntik">Suntik</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -122,19 +167,19 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Nama Suami</label>
-                            <input type="text" class="form-control" placeholder="Nama Suami" name="nama_suami">
+                            <input type="text" class="form-control" placeholder="Nama Suami" name="nama_suami" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Nomor Telepon Suami</label>
-                            <input type="number" class="form-control" placeholder="Nomor Telepon Suami" name="nomor_telepon_suami">
+                            <input type="number" class="form-control" placeholder="Nomor Telepon Suami" name="nomor_telepon_suami" required>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tanggal Kontrol Terakhir</label>
-                    <input type="date" class="form-control" placeholder="Usia" name="tanggal_kunjungan_terakhir">
+                    <input type="date" class="form-control" placeholder="Usia" name="tanggal_kunjungan_terakhir" required>
                 </div>
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                 <button typer="reset" class="btn btn-danger">Reset</button>
@@ -172,7 +217,8 @@
                             nokk: item.nokk,
                             rt: item.rt,
                             rw: item.rw,
-                            tanggal_lahir: item.tanggal_lahir
+                            tanggal_lahir: item.tanggal_lahir,
+                            golongan_darah: item.golongan_darah
                         }
                     }));
                 },
@@ -188,6 +234,7 @@
             $('#rtbumil').val(ui.item.rt);
             $('#rwbumil').val(ui.item.rw);
             $('#tanggallahirbumil').val(ui.item.tanggal_lahir);
+            $('#golongandarah').val(ui.item.golongan_darah);
             return false;
         }
     });

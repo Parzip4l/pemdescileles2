@@ -50,6 +50,14 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6 mb-2">
                         <div class="custom-button-setting">
+                            <a href="{{ url('suburusan')}}">
+                                <img src="{{ asset('assets/icons/direction.png') }}" alt="" class="text-center">
+                                <h5>Subkategori Urusan Sibangenan</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-2">
+                        <div class="custom-button-setting">
                             <a href="{{ url('pengurus') }}">
                                 <img src="{{ asset('assets/icons/pengurus.png') }}" alt="" class="text-center">
                                 <h5>Pengurus</h5>
