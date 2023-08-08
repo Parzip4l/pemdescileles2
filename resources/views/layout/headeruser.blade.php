@@ -35,10 +35,10 @@
 							<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 								<ul class="navigation clearfix">
 									<li><a href="{{url('/')}}">Home</a></li>
-									<li><a href="#">Profile</a></li>
-									<li><a href="#">Informasi</a></li>
-									<li><a href="#">Sijamil</a></li>
-									<li><a href="#">Sibangenan</a></li>
+									<li><a href="{{url('/')}}">Profile</a></li>
+									<li><a href="{{url('/')}}">Informasi</a></li>
+									<li><a href="{{url('/')}}">Sijamil</a></li>
+									<li><a href="{{url('/')}}">Sibangenan</a></li>
 									<li><a href="{{url('/berita-desa')}}">Berita</a></li>
 								</ul>
 							</div>
