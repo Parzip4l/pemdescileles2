@@ -396,7 +396,7 @@
 							</div>
 						</div>
 						<div class="button-box">
-							<a href="blog.html" class="theme-btn btn-style-two">
+							<a href="{{url('/berita-desa')}}" class="theme-btn btn-style-two">
 								<span class="btn-wrap">
 									<span class="text-one">Lihat Semua</span>
 									<span class="text-two">Lihat Semua</span>
