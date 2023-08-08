@@ -6,149 +6,447 @@
 @endpush
 
 @section('content')
-<!-- Banner -->
-<div class="welcome-wrap" style="background-image: url('{{ asset('assets/images/welcome_banner.jpeg') }}'); background-size:cover;">
-<div class="overlay"></div>
-    <div class="container">
-        <div class="content-welcome" style="text-white">
-            <div class="col-md-6">
-                <h1 class="text-white mb-2">SELAMAT DATANG DI PORTAL CILELES SMART</h1>
-                <p class="text-light">Cileles Smart adalah sebuah platform informasi yang ditujukan untuk warga Desa Cileles. Dengan fokus pada remaja dan ibu hamil, website ini menyediakan beragam konten yang relevan dan bermanfaat untuk Cileles Folks. </p>
-            </div> 
-        </div>
-    </div>
-</div>
-<!-- Sambutan Kades -->
-<div class="sambutan-kades-wrap py-6">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-          <div class="foto-kades">
-              <img src="{{ asset('assets/images/kadeswithnama.png') }}" alt="kepala desa cileles" class="w-100">
-          </div>
-      </div>
-      <div class="col-md-6 align-self-center pt-4">
-          <div class="content-sambutan">
-              <h2 class="text-uppercase">Sambutan Kepala Desa Cileles</h2>
-              <div class="divider my-4"></div>
-              <p class="normal-line-height">Dengan berbagai informasi, program, dan kegiatan yang akan dihadirkan melalui website ini, semoga kita dapat saling menginspirasi, berbagi pengetahuan, dan bersama-sama mencapai tujuan mulia kita. Bersama, kita akan mengukir sejarah perubahan yang positif dan membawa Desa Cileles Smart menuju masa depan yang gemilang.
+<!-- Main Section -->
+<section class="main-slider">
+		<div class="main-slider-carousel owl-carousel owl-theme">
+            
+			<!-- Slide One -->
+            <div class="slide">
+				<div class="image-layer" style="background-image: url('{{ asset('assets/images/banner1.jpg') }}')"></div>
+				<div class="auto-container">
+					
+					<!-- Content Boxed -->
+					<div class="content-boxed">
+						<div class="inner-box" style="background-image: url('{{asset('user-pages/images/main-slider/pattern-1.png')}}')">
+							<div class="content">
+								<h1>Portal <br> Cileles <br> Smart</h1>
+								<div class="text">Transforming Lives, One Smart Step at a Time with Cileles Smart.</div>
+								<div class="btns-box">
+									<a href="contact.html" class="theme-btn btn-style-one clearfix">
+										<span class="btn-wrap">
+											<span class="text-one">Profile Desa</span>
+											<span class="text-two">Profile Desa</span>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- End Slide One -->
+			
+		</div>
+		<!-- Social Box -->
+		<ul class="social-box">
+			<li><a href="#" class="fa fa-facebook"> <span>Facebook</span></a></li>
+			<li><a href="#" class="fa fa-youtube-play"> <span>Youtube</span></a></li>
+			<li><a href="#" class="fa fa-twitter"> <span>Twitter</span></a></li>
+			<li><a href="#" class="fa fa-instagram"> <span>Instagram</span></a></li>
+		</ul>
+		<!-- End Social Box -->
+		
+		<!-- Scroll Box -->
+		<div class="scroll-box scroll-to-target" data-target=".info-section">
+			<span class="icon flaticon-mouse"></span>Scrool Down
+		</div>
+		<!-- End Scroll Box -->
+		
+	</section>
+	<!-- End Main Section -->
+	
+	<!-- Info Section -->
+	<section class="info-section">
+		<div class="auto-container">
+			<div class="inner-container">
+				<div class="row clearfix">
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<!-- Info Box -->
+						<div class="info-box">
+							<div class="box-inner">
+								<span class="icon flaticon-telephone"></span>
+								<i>WA <br> Kepo</i>
+								<a href="https://api.whatsapp.com/send?phone=6281122202220&text=%23simpati" target="_blank">+62-811-2220-2220</a>
+							</div>
+						</div>
+					</div>
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<!-- Info Box -->
+						<div class="info-box">
+							<div class="box-inner">
+								<span class="icon flaticon-email"></span>
+								<i>Direct <br> Email</i>
+								<a href="mailto:info@cilelessmart.go.id" target="_blank">info@cilelessmart.go.id</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Info Section -->
 
-Terima kasih kepada semua pihak yang telah berkontribusi dalam pembuatan dan pengembangan website ini. Mari kita terus bekerja bersama, berkomunikasi, dan berkolaborasi demi Desa Cileles Smart yang lebih cerdas, berdaya saing, dan penuh harapan.
+	<!-- Sambutan Section -->
+	<section class="services-section">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title clearfix">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="pull-left">
+							<h2>Sambutan <br> Kepala Desa Cileles.</h2>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="pull-right">
+								<div class="text">
+								Salam sejahtera bagi seluruh masyarakat desa Cileles dan pengunjung. Kami dengan gembira mempersembahkan Cileles Smart, sebuah platform inovatif yang didedikasikan untuk meningkatkan kualitas hidup dan kemajuan desa kita.<br>
+								Melalui Cileles Smart, kami berkomitmen untuk memberikan akses lebih mudah dan cepat kepada Anda terkait informasi, layanan publik, serta berbagai kegiatan dan program yang diadakan di desa ini. Kami percaya bahwa teknologi dapat menjadi alat yang efektif untuk mendorong perkembangan desa, memperkuat partisipasi masyarakat, dan menjalin sinergi yang lebih baik antara warga dan pemerintah.
+								</div>
+								<a class="more-service" href="services.html">Profile Desa<span class="flaticon-next-2"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Sambutan Section -->
 
-Salam Cileles Smart!</p>
-              <a href="{{ url('profile-desa-cileles') }}" class="btn btn-custom text-white my-4">LIHAT PROFILE DESA</a>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Agenda Kegiatan -->
-<div class="agenda-kegiatan-wrap bg-custom-ijo py-6" style="background-image: url('assets/images/bg-jabar.svg');background-repeat: no-repeat;background-position: 95% 100%;">
-    <div class="container">
-        <div class="title-agenda">
-            <h2 class="text-center text-uppercase text-white">Agenda Kegiatan</h2>
-            <div class="divider my-4 bg-white mx-auto"></div>
-        </div>
-        <div class="content-kegiatan-wrap">
-            <div class="row">
-                @foreach ($kegiatan as $kegiatan)
-                <div class="col-md-3 mb-2">
-                    <div class="card">
-                        <div class="featured-image-kegiatan">
-                            <img src="{{ asset('images/'. $kegiatan->gambar) }}" class="card-img-top" alt="{{$kegiatan->judul}}">
-                            <div class="kategori-kegiatan">{{$kegiatan->kategori}}</div>
-                        </div>
-                        <div class="card-body">
-                            <a href="" class="custom-text-color">
-                                <h4 class="card-title">{{$kegiatan->judul}}</h4>
-                            </a>
-                            <p class="card-text mb-3">{!! $kegiatan->keterangan_singkat!!}</p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="button-all-kegiatan-wrap text-center my-4">
-                <a href="" class="btn btn-custom-white">Lihat Semua Kegiatan</a>
-            </div>
-        </div>
-    </div>
-</div>
+	<!-- Info Warga -->
+	<section class="counter-wrap mb-6">
+		<div class="auto-container">
+			<div class="lower-box">
+				
+				<div class="row clearfix">
+							
+					<!-- Counter Column -->
+					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
+						<div class="inner-block">
+							<div class="counter"><span class="odometer" data-count="{{ $warga }}"></span></div>
+							<div class="counter-text">Total Penduduk</div>
+						</div>
+					</div>
+					
+					<!-- Counter Column -->
+					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
+						<div class="inner-block">
+							<div class="counter"><span class="odometer" data-count="{{ $remaja }}"></span></div>
+							<div class="counter-text">Total Remaja</div>
+						</div>
+					</div>
+					
+					<!-- Counter Column -->
+					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
+						<div class="inner-block">
+							<div class="counter"><span class="odometer" data-count="{{ $bumil }}"></span></div>
+							<div class="counter-text">Total Ibu Hamil</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<!-- End Info Warga -->
 
-<!-- Berita dan Informasi -->
-<div class="berita-wrap py-6">
-    <div class="container">
-        <div class="berita-content">
-            <div class="title-berita-wrap">
-                <h2 class="text-uppercase text-center">Berita dan Informasi</h2>
-                <div class="divider my-4 mx-auto"></div>
-            </div>
-            <div class="row">
-                @foreach ($berita as $data)
-                <div class="col-md-4 mb2">
-                    <div class="card">
-                        <div class="featured-image-kegiatan">
-                            <img src="{{ asset('images/' .$data->gambar) }}" class="card-img-top" alt="{{ $data->judul }}">
-                        </div>
-                        <div class="card-body">
-                            <div class="metadata mb-2 d-flex justify-content-between">
-                                <p>{{ $data->created_at->format('d M Y') }}</p>
-                                <p><i data-feather="edit-3"></i>{{ $data->penulis }}</p>
-                            </div>
-                            <h4 class="mb-2 judul-berita">{{ $data->judul }}</h4>
-                            <div class="konten-singkat mb-2">
-                                {!! $data->konten !!}
-                            </div>
-                            <a href="{{ route('berita.single', $data->judul) }}" class="mt-4 text-link">Selengkapnya ...</a>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="button-all-kegiatan-wrap text-center my-4">
-                <a href="{{ url('berita-desa') }}" class="btn btn-custom text-white">Lihat Semua Berita & Informasi</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Informasi UMKM -->
-<!-- <div class="berita-wrap py-6">
-    <div class="container">
-        <div class="berita-content">
-            <div class="title-berita-wrap mb-4">
-                <h2 class="text-uppercase text-center">UMKM Warga Desa Cileles</h2>
-                <div class="divider my-4 mx-auto"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 mb-2">
-                    <img src="{{ asset('assets/images/umkm.png') }}" class="w-100" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+	<section class="strategy-section">
+		<div class="auto-container">
+			<div class="row clearfix">
+			
+				<!-- Title Box -->
+				<div class="title-column col-lg-12 col-md-12 col-sm-12">
+					<div class="inner-column">
+						<h2>Layanan Darurat</h2>
+						<p>Digunakan bila saat situasi darurat, system akan integrasi dengan layanan dibawah. Gunakan dengan bijak.</p>
+					</div>
+				</div>
+				
+				<!-- Block Box -->
+				<div class="blocks-column col-lg-12 col-md-12 col-sm-12">
+					<div class="inner-column">
+						<div class="row clearfix">
+							
+							<!-- Service Block Two -->
+							<div class="service-block-two col-lg-4 col-md-6 col-sm-12">
+								<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+									<div class="icon flaticon-security"></div>
+									<h5><a href="tel:0261-123123123">Pemadam Kebakaran</a></h5>
+									<div class="text">Tanggap, cepat, aman. Lindungi nyawa dan harta dari ancaman api.</div>
+								</div>
+							</div>
+							
+							<!-- Service Block Two -->
+							<div class="service-block-two col-lg-4 col-md-6 col-sm-12">
+								<div class="inner-box wow fadeInLeft" data-wow-delay="150ms" data-wow-duration="1500ms">
+									<div class="icon flaticon-shield"></div>
+									<h5><a href="tel:0261-321312312">Kepolisian</a></h5>
+									<div class="text"> Panggilan cepat untuk bantuan polisi dalam situasi darurat dan keamanan.</div>
+								</div>
+							</div>
+							
+							<!-- Service Block Two -->
+							<div class="service-block-two col-lg-4 col-md-6 col-sm-12">
+								<div class="inner-box wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
+									<div class="icon flaticon-heart"></div>
+									<h5><a href="tel:0261-321312312">Kesehatan</a></h5>
+									<div class="text">Respons cepat, penanganan medis mendesak. Tersedia 24/7. Keselamatan Warga prioritas kami.</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<!-- End Strategy Section -->
+	
+	<!-- Infografis Section -->
+	<section class="pricing-section">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<h2>Geografis Desa Cileles</h2>
+			</div>
+			<div class="row clearfix">
+			
+				<!-- Package Column -->
+				<div class="package-column col-lg-6 col-md-12 col-sm-12">
+					<div class="inner-column">
+						
+						<img src="{{ asset('assets/images/map.png')}}" alt="">
+						
+					</div>
+				</div>
+				<!-- Pricing Column -->
+				<div class="pricing-column col-lg-6 col-md-12 col-sm-12">
+					<div class="inner-column">
+						
+						
+						<div class="price-box">
+							<div class="box-inner d-flex justify-content-between align-items-center">
+								<div class="title">
+									<span class="icon fa fa-check"></span>
+									<h5>Jumlah RW</h5>
+								</div>
+								<div class="price">10 <sub>RW</sub></div>
+							</div>
+						</div>
+						
+						
+						<div class="price-box">
+							<div class="box-inner d-flex justify-content-between align-items-center">
+								<div class="title">
+									<span class="icon fa fa-check"></span>
+									<h5>Pemukiman</h5>
+								</div>
+								<div class="price">64,20<sub>Ha</sub></div>
+							</div>
+						</div>
+						
+						
+						<div class="price-box">
+							<div class="box-inner d-flex justify-content-between align-items-center">
+								<div class="title">
+									<span class="icon fa fa-check"></span>
+									<h5>Tanah Sawah</h5>
+								</div>
+								<div class="price">63,72 <sub>Ha</sub></div>
+							</div>
+						</div>
+						
+						
+						<div class="price-box">
+							<div class="box-inner d-flex justify-content-between align-items-center">
+								<div class="title">
+									<span class="icon fa fa-check"></span>
+									<h5>Kebun</h5>
+								</div>
+								<div class="price">42,40 <sub>Ha</sub></div>
+							</div>
+						</div>
 
-<!-- Laporan -->
-<div class="laporan-wrap py-6">
-    <div class="container">
-        <div class="berita-content">
-            <div class="title-berita-wrap mb-4">
-                <h2 class="text-uppercase text-center">Layanan Aspirasi dan Pengaduan Online Rakyat</h2>
-                <div class="divider my-4 mx-auto"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 align-self-center">
-                    <div class="content-lapor">
-                        <h5 class="normal-line-height text-center">Kami melayani dengan sepenuh hati tanpa gratifikasi dan pungli.<br> Klik tombol dibawah apabila menemukan pelayanan yang menyimpang</h5>
-                        <div class="button-lapor text-center mt-4">
-                            <a href="https://www.lapor.go.id/" class="btn btn-danger btn-lg text-center" target="_blank">LAPORKAN !</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+						<div class="price-box">
+							<div class="box-inner d-flex justify-content-between align-items-center">
+								<div class="title">
+									<span class="icon fa fa-check"></span>
+									<h5>Pemakaman</h5>
+								</div>
+								<div class="price">1,5 <sub>Ha</sub></div>
+							</div>
+						</div>
+
+						<div class="price-box">
+							<div class="box-inner d-flex justify-content-between align-items-center">
+								<div class="title">
+									<span class="icon fa fa-check"></span>
+									<h5>Sekolahan</h5>
+								</div>
+								<div class="price">2,5 <sub>Ha</sub></div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<!-- End Pricing Section -->
+	
+	<!-- Testimonial Section -->
+    <section class="testimonial-section" style="background-image: url('{{ asset('assets/images/banner1.jpg') }}')">
+		<div class="auto-container">
+			<!-- Content Boxed -->
+			<div class="content-boxed">
+				<div class="inner-box" style="background-image: url(images/main-slider/pattern-1.png)">
+					<div class="single-item-carousel owl-carousel owl-theme">
+						
+						<!-- Testimonial Block -->
+						<div class="testimonial-block">
+							<div class="block-inner">
+								<div class="author-image">
+									<img src="{{asset('images/foto1.png')}}" alt="" />
+								</div>
+								<div class="text">"Sebagai Kepala Desa Cileles, saya bangga melihat transformasi luar biasa yang telah dicapai melalui platform Cileles Smart. Dengan kerja keras dan tekad, kami telah menghadirkan solusi modern yang meningkatkan kualitas hidup warga desa. Bersama-sama, kita mengarah ke masa depan yang cerdas dan berkelanjutan."</div>
+								<h5>Duduy Abdul Kholik, S.H.</h5>
+								<div class="designation">Kepala Desa Cileles</div>
+							</div>
+						</div>
+						
+						<!-- Testimonial Block -->
+						<div class="testimonial-block">
+							<div class="block-inner">
+								<div class="author-image">
+									<img src="{{asset('images/foto1.png')}}" alt="" />
+								</div>
+								<div class="text">"Sebagai Kepala Desa Cileles, saya bangga melihat transformasi luar biasa yang telah dicapai melalui platform Cileles Smart. Dengan kerja keras dan tekad, kami telah menghadirkan solusi modern yang meningkatkan kualitas hidup warga desa. Bersama-sama, kita mengarah ke masa depan yang cerdas dan berkelanjutan."</div>
+								<h5>Duduy Abdul Kholik, S.H.</h5>
+								<div class="designation">Kepala Desa Cileles</div>
+							</div>
+						</div>
+						
+						<!-- Testimonial Block -->
+						<div class="testimonial-block">
+							<div class="block-inner">
+								<div class="author-image">
+									<img src="{{asset('images/foto1.png')}}" alt="" />
+								</div>
+								<div class="text">"Sebagai Kepala Desa Cileles, saya bangga melihat transformasi luar biasa yang telah dicapai melalui platform Cileles Smart. Dengan kerja keras dan tekad, kami telah menghadirkan solusi modern yang meningkatkan kualitas hidup warga desa. Bersama-sama, kita mengarah ke masa depan yang cerdas dan berkelanjutan."</div>
+								<h5>Duduy Abdul Kholik, S.H.</h5>
+								<div class="designation">Kepala Desa Cileles</div>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Testimonial Section -->
+	
+	<!-- Project Section -->
+	<section class="projects-section">
+		<div class="outer-container">
+			<div class="sec-title centered">
+				<h2>Kegiatan</h2>
+				<div class="text">Temukan cerita menarik dari setiap langkah kami. Ikuti perjalanan kami dalam beragam kegiatan.</div>
+			</div>
+			<div class="services-carousel owl-carousel owl-theme">
+				
+				<!-- Project Block -->
+				@foreach ($kegiatan as $kegiatan)
+				<div class="project-block">
+					<div class="inner-box">
+						<div class="image">
+							<img src="{{asset('images/'. $kegiatan->gambar)}}" alt="" />
+							<div class="overlay-box">
+								<div class="content">
+									<h4><a href="portfolio-detail.html">{{$kegiatan->judul}}</a></h4>
+									<div class="title">{{$kegiatan->kategori}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
+				
+			</div>
+		</div>
+	</section>
+	<!-- End Project Section -->
+
+	<!-- News Section -->
+    <section class="news-section">
+        <div class="auto-container">
+			<div class="row clearfix">
+				<!-- Title Column -->
+				<div class="title-column col-lg-4 col-md-12 col-sm-12">
+					<div class="inner-column">
+						<!-- Sec Title -->
+						<div class="sec-title">
+							<h2>Berita dan Informasi</h2>
+							<div class="text">
+								Mari tetap terhubung dengan "Berita dan Informasi" untuk tetap up-to-date dengan perkembangan terkini serta ikut serta dalam kegiatan dan program yang turut membentuk masa depan cerah bagi Desa Cileles kita semua.
+							</div>
+						</div>
+						<div class="button-box">
+							<a href="blog.html" class="theme-btn btn-style-two">
+								<span class="btn-wrap">
+									<span class="text-one">Lihat Semua</span>
+									<span class="text-two">Lihat Semua</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- Blocks Column -->
+				<div class="blocks-column col-lg-8 col-md-12 col-sm-12">
+					<div class="inner-column">
+					
+						@foreach ($berita as $berita)
+						<!-- News Block -->
+						<div class="news-block">
+							<div class="inner-box d-flex justify-content-between">
+								<!-- Info Box -->
+								<div class="row">
+									<div class="col-md-3">
+										<div class="news-info-box">
+											<div class="author-image">
+												<img src="{{asset('images/'. $berita->gambar)}}" alt="{{ $berita->judul}}" />
+											</div>
+											<div class="author-name">By: <span>{{ $berita->penulis }}</span></div>
+											<div class="post-time">{{ $berita->created_at->format('d M Y')}}</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<!-- Middle Content -->
+										<div class="middle-content">
+											<h4><a href="{{ route('berita.single', $berita->judul) }}">{{ $berita->judul}}</a></h4>
+											<div class="text singkat">{!! $berita->konten !!}</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="read-more">
+											<a class="more-service" href="{{ route('berita.single', $berita->judul) }}">Selengkapnya <span class="flaticon-next-2"></span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						@endforeach
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End News Section -->
 @endsection
 @push('plugin-styles')
   <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />

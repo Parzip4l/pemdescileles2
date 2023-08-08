@@ -1,64 +1,128 @@
-<div class="wa-kepo-wrap">
-    <a href="https://api.whatsapp.com/send?phone=6281122202220&text=%23simpati">
-        <img src="{{ asset('assets/images/walogo.png') }}" alt="wa kepo">
-    </a>
-</div>
-<div class="footer-top-wrap py-6" style="background-color: #069550; background-image: url('assets/images/bg-jabar.svg');background-repeat: no-repeat;background-position: 90% 99%;">
-    <div class="container">
-        <div class="background">
-            <div class="row">
-                <div class="col-md-3">
-                    <a class="navbar-brand me-2" href="">
-                    <img
-                        src="{{ asset('assets/images/logocilelessmartwhite.png') }}"
-                        height="55"
-                        alt="Cileles Smart Logo"
-                        loading="lazy"
-                        style="margin-top: -1px;"
-                    />
-                    </a>
-                    <p class="mt-4 text-white">sebuah platform informasi yang ditujukan untuk warga Desa Cileles. Dengan fokus pada remaja dan ibu hamil, website ini menyediakan beragam konten yang relevan dan bermanfaat untuk Warga Desa Cileles. </p>
-                </div>
-                <div class="col-md-3">
-                    <div class="title-footer-menu text-white mt-4 ml-3">
-                        <h4>Menu</h4>
-                        <div class="menu-footer mt-4">
-                            <ul>
-                                <li><a href="{{ url('/')}}" class="text-white">Beranda</a></li>
-                                <li><a href="{{ url('profile-desa-cileles')}}" class="text-white">Profile</a></li>
-                                <li><a href="{{ url('#')}}" class="text-white">UMKM</a></li>
-                                <li><a href="{{ url('berita-desa')}}" class="text-white">Berita</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3"> 
-                    <div class="title-footer-menu text-white mt-4">
-                    <h4>Layanan</h4>
-                    <div class="menu-footer mt-4">
-                        <ul>
-                            <li><a href="{{ url('/login') }}" class="text-white">SIBANGENAN</a></li>
-                            <li><a href="{{ url('/login') }}" class="text-white">SIJAMIL</a></li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="title-footer-menu text-white mt-4">
-                        <h4>Agenda Kegiatan</h4>
-                        <div class="menu-footer mt-4">
-                            <ul>
-                                <li></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<footer class="footer px-4 py-3 small" style="background-color: #069550;">
-  <div class="container">
-    <p class="text-white mb-1 mb-md-0 text-center">Copyright © 2023 <a href="https://www.cilelessmart.com" target="_blank" class="text-white">Cileles Smart</a>.</p>
-  </div>
+<!-- Footer Style Two / Style Two -->
+<footer class="footer-style-two style-two">
+	<div class="auto-container">
+		<!-- Widgets Section -->
+		<div class="widgets-section">
+			<div class="row clearfix">
+				
+				<!-- Column -->
+				<div class="big-column col-lg-6 col-md-12 col-sm-12">
+					<div class="row clearfix">
+						
+						<!-- Footer Column -->
+						<div class="footer-column col-lg-6 col-md-6 col-sm-12">
+							<div class="footer-widget logo-widget">
+								<div class="logo mb-2">
+									<a href="#"><img src="{{ asset('assets/images/logocilelessmartwhite.png')}}" alt="Logo Cileles Smart " /></a>
+								</div>
+								<div class="text">Melalui Cileles Smart, kami berkomitmen untuk memberikan akses lebih mudah dan cepat kepada masyarakat terkait informasi, layanan publik, serta berbagai kegiatan dan program yang diadakan di Desa Cileles</div>
+								<!-- Social Box -->
+								<ul class="social-box">
+									<li><a href="https://www.facebook.com/" class="fa fa-facebook-f"></a></li>
+									<li><a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
+									<li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+									<li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Footer Column -->
+						<div class="footer-column col-lg-6 col-md-6 col-sm-12">
+							<div class="footer-widget links-widget">
+								<h6>Usefull Links</h6>
+								<ul class="page-list">
+									<li><a href="#">Contact us</a></li>
+									<li><a href="#">How it Works</a></li>
+									<li><a href="#">Create</a></li>
+									<li><a href="#">Explore</a></li>
+									<li><a href="#">Terms & Services</a></li>
+								</ul>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+				<!-- Column -->
+				<div class="big-column col-lg-6 col-md-12 col-sm-12">
+					<div class="row clearfix">
+					
+						<!-- Footer Column -->
+						<div class="footer-column col-lg-6 col-md-6 col-sm-12">
+							<div class="footer-widget links-widget">
+								<h6>Community</h6>
+								<ul class="page-list">
+									<li><a href="#">Help Center</a></li>
+									<li><a href="#">Partners</a></li>
+									<li><a href="#">Suggestions</a></li>
+									<li><a href="#">Blog</a></li>
+									<li><a href="#">Newsletters</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Footer Column -->
+						<div class="footer-column col-lg-6 col-md-6 col-sm-12">
+							<div class="footer-widget newslatter-widget">
+								<h6>Subscribe Newslatter</h6>
+								<div class="text">Exerci tation ullamcorper suscipit lobortis nisl aliquip ex ea commodo</div>
+								<!-- Subscribe Form -->
+								<div class="subscribe-form-two">
+									<form method="post" action="contact.html">
+										<div class="form-group">
+											<input type="email" name="email" value="" placeholder="Enter Mail" required>
+											<button type="submit" class="submit-btn"><span class="icon flaticon-send"></span></button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<!-- Footer Bottom -->
+		<div class="footer-bottom">
+			<div class="row clearfix">
+				<!-- Column -->
+				<div class="column col-lg-6 col-md-12 col-sm-12">
+					<div class="copyright">&copy; 2023 <a href="#">Cileles Smart - Pemdes Cileles</a>. All Rights Reserved.</div>
+				</div>
+				<!-- Column -->
+				<div class="column col-lg-6 col-md-12 col-sm-12">
+					<ul class="pages-nav">
+						<li><a href="#">Terms and conditions</a></li>
+						<li><a href="#">Privacy policy</a></li>
+						<li><a href="#">Login / Signup</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 </footer>
+	<!-- End Footer Style Two / Style Two -->
+
+<!-- Search Popup -->
+<div class="search-popup">
+	<div class="color-layer"></div>
+	<button class="close-search"><span class="fa fa-arrow-up"></span></button>
+	<form method="post" action="blog.html">
+		<div class="form-group">
+			<input type="search" name="search-field" value="" placeholder="Search Here" required="">
+			<button type="submit"><i class="fa fa-search"></i></button>
+		</div>
+	</form>
+</div>
+<!-- End Search Popup -->
+
+<!-- scrollToTop start -->
+<div class="progress-wrap active-progress">
+	<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+	<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;"></path>
+	</svg>
+</div>
+<!-- scrollToTop end -->

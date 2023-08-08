@@ -1,12 +1,6 @@
-@extends('layout.masteruser')
+@extends('layout.masteruser2')
 
 @push('plugin-styles')
-    <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/owl-carousel/assets/owl.carousel.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/owl-carousel/assets/owl.theme.default.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/animate-css/animate.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/prismjs/prism.css') }}" rel="stylesheet" />
     <style>
         .flex.justify-between.flex-1.sm\:hidden {
         display : none;
@@ -38,88 +32,106 @@
 @endpush
 
 @section('content')
-<!-- Banner -->
-<div class="welcome-wrap-2" style="background-image: url('{{ asset('assets/images/welcome_banner.jpeg') }}'); background-size:cover;">
-<div class="overlay"></div>
-<div class="content-welcome" style="">
-            <div class="col-md-12">
-                <h1 class="text-white mb-2 text-uppercase">Berita Desa</h1>
-            </div> 
-        </div>
-</div>
-<!-- Content Card -->
-<div class="content-wrap">
-    <div class="container">
-        <div class="content-body-wrap p-6">
-            <div class="berita-wrap">
-                <div class="row">
-                    @foreach($berita as $data)
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="featured-image-kegiatan">
-                                <img src="{{ asset('images/' .$data->gambar) }}" class="card-img-top" alt="{{ $data->judul }}">
-                            </div>
-                            <div class="card-body">
-                                <div class="metadata mb-2 d-flex justify-content-between">
-                                    <p>{{ $data->created_at->format('d M Y') }}</p>
-                                    <p><i data-feather="edit-3"></i>{{ $data->penulis }}</p>
-                                </div>
-                                <h4 class="mb-2 judul-berita">{{ $data->judul }}</h4>
-                                <div class="konten-singkat mb-2">
-                                    {!! $data->konten !!}
-                                </div>
-                                <a href="{{ route('berita.single', $data->judul) }}" class="mt-4 text-primary">Selengkapnya ...</a>
-                            </div>
-                        </div>
-                    </div>
+<!-- Page Title -->
+<section class="page-title">
+		<div class="auto-container">
+            <div class="content">
+				<h2>Berita dan Informasi</h2>
+				<!-- End Button Box -->
+			</div>
+		</div>
+	</section>
+	<!-- End Page Title -->
+	
+	<!-- Sidebar Page Container -->
+    <div class="sidebar-page-container">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+				
+				<!-- Content Side -->
+                <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                	<div class="blog-classic">
+
+                    @foreach($berita as $berita)
+						<div class="news-block-five">
+							<div class="inner-box">
+								<div class="image">
+									<a href="{{ route('berita.single', $berita->judul) }}"><img src="{{ asset('images/'. $berita->gambar )}}" alt="" /></a>
+								</div>
+								<div class="lower-content">
+									<ul class="post-meta">
+										<li><span class="flaticon-user-3"></span> {{$berita->penulis}}</li>
+										<li><span class="flaticon-calendar"></span> {{$berita->created_at->format('d M Y')}}</li>
+									</ul>
+									<h3><a href="{{ route('berita.single', $berita->judul) }}">{{ $berita->judul }}</a></h3>
+									<div class="text singkat">{!! $berita->konten !!}</div>
+									<a class="read-more" href="{{ route('berita.single', $berita->judul) }}">Baca Selengkapnya</a>
+								</div>
+							</div>
+						</div>
                     @endforeach
-                </div>
-                {{ $berita->links() }}
-            </div>
-        </div>
-    </div>
-</div>
+					</div>
+				</div>
+				
+				<!-- Sidebar Side -->
+                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                	<aside class="sidebar sticky-top">
+						
+						<!-- Search -->
+						<div class="sidebar-widget search-box">
+							<!-- Sidebar Title -->
+							<div class="sidebar-title">
+								<h4>search here</h4>
+							</div>
+							<form method="POST">
+								<div class="form-group">
+									<input type="search" name="search" placeholder="Search Berita" required>
+									<button type="submit"><span class="icon fa fa-search"></span></button>
+								</div>
+							</form>
+						</div>
+						
+						<!-- Categories Widget -->
+						<div class="sidebar-widget categories-widget">
+							<div class="widget-content">
+								<!-- Sidebar Title -->
+								<div class="sidebar-title">
+									<h4>categories</h4>
+								</div>
+								<ul class="blog-cat">
+									<li class="active"><a href="#">Business <span>03</span></a></li>
+									<li><a href="#">Finance <span>07</span></a></li>
+									<li><a href="#">Consulting<span>09</span></a></li>
+									<li><a href="#">web Design <span>01</span></a></li>
+									<li><a href="#">UI/UX Deisgn <span>00</span></a></li>
+									<li><a href="#">Animation <span>26</span></a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- Post Widget -->
+						<div class="sidebar-widget post-widget">
+							<div class="widget-content">
+								<!-- Sidebar Title -->
+								<div class="sidebar-title">
+									<h4>Recent Post</h4>
+								</div>
+                                
+                                @foreach($berita2 as $d)
+								<div class="post">
+									<div class="thumb"><a href="{{ route('berita.single', $d->judul) }}"><img src="{{ asset('images/'. $d->gambar )}}" alt="{{ $d->judul }}"></a></div>
+									<div class="title">{{ $d->created_at->format('d M Y')}}</div>
+									<h6><a href="{{ route('berita.single', $d->judul) }}">{{ $d->judul }}</a></h6>
+								</div>
+                                @endforeach
+
+							</div>
+						</div>
+						
+						
+					</aside>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 @endsection
-
-@push('plugin-scripts')
-  <script src="{{ asset('assets/plugins/owl-carousel/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('assets/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
-@endpush
-
-@push('plugin-styles')
-  <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
-@endpush
-
-@push('custom-scripts')
-<script>
-    $(document).ready(function() {
- 
-        $("#slider-home").owlCarousel({
-
-            navigation : true, // Show next and prev buttons
-            autoplay : true,
-            slideSpeed : 300,
-            margin: 20,
-            paginationSpeed : 400,
-            loop : true,
-            nav:true,
-
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:3
-                },
-                1000:{
-                    items:4
-                }
-            }
-
-        });
-    });
-  </script>
-  <script src="{{ asset('assets/js/carousel.js') }}"></script>
-  <script src="{{ asset('assets/plugins/prismjs/prism.js') }}"></script>
-  <script src="{{ asset('assets/plugins/clipboard/clipboard.min.js') }}"></script>
-@endpush
