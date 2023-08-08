@@ -96,7 +96,7 @@
 					<ul class="pages-nav">
 						<li><a href="#">Terms and conditions</a></li>
 						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Login / Signup</a></li>
+						<li><a href="{{url('/login')}}">Login / Signup</a></li>
 					</ul>
 				</div>
 			</div>
