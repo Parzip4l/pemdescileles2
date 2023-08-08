@@ -987,7 +987,7 @@
 	
 	.info-box a{
 		display:inline-block;
-		font-size: var(--font-22);
+		font-size: 18px;
 		margin-top:var(--margin-top-20);
 	}
 	
