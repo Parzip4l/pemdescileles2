@@ -63,6 +63,10 @@
         background-color: #132047;
         border-color: #132047;
     }
+
+    section.informasi-publik {
+        padding : 100px 0 ;
+    }
   </style>
 <script>
 $(document).ready(function() {
