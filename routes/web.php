@@ -55,6 +55,9 @@ Route::middleware('auth.user')->group(function () {
 
     // Pengurus
     Route::resource('pengurus', PengurusController::class);
+
+    // informasi publik
+    Route::get('publikasi-data', 'InformasiController@viewinformasi')->name('informasi.data');
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth
@@ -80,6 +83,7 @@ Route::get('berita-desa/{judul}', 'BeritaController@single')->name('berita.singl
 
 // Informasi Page
 Route::resource('informasi-publik', InformasiController::class);
+Route::get('informasi-publik/{id}/download', 'InformasiController@download')->name('informasi.download');
 
 Route::get('/datawarga', function () {
     return view('pages/warga-data/index');

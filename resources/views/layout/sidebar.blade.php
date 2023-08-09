@@ -81,6 +81,12 @@
           <span class="link-title">Data Kesehatan</span>
         </a>
       </li>
+      <li class="nav-item {{ active_class(['publikasi-data']) }}">
+        <a href="{{ url('/publikasi-data') }}" class="nav-link">
+          <i class="link-icon" data-feather="clipboard"></i>
+          <span class="link-title">Publikasi Data</span>
+        </a>
+      </li>
       @endif
       <li class="nav-item nav-category">Informasi Publik</li>
       <li class="nav-item {{ active_class(['berita']) }}">

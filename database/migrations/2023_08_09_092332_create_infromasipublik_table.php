@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subcategories', function (Blueprint $table) {
-            $table->id();
+        Schema::create('informasipublik', function (Blueprint $table) {
+            $table->uuid('id')->primary(); // UUID field as primary key
+            $table->string('judul');
+            $table->string('file');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subcategories');
+        Schema::dropIfExists('informasipublik');
     }
 };

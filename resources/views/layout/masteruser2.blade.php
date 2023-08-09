@@ -67,6 +67,9 @@
     <script src="{{asset('user-pages/js/jquery-ui.js')}}"></script>
     <script src="{{asset('user-pages/js/script.js')}}"></script>
     <script src="{{asset('user-pages/js/color-settings.js')}}"></script>
+    <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
+  <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
+
     <!-- common js -->
     <!-- end common js -->
     @stack('custom-scripts')
