@@ -1,196 +1,305 @@
-@extends('layout.masteruser')
+@extends('layout.masteruser2')
 
-@push('plugin-styles')
-  <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
-  <link href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" />
-  <link href="{{ asset('assets/plugins/owl-carousel/assets/owl.carousel.min.css') }}" rel="stylesheet" />
-<link href="{{ asset('assets/plugins/owl-carousel/assets/owl.theme.default.min.css') }}" rel="stylesheet" />
-<link href="{{ asset('assets/plugins/animate-css/animate.min.css') }}" rel="stylesheet" />
-@endpush
-
+<style>
+    .owl-nav {
+        display : none;
+    }
+</style>
 @section('content')
-<!-- Banner -->
-<div class="welcome-wrap-2" style="background-image: url('{{ asset('assets/images/welcome_banner.jpeg') }}'); background-size:cover;">
-<div class="overlay"></div>
-    <div class="container">
-        <div class="content-welcome" style="">
-            <div class="col-md-12">
-                <h1 class="text-white mb-2 text-uppercase">Profile Desa Cileles</h1>
-            </div> 
+<section class="page-title">
+    <div class="auto-container">
+        <div class="content">
+            <h2>Profile Desa Cileles</h2>
         </div>
     </div>
-</div>
-<!-- Content Card -->
-<div class="content-wrap">
-    <div class="container">
-        <div class="content-body-wrap p-6">
-            <div class="title-profile">
-                <h2 class="text-center">Visi & Misi Pemerintah Desa Cileles</h2>
-            </div>
-            <div class="visi-wrap mt-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="{{ asset('assets/images/noimage.png') }}" class="w-100" alt="">
-                    </div>
-                    <div class="col-md-8 align-self-center">
-                        <div class="title-visi-misi align-self-center">
-                            <h3 class="mb-2">Visi</h3>
-                            <h5 class="normal-line-height">Terwujudnya Masyarakat Desa Cileles Yang Berakhlakul Karimah, Sejahtera, Maju, Dan Mandiri</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="misi-wrap mt-5">
-                <div class="row">
-                    <div class="col-md-8 align-self-center">
-                        <div class="title-visi-misi align-self-center">
-                            <h3 class="mb-4">Misi</h3>
-                            <div class="content-misi d-flex mb-4">
-                                <div class="number mr-4 bg-custom-ijo">
-                                    <p>1</p>
-                                </div>
-                                <div class="content-misi">
-                                    <h5 class="mb-2">Terselenggaranya Tata Kelola Pemerintah Desa Yang Profesional dan SMART (Sigap, Melayani, Agamis, Ramah, Terpercaya) </h5>
-                                </div>
-                            </div>
-                            <div class="content-misi d-flex mb-4">
-                                <div class="number mr-4 bg-custom-ijo">
-                                    <p>2</p>
-                                </div>
-                                <div class="content-misi">
-                                    <h5 class="mb-2">Mewujudkan Generasi Desa Cileles yang Sholeh, Sehat, Cerdas, dan Berdaya Saing</h5>
-                                </div>
-                            </div>
+</section>
+	<!-- End Page Title -->
+	
+	<!-- About Section -->
+    <section class="about-section">
+		<div class="auto-container">
+            <div class="gallery-box">
+				<div class="row clearfix">
+					<!-- Column -->
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<div class="image">
+							<img src="{{ asset('assets/images/about1.png')}}" alt="Profile Desa Cileles" />
+						</div>
+					</div>
+					<!-- Column -->
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<div class="image">
+							<img src="{{ asset('assets/images/about2.png')}}" alt="Profile Desa Cileles" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<h2>Mengenal Lebih Dekat Luas Wilayah dan Potensi Desa</h2>
+			<div class="text">Desa Cileles Secara Geografis Terletak Di Kecamatan Jatinangor, Kabupaten Sumedang, Provinsi Jawa Barat, Luas Wilayah Desa Cileles 320Ha<sup>2</sup>, Bentuk Permukaan Tanah Pegunungan Ketinggian Tepat Dari Permukaan Laut 400 s/d 800 MDPL dan Suhu Rata Rata harian 23-28°C, Letak Koordinat Desa Cileles Yaitu Lintang 6055'01,25"S Bujur 107046'48,45"T.</div>
+		</div>
+	</section>
+	<!-- End About Section -->
 
-                            <div class="content-misi d-flex mb-4">
-                                <div class="number mr-4 bg-custom-ijo">
-                                    <p>3</p>
-                                </div>
-                                <div class="content-misi">
-                                    <h5 class="mb-2">Terciptanya Sistem Ekonomi Desa Yang Mampu Menjadi Poros Perekonomian Masyarakat Desa Cileles dan Terlahirnya Produk Ungglan Desa Yang Dapat Meningkatkan Kesejahteraan dan Kemandirian Masyarakat </h5>
-                                </div>
-                            </div>
-                            <div class="content-misi d-flex mb-4">
-                                <div class="number mr-4 bg-custom-ijo">
-                                    <p>4</p>
-                                </div>
-                                <div class="content-misi">
-                                    <h5 class="mb-2">Tersedianya Sarana dan Prasarana Umum Yang Memadai Serta Berjejaring Sehingga Memudahkan Aktifitas Masyarakat.</h5>
-                                </div>
-                            </div>
-                            <div class="content-misi d-flex mb-4">
-                                <div class="number mr-4 bg-custom-ijo">
-                                    <p>5</p>
-                                </div>
-                                <div class="content-misi">
-                                    <h5 class="mb-2">Terciptanya Kondisi Masyarakat Yang Tertib, Aman, Nyaman, Bersih dan Harmonis </h5>
-                                </div>
-                            </div>
-                            <div class="content-misi d-flex mb-4">
-                                <div class="number mr-4 bg-custom-ijo">
-                                    <p>6</p>
-                                </div>
-                                <div class="content-misi">
-                                    <h5 class="mb-2">Tergalinya Potensi Olahraga, Budaya, Adat Istiadat, Serta Kesenian Tradisional yang Bermanfaat Bagi Masyarakat Desa Cileles.</h5>
-                                </div>
-                            </div>
-                            <div class="content-misi d-flex mb-4">
-                                <div class="number mr-4 bg-custom-ijo">
-                                    <p>7</p>
-                                </div>
-                                <div class="content-misi">
-                                    <h5 class="mb-2">Terselenggaranya Pelayanan Sosial dasar Bagi Masyarakat Terutama Masyarakat Tidak Mampu.</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 align-self-center">
-                        <img src="{{ asset('assets/images/noimage.png') }}" class="w-100" alt="">
-                    </div>
-                </div>
-            </div>
-            <!-- Struktur Kepemimpinan -->
-            <div class="struktur-kepemimpinan-wrap margin-section">
-                <div class="title-profile">
-                    <h2 class="text-center">Jajaran Kepengurusan Desa Cileles</h2>
-                </div>
-                <div class="col-md-12 grid-margin stretch-card mt-4">
-                    <div class="owl-carousel owl-theme owl-basic" id="slider-home">
-                        @foreach ($pengurus as $pengurus)
-                        <div class="item">
-                            <img src="{{ asset('/images/'.$pengurus->foto) }}" alt="">
-                            <div class="title-kepengurusan mt-2 text-center">
-                                <h4>{{$pengurus->nama}}</h4>
-                                <h5>{{$pengurus->jabatan}}</h5>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <!-- Program Keunggulan -->
-            <div class="program-unggulan margin-section">
-                <div class="title-profile">
-                    <h2 class="text-center">Program Unggulan Desa Cileles</h2>
-                </div>
-                <div class="item-program-wrap mt-6">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="item-content p-4">
-                                    <div class="icon-program text-center">
-                                        <img src="{{ asset('assets/images/pendidikan.png') }}" alt="">
-                                    </div>
-                                    <div class="title-program text-center">
-                                        <h5>Meningkatkan akses pendidikan untuk semua</h5>
+    <section class="counter-wrap">
+		<div class="auto-container">
+			<div class="outer-container">
+				
+                <div class="testimonial-carousel owl-carousel owl-theme">
+                    
+                    <!-- Counter Column -->
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="63.72"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Pesawahan</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="42.40"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Perkebunan</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="64.20"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Pemukiman</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="1.5"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Pemakaman</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="0.3"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Sarana Ibadah</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="0.35"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Sarana Olahraga</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="2.5"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Sarana Pendidikan</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="0.3"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Kantor Desa</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-block-four">
+                        <div class="inner-box">
+                            <div class="upper-box">
+                                <div class="counter-block">
+                                    <div class="inner-block">
+                                        <div class="counter"><span class="odometer" data-count="144"></span><span class="luas">Ha</span></div>
+                                        <div class="counter-text">Lainnya</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+				
+			</div>
+		</div>
+	</section>
+	
+	<!-- Vision Section -->
+	<section class="vision-section">
+		<div class="auto-container">
+			<div class="row clearfix">
+			
+				<!-- Vison Block -->
+				<div class="vision-block style-two col-lg-6 col-md-12 col-sm-12">
+					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<h3>Visi Pemerintah Desa Cileles</h3>
+						<a href="#" data-bs-toggle="modal" data-bs-target=".visi" class="read-more mt-3">Lihat Visi</a>
+					</div>
+				</div>
+				
+				<!-- Mision Block -->
+				<div class="vision-block style-three col-lg-6 col-md-12 col-sm-12">
+					<div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+						<h3>Misi Pemerintah Desa Cileles</h3>
+						<a href="#" data-bs-toggle="modal" data-bs-target=".misi" class="read-more mt-3">Lihat Misi</a>
+					</div>
+				</div>
+
+                <!-- Modal -->
+				<div class="modal fade bd-example-modal-lg visi" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content p-4">
+                            <h4 class="pb-2" style="text-align:center; font-family:'Manrope', sans-serif;">Visi Pemerintah Desa Cileles</h4>
+                            <hr>
+                            <h5 class="" style="text-align:center; font-family:'Manrope', sans-serif;">Terwujudnya Masyarakat Desa Cileles Yang Berakhlakul Karimah, Sejahtera, Maju, Dan Mandiri</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade bd-example-modal-lg misi" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content p-4">
+                            <h4 class="pb-2" style="text-align:center; font-family:'Manrope', sans-serif;">Misi Pemerintah Desa Cileles</h4>
+                            <hr>
+                            <ul style="list-style:none;">
+                                <li>1. Terselenggaranya Tata Kelola Pemerintah Desa Yang Profesional dan SMART (Sigap, Melayani, Agamis, Ramah, Terpercaya)</li>
+                                <li>2. Mewujudkan Generasi Desa Cileles yang Sholeh, Sehat, Cerdas, dan Berdaya Saing</li>
+                                <li>3. Terciptanya Sistem Ekonomi Desa Yang Mampu Menjadi Poros Perekonomian Masyarakat Desa Cileles dan Terlahirnya Produk Ungglan Desa Yang Dapat Meningkatkan Kesejahteraan dan Kemandirian Masyarakat</li>
+                                <li>4. Tersedianya Sarana dan Prasarana Umum Yang Memadai Serta Berjejaring Sehingga Memudahkan Aktifitas Masyarakat.</li>
+                                <li>5. Terciptanya Kondisi Masyarakat Yang Tertib, Aman, Nyaman, Bersih dan Harmonis </li>
+                                <li>6. Tergalinya Potensi Olahraga, Budaya, Adat Istiadat, Serta Kesenian Tradisional yang Bermanfaat Bagi Masyarakat Desa Cileles.</li>
+                                <li>7. Terselenggaranya Pelayanan Sosial dasar Bagi Masyarakat Terutama Masyarakat Tidak Mampu.</li>
+                            </ul>
+                           </h5>
+                        </div>
+                    </div>
+                </div>
+
+			</div>
+		</div>
+	</section>
+	<!-- End Vision Section -->
+
+    <!-- About Section -->
+    <section class="bataswilayah-section mb-4">
+		<div class="auto-container">
+			<h2 class="mb-4">Batas Wilayah Desa Cileles</h2>
+		</div>
+	</section>
+	<!-- End About Section -->
+	
+	<!-- Featured Section Two -->
+	<section class="featured-section-two mt-4">
+		<div class="auto-container">
+
+            <div class="row clearfix">
+                <div class="col-md-6 align-self-center">
+                    <ul class="">
+                        <li>
+                            <span class="icon fa fa-map-marker"></span>
+                            Sebelah Utara <br> Desa Cilayung
+                        </li>
+                        <li>
+                            <span class="icon fa fa-map-marker"></span>
+                            Sebelah Timur <br> Desa Hegarmanah
+                        </li>
+                        <li>
+                            <span class="icon fa fa-map-marker"></span>
+                            Sebelah Selatan <br> Desa Kutamandiri
+                        </li>
+                        <li>
+                            <span class="icon fa fa-map-marker"></span>
+                            Sebelah Barat <br> Desa Cibeusi 
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('assets/images/map.png')}}" alt="">
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+			
+		</div>
+	</section>
+	<!-- End Featured Section Two -->
+	
+	<!-- Team Section -->
+	<section class="team-section">
+		<div class="auto-container">
+			<!-- Sec Title Four -->
+			<div class="sec-title-four light centered">
+				<h2>Jajaran Kepengurusan Pemerintah Desa Cileles</h2>
+			</div>
+			<div class="row clearfix">
+			
+                @foreach($pengurus as $pengurus)
+				<!-- Team Block -->
+				<div class="team-block col-lg-3 col-md-4 col-sm-12">
+					<div class="inner-box">
+						<div class="image">
+							<img src="{{asset('images/'. $pengurus->foto)}}" alt="{{ $pengurus->nama }}" />
+							<div class="overlay-box">
+								<h5><a href="#">{{ $pengurus->nama }}</a></h5>
+								<div class="designation">{{ $pengurus->jabatan }}</div>
+								<!-- Social Box -->
+								<ul class="social-box">
+									<li><a href="https://www.facebook.com/" class="fa fa-facebook-f"></a></li>
+									<li><a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
+									<li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+									<li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+                @endforeach
+				
+			</div>
+		</div>
+	</section>
 @endsection
-
-@push('plugin-scripts')
-  <script src="{{ asset('assets/plugins/owl-carousel/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('assets/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
-@endpush
-
-@push('plugin-styles')
-  <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
-@endpush
-
-@push('custom-scripts')
-<script>
-    $(document).ready(function() {
- 
-        $("#slider-home").owlCarousel({
-
-            navigation : true, // Show next and prev buttons
-            autoplay : true,
-            slideSpeed : 300,
-            margin: 20,
-            paginationSpeed : 400,
-            loop : true,
-
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:3
-                },
-                1000:{
-                    items:4
-                }
-            }
-
-        });
-    });
-  </script>
-  <script src="{{ asset('assets/js/carousel.js') }}"></script>
-@endpush

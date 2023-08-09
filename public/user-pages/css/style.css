@@ -5767,10 +5767,15 @@ section.counter-wrap.mb-6 {
 	position:relative;
 }
 
+span.luas {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
 .featured-section-two ul li{
 	position:relative;
 	line-height:26px;
-	display:inline-block;
+	display:block;
 	font-size:var(--font-18);
 	color:var(--color-fourtyeight);
 	margin-right:var(--margin-right-30);
@@ -5790,8 +5795,8 @@ section.counter-wrap.mb-6 {
 	border-radius:4px;
 	display:inline-block;
 	font-size:var(--font-28);
-	color:var(--color-fifty);
-	background-color: var(--color-fourty);
+	color: #038091;
+	background-color: #0381914d;
 	transition:all 500ms ease;
 	-moz-transition:all 500ms ease;
 	-webkit-transition:all 500ms ease;

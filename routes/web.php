@@ -78,6 +78,9 @@ Route::get('berita-desa', 'HomeController@beritapage')->name('berita-desa');
 Route::get('berita-desa/search', 'HomeController@beritasearch')->name('berita.search');
 Route::get('berita-desa/{judul}', 'BeritaController@single')->name('berita.single');
 
+// Informasi Page
+Route::resource('informasi-publik', InformasiController::class);
+
 Route::get('/datawarga', function () {
     return view('pages/warga-data/index');
 });

@@ -43,7 +43,7 @@
 			<li><a href="#" class="fa fa-facebook"> <span>Facebook</span></a></li>
 			<li><a href="#" class="fa fa-youtube-play"> <span>Youtube</span></a></li>
 			<li><a href="#" class="fa fa-twitter"> <span>Twitter</span></a></li>
-			<li><a href="#" class="fa fa-instagram"> <span>Instagram</span></a></li>
+			<li><a href="https://www.instagram.com/pemdescileles/" class="fa fa-instagram"> <span>Instagram</span></a></li>
 		</ul>
 		<!-- End Social Box -->
 		
