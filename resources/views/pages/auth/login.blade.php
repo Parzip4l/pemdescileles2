@@ -24,12 +24,12 @@
                 </div>
                 <div class="mb-3">
                   <label for="userPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="userPassword" autocomplete="current-password" placeholder="Password" name="password" required>
+                  <input type="password" class="form-control" id="passwordInput" autocomplete="current-password" placeholder="Password" name="password" required>
                 </div>
                 <div class="form-check mb-3">
                   <input type="checkbox" class="form-check-input" id="authCheck">
                   <label class="form-check-label" for="authCheck">
-                    Remember me
+                    Show Password
                   </label>
                 </div>
                 <div>
@@ -45,6 +45,21 @@
       </div>
     </div>
   </div>
-
 </div>
 @endsection
+
+@push('custom-scripts')
+
+<script>
+  const authCheck = document.getElementById('authCheck');
+  const passwordInput = document.getElementById('passwordInput');
+
+  authCheck.addEventListener('change', function() {
+    if (authCheck.checked) {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  });
+</script>
+@endpush

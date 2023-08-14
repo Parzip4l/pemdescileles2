@@ -40,7 +40,7 @@ class SibangenanController extends Controller
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
 
         if ($userLevel !== 1) {
-            $query->where('sibangenan.namapemohon', Auth::user()->name); // Ganti 'nama_pemohon' dengan kolom yang sesuai
+            $query->where('sibangenan.namapemohon', Auth::user()->name);
         }
 
         $data = $query->get();
@@ -49,8 +49,43 @@ class SibangenanController extends Controller
 
     public function ditolak()
     {
+        $userLevel = Auth::user()->level;
         $rejectedData = Sibangenan::where('status_pengajuan', 'Ditolak')->get();
-        return view ('pages.sibangenan.ditolak', compact('rejectedData'));
+        $urusan = Urusansibangenan::all();
+        $suburusan = Subcategory::all();
+        $query = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
+            ->where('sibangenan.status_pengajuan', '=', 'Ditolak');
+        $data = $query->get();
+        return view ('pages.sibangenan.ditolak', compact('rejectedData','data','userLevel'));
+    }
+
+    public function direvisi()
+    {
+        $userLevel = Auth::user()->level;
+        $revisiData = Sibangenan::where('status_pengajuan', 'Direvisi')->get();
+        $urusan = Urusansibangenan::all();
+        $suburusan = Subcategory::all();
+        $query = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
+            ->where('sibangenan.status_pengajuan', '=', 'Direvisi');
+        $data = $query->get();
+        return view ('pages.sibangenan.revisi', compact('revisiData','data','userLevel'));
+    }
+
+    public function monitor()
+    {
+        $userLevel = Auth::user()->level;
+        $urusan = Urusansibangenan::all();
+        $suburusan = Subcategory::all();
+        $query = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
+            ->where('sibangenan.status_pengajuan', '=', 'Verifikasi');
+        $data = $query->get();
+        return view ('pages.sibangenan.monitor', compact('data','userLevel'));
     }
 
     public function getKategoriBySubKategoriId($id)

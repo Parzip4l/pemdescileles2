@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Remaja;
 use App\Bumil;
 use App\Warga;
+use App\Sibangenan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 class DashboardController extends Controller
@@ -19,6 +20,10 @@ class DashboardController extends Controller
         $remaja = Remaja::all()->count();
         $bumil = Bumil::all()->count();
         $warga = Warga::all()->count();
+        $sibangenan = Sibangenan::all()->count();
+        $ditolak = Sibangenan::where('status_pengajuan', 'Ditolak')->count();
+        $direvisi = Sibangenan::where('status_pengajuan', 'Direvisi')->count();
+        $direview = Sibangenan::where('status_pengajuan', 'Verifikasi')->count();
 
         $dataremaja1 = Remaja::select('rw', 'jenis_kelamin', \DB::raw('count(*) as total_count'))
             ->groupBy('rw', 'jenis_kelamin')
@@ -83,7 +88,11 @@ class DashboardController extends Controller
             'bumil',
             'dataremaja',
             'databumil',
-            'warga'
+            'warga',
+            'sibangenan',
+            'ditolak',
+            'direvisi',
+            'direview'
         ));
     }
 

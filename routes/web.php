@@ -33,6 +33,8 @@ Route::middleware('auth.user')->group(function () {
     // sibangenan
     Route::resource('sibangenan', SibangenanController::class);
     Route::get('/pengajuan-ditolak', 'SibangenanController@ditolak')->name('ditolak');
+    Route::get('/pengajuan-direvisi', 'SibangenanController@direvisi')->name('direvisi');
+    Route::get('/pengajuan-perlu-divalidasi', 'SibangenanController@monitor')->name('monitor');
     Route::post('/tolak-usulan/{id}', 'SibangenanController@updateStatusTolakC')->name('penolakan.usulan');
     Route::post('/revisi-usulan/{id}', 'SibangenanController@updateStatusRevisi')->name('revisi.usulan');
     Route::post('/setujui-usulan/{id}', 'SibangenanController@updateStatusSetuju')->name('setujui.usulan');

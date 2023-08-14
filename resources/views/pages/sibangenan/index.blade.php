@@ -16,22 +16,25 @@
 <div class="row">
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
-        <div class="card-header">
-            <h6 class="card-title mb-0">Usulan Permasalahan</h6>
+        <div class="card-header d-flex justify-content-between">
+            <h6 class="card-title mb-0 align-self-center">Usulan Pembangunan</h6>
+            <div class="col-md-3">
+                <a href="#" class="btn btn-success btn-md w-100" data-bs-toggle="modal" data-bs-target=".sibangenan"> Buat Pengajuan</a>
+            </div>
         </div>  
-        <div class="card-header-button-wrap p-2 pt-2">
+        <div class="card-header-button-wrap p-2 pt-2" style="margin-top: 30px;">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="" class="btn btn-primary btn-md w-100"> Pengajuan</a>
+                    <a href="{{ url('sibangenan') }}" class="btn btn-primary btn-md w-100">Semua Pengajuan</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="" class="btn btn-warning btn-md w-100 text-white"> Monitor</a>
+                    <a href="{{ url('pengajuan-direvisi') }}" class="btn btn-warning btn-md w-100 text-white">Usulan Direvisi</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="{{ url('pengajuan-ditolak') }}" class="btn btn-danger btn-md w-100"> Usulan Ditolak</a>
+                    <a href="{{ url('pengajuan-ditolak') }}" class="btn btn-danger btn-md w-100">Usulan Ditolak</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="#" class="btn btn-success btn-md w-100" data-bs-toggle="modal" data-bs-target=".sibangenan"> Buat Pengajuan</a>
+                    <a href="{{url('pengajuan-perlu-divalidasi')}}" class="btn btn-success btn-md w-100">Validasi Usulan</a>
                 </div>
             </div>
         </div>
@@ -94,7 +97,7 @@
                         @foreach ($data as $d)
                     <tr>
                         <td>{{ $nomor++ }}</td>
-                        <td>{{ $d->created_at}}</td>
+                        <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}</td>
                         <td>{{ $d->namapemohon}}</td>
                         <td>{{ $d->rw}}</td>
                         <td>{{ $d->permasalahan}}</td>
@@ -130,8 +133,6 @@
                                         <i data-feather="x" class="icon-sm me-2"></i>
                                         <span class="">Tolak Usulan</span>
                                     </a>
-                                    
-
                                     <!-- Add a hidden form to trigger the POST request -->
                                     <form id="setujui-usulan-form-{{ $d->id }}" action="{{ route('setujui.usulan', $d->id) }}" method="POST" style="display: none;">
                                         @csrf

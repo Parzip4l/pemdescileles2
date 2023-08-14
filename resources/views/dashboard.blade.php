@@ -2,6 +2,11 @@
 
 @push('plugin-styles')
   <link href="{{ asset('assets/plugins/flatpickr/flatpickr.min.css') }}" rel="stylesheet" />
+  <style>
+    .card .card-title {
+      font-size: 12px!important;
+    }
+  </style>
 @endpush
 
 @section('content')
@@ -14,27 +19,27 @@
 <div class="row">
   <div class="col-12 col-xl-12 stretch-card">
     <div class="row flex-grow-1">
-      <div class="col-md-4 grid-margin stretch-card">
-        <div class="card">
+      <div class="col-md-3 grid-margin stretch-card">
+        <div class="card bg-success text-white">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-baseline">
-              <h6 class="card-title mb-0">Jumlah Warga</h6>
+              <h6 class="card-title mb-0">Jumlah Pengajuan</h6>
               <div class="dropdown mb-2">
                 <button class="btn btn-link p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                  <i class="icon-lg text-white pb-3px" data-feather="more-horizontal"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                  <a class="dropdown-item d-flex align-items-center" href="{{ url('sibangenan') }}"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
-                <h3 class="mb-2">{{ $warga }}</h3>
+                <h3 class="mb-2">{{ $sibangenan }}</h3>
                 <div class="d-flex align-items-baseline">
                   <h5>
-                      Jiwa
+                      Pengajuan
                   </h5>
                 </div>
               </div>
@@ -42,27 +47,27 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 grid-margin stretch-card">
-        <div class="card">
+      <div class="col-md-3 grid-margin stretch-card">
+        <div class="card bg-primary text-white">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-baseline">
-              <h6 class="card-title mb-0">Jumlah Remaja</h6>
+              <h6 class="card-title mb-0">Pengajuan Perlu Di Review</h6>
               <div class="dropdown mb-2">
                 <button class="btn btn-link p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                  <i class="icon-lg text-white pb-3px" data-feather="more-horizontal"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                  <a class="dropdown-item d-flex align-items-center" href="{{url('pengajuan-perlu-divalidasi')}}"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
-                <h3 class="mb-2">{{ $remaja }}</h3>
+                <h3 class="mb-2">{{ $direview }}</h3>
                 <div class="d-flex align-items-baseline">
                   <h5>
-                      Jiwa
+                      Pengajuan
                   </h5>
                 </div>
               </div>
@@ -70,27 +75,55 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 grid-margin stretch-card">
-        <div class="card">
+      <div class="col-md-3 grid-margin stretch-card">
+        <div class="card bg-warning text-white">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-baseline">
-              <h6 class="card-title mb-0">Jumlah Ibu Hamil</h6>
+              <h6 class="card-title mb-0">Pengajuan Direvisi</h6>
               <div class="dropdown mb-2">
                 <button class="btn btn-link p-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                  <i class="icon-lg text-white pb-3px" data-feather="more-horizontal"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                  <a class="dropdown-item d-flex align-items-center" href="{{ url('pengajuan-direvisi') }}"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
-                <h3 class="mb-2">{{ $bumil }}</h3>
+                <h3 class="mb-2">{{ $direvisi }}</h3>
                 <div class="d-flex align-items-baseline">
                   <h5>
-                      Jiwa
+                      Pengajuan
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 grid-margin stretch-card">
+        <div class="card bg-danger text-white">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h6 class="card-title mb-0">Pengajuan Ditolak</h6>
+              <div class="dropdown mb-2">
+                <button class="btn btn-link p-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-lg text-white pb-3px" data-feather="more-horizontal"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ url('pengajuan-ditolak') }}"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                  <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 col-md-12 col-xl-5">
+                <h3 class="mb-2">{{ $ditolak }}</h3>
+                <div class="d-flex align-items-baseline">
+                  <h5>
+                      Pengajuan
                   </h5>
                 </div>
               </div>
