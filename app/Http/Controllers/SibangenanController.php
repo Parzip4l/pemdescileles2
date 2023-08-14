@@ -24,35 +24,29 @@ class SibangenanController extends Controller
     {
 
         $userLevel = Auth::user()->level;
+        $urusan = Urusansibangenan::all();
+        $suburusan = Subcategory::all();
 
         $years = Sibangenan::selectRaw('YEAR(created_at) as year')
-    ->distinct()
-    ->pluck('year');
+            ->distinct()
+            ->pluck('year');
 
-$selectedYear = request()->query('year');
-$data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
-    return $query->whereYear('created_at', $selectedYear);
-})->get();
+        $selectedYear = request()->query('year');
+        $query = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
+            return $query->whereYear('created_at', $selectedYear);
+        })
+        ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+        ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
+    
+    $userLevel = Auth::user()->level;
+    
+    if ($userLevel !== 1) {
+        $query->where('sibangenan.namapemohon', Auth::user()->name);
+    }
+    
+    $data = $query->get();
 
-$urusan = Urusansibangenan::all();
-$suburusan = Subcategory::all();
-
-$query2 = DB::table('sibangenan')
-    ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
-    ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
-
-$userLevel = Auth::user()->level;
-
-if ($userLevel === 1) {
-    // Jika user level adalah 1, maka tidak perlu menambahkan filter
-} else {
-    // Jika user level bukan 1, maka filter berdasarkan nama pemohon yang login
-    $query2->where('sibangenan.namapemohon', Auth::user()->name);
-}
-
-$data = $query2->get();
-
-return view('pages.sibangenan.index', compact('data', 'urusan', 'years', 'data2', 'suburusan'));
+        return view('pages.sibangenan.index', compact('data', 'urusan', 'years', 'suburusan'));
     }
 
     public function ditolak()
