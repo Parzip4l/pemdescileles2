@@ -204,7 +204,7 @@
             @if(Auth::check())
             <div class="text-center">
               <p class="tx-16 fw-bolder">{{ Auth::user()->name }}</p>
-              <p class="tx-12 text-muted">{{ Auth::user()->email }}</p>
+              <p class="tx-12 text-muted">{{ Auth::user()->level }}</p>
             </div>
             @endif
           </div>
