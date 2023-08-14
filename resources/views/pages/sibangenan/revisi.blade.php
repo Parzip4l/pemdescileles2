@@ -85,31 +85,31 @@
                                     <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#EditPengajuan{{ $d->id}}">
+                                    <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#EditPengajuan{{ $data->id}}">
                                         <i data-feather="edit-2" class="icon-sm me-2"></i>
                                         <span class="">Edit</span>
                                     </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#PengajuanDetail{{ $d->id}}">
+                                    <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#PengajuanDetail{{ $data->id}}">
                                         <i data-feather="eye" class="icon-sm me-2"></i>
                                         <span class="">View Detail</span>
                                     </a>
                                     @if($userLevel === 1)
-                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('setujui.usulan', $d->id) }}" onclick="event.preventDefault(); document.getElementById('setujui-usulan-form-{{ $d->id }}').submit();">
+                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('setujui.usulan', $data->id) }}" onclick="event.preventDefault(); document.getElementById('setujui-usulan-form-{{ $data->id }}').submit();">
                                         <i data-feather="check" class="icon-sm me-2"></i>
                                         <span class="">Setujui Usulan</span>
                                     </a>
                                     
-                                    <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#TolakPengajuan{{ $d->id}}">
+                                    <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#TolakPengajuan{{ $data->id}}">
                                         <i data-feather="x" class="icon-sm me-2"></i>
                                         <span class="">Tolak Usulan</span>
                                     </a>
                                     <!-- Add a hidden form to trigger the POST request -->
-                                    <form id="setujui-usulan-form-{{ $d->id }}" action="{{ route('setujui.usulan', $d->id) }}" method="POST" style="display: none;">
+                                    <form id="setujui-usulan-form-{{ $data->id }}" action="{{ route('setujui.usulan', $data->id) }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <form action="{{ route('sibangenan.destroy', $d->id) }}" method="POST" id="delete_sibangenan" class="sibangenandelete"> 
+                                    <form action="{{ route('sibangenan.destroy', $data->id) }}" method="POST" id="delete_sibangenan" class="sibangenandelete"> 
                                         @csrf @method('DELETE') 
-                                        <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog('{{ $d->id }}')">
+                                        <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog('{{ $data->id }}')">
                                             <i data-feather="trash" class="icon-sm me-2"></i>
                                             <span class="">Delete</span>
                                         </a>
