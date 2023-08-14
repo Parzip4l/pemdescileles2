@@ -64,6 +64,7 @@
                     <tbody>
                         @php
                         $nomor = 1;
+                        $userLevel = Auth::user()->level;
                         @endphp
                         @foreach ($data as $data)
                     <tr>
