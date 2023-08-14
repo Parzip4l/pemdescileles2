@@ -35,15 +35,15 @@ class SibangenanController extends Controller
 
         $urusan = Urusansibangenan::all();
         $suburusan = Subcategory::all();
-        $query = DB::table('sibangenan')
+        $query2 = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
 
         if ($userLevel !== 1) {
-            $query->where('sibangenan.namapemohon', Auth::user()->name);
+            $query2->where('sibangenan.namapemohon', Auth::user()->name);
         }
 
-        $data = $query->get();
+        $data = $query2->get();
         return view ('pages.sibangenan.index', compact('data','urusan','years','data2','suburusan'));
     }
 
