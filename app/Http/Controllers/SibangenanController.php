@@ -41,8 +41,10 @@ class SibangenanController extends Controller
         $query = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
-
         } else {
+            $query = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
             $query->where('sibangenan.namapemohon', Auth::user()->name);
         }
 
