@@ -38,7 +38,7 @@ class SibangenanController extends Controller
         $suburusan = Subcategory::all();
 
         if ($userLevel === 1) {
-        $query = DB::table('sibangenan')
+            $query = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
         } else {

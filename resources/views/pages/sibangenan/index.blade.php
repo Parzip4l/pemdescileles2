@@ -94,7 +94,7 @@
                         $nomor = 1;
                         $userLevel = Auth::user()->level;
                         @endphp
-                        @foreach ($data as $d)
+                        @foreach ($data2 as $d)
                     <tr>
                         <td>{{ $nomor++ }}</td>
                         <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}</td>
