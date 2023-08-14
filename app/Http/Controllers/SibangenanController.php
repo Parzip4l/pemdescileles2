@@ -24,8 +24,6 @@ class SibangenanController extends Controller
     {
 
         $userLevel = Auth::user()->level;
-        $urusan = Urusansibangenan::all();
-        $suburusan = Subcategory::all();
 
         $years = Sibangenan::selectRaw('YEAR(created_at) as year')
             ->distinct()
