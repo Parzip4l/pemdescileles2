@@ -23,7 +23,8 @@ class SibangenanController extends Controller
     public function index()
     {
 
-        $userLevel = Auth::user()->level; 
+        $userLevel = Auth::user()->level;
+
         $years = Sibangenan::selectRaw('YEAR(created_at) as year')
             ->distinct()
             ->pluck('year');
@@ -35,15 +36,15 @@ class SibangenanController extends Controller
 
         $urusan = Urusansibangenan::all();
         $suburusan = Subcategory::all();
-        $query2 = DB::table('sibangenan')
+        $query = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
 
         if ($userLevel !== 1) {
-            $query2->where('sibangenan.namapemohon', Auth::user()->name);
+            $query->where('sibangenan.namapemohon', Auth::user()->name);
         }
 
-        $data = $query2->get();
+        $data = $query->get();
         return view ('pages.sibangenan.index', compact('data','urusan','years','data2','suburusan'));
     }
 
@@ -66,7 +67,7 @@ class SibangenanController extends Controller
 
         $data = $query->get();
 
-        return view ('pages.sibangenan.ditolak', compact('rejectedData','data','userLevel'));
+        return view ('pages.sibangenan.ditolak', compact('rejectedData','data'));
     }
 
     public function direvisi()
@@ -84,7 +85,7 @@ class SibangenanController extends Controller
                 $query->where('sibangenan.namapemohon', Auth::user()->name);
         }
         $data = $query->get();
-        return view ('pages.sibangenan.revisi', compact('revisiData','data','userLevel'));
+        return view ('pages.sibangenan.revisi', compact('revisiData','data'));
     }
 
     public function monitor()
@@ -100,7 +101,7 @@ class SibangenanController extends Controller
                 $query->where('sibangenan.namapemohon', Auth::user()->name);
         }
         $data = $query->get();
-        return view ('pages.sibangenan.monitor', compact('data','userLevel'));
+        return view ('pages.sibangenan.monitor', compact('data'));
     }
 
     public function getKategoriBySubKategoriId($id)
