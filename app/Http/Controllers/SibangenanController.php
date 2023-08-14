@@ -22,17 +22,17 @@ class SibangenanController extends Controller
      */
     public function index()
     {
+
         $userLevel = Auth::user()->level; 
-        // Filter Tahun
         $years = Sibangenan::selectRaw('YEAR(created_at) as year')
             ->distinct()
             ->pluck('year');
-
-        // Fetch data based on the selected year (if provided)
         $selectedYear = request()->query('year');
         $data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
             return $query->whereYear('created_at', $selectedYear);
         })->get();
+
+
         $urusan = Urusansibangenan::all();
         $suburusan = Subcategory::all();
         $query = DB::table('sibangenan')
@@ -50,14 +50,22 @@ class SibangenanController extends Controller
     public function ditolak()
     {
         $userLevel = Auth::user()->level;
+
         $rejectedData = Sibangenan::where('status_pengajuan', 'Ditolak')->get();
         $urusan = Urusansibangenan::all();
         $suburusan = Subcategory::all();
+
         $query = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
             ->where('sibangenan.status_pengajuan', '=', 'Ditolak');
+
+        if ($userLevel !== 1) {
+                $query->where('sibangenan.namapemohon', Auth::user()->name);
+        }
+
         $data = $query->get();
+
         return view ('pages.sibangenan.ditolak', compact('rejectedData','data','userLevel'));
     }
 
@@ -71,6 +79,10 @@ class SibangenanController extends Controller
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
             ->where('sibangenan.status_pengajuan', '=', 'Direvisi');
+        
+        if ($userLevel !== 1) {
+                $query->where('sibangenan.namapemohon', Auth::user()->name);
+        }
         $data = $query->get();
         return view ('pages.sibangenan.revisi', compact('revisiData','data','userLevel'));
     }
@@ -84,6 +96,9 @@ class SibangenanController extends Controller
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
             ->where('sibangenan.status_pengajuan', '=', 'Verifikasi');
+        if ($userLevel !== 1) {
+                $query->where('sibangenan.namapemohon', Auth::user()->name);
+        }
         $data = $query->get();
         return view ('pages.sibangenan.monitor', compact('data','userLevel'));
     }
