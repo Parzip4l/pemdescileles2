@@ -333,7 +333,7 @@
 }
 
 .footer-style-two .logo-widget .social-box li a:hover{
-	background-color:rgba(var(--white-color-rgb), 1);
+	background-color:#038091;
 }
 
 .footer-style-two .page-list{
@@ -353,7 +353,7 @@
 }
 
 .footer-style-two .page-list li a:hover{
-	color:var(--main-color);
+	color:#038091!important;
 }
 
 .footer-style-two .newslatter-widget .text{

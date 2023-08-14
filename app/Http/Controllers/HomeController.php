@@ -8,6 +8,8 @@ use App\Kegiatan;
 use App\Remaja;
 use App\Bumil;
 use App\Warga;
+use App\Sibangenan;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -31,6 +33,30 @@ class HomeController extends Controller
         $berita = Berita::paginate(9);
         $berita2 = Berita::orderBy('created_at', 'desc')->take(4)->get();
         return view ('pages.berita.indexuser', compact('berita','berita2'));
+    }
+
+    public function publicsibangenan()
+    {
+        $sibangenanData = Sibangenan::select('status_pengajuan', DB::raw('count(*) as total'))
+            ->groupBy('status_pengajuan')
+            ->pluck('total', 'status_pengajuan');
+        
+        $yearlyData = Sibangenan::selectRaw('YEAR(created_at) as year, COUNT(*) as total')
+            ->groupBy('year')
+            ->orderBy('year')
+            ->get();
+
+        $statuses = $sibangenanData->keys()->toArray();
+        $totals = $sibangenanData->values()->toArray();
+
+        $years = $yearlyData->pluck('year')->toArray();
+        $totalss = $yearlyData->pluck('total')->toArray();
+        return view('pages.user-pages.publik-sibangenan', compact('statuses','totals','years','totalss'));
+    }
+
+    public function publicsijamil()
+    {
+        return view('pages.user-pages.publik-sijamil');
     }
 
     public function beritasearch(Request $request)

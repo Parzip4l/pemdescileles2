@@ -29,8 +29,8 @@
 									<li class="{{ request()->is('/') ? 'current' : '' }}"><a href="{{url('/')}}">Home</a></li>
 									<li class="{{ request()->is('profile-desa-cileles') ? 'current' : '' }}"><a href="{{url('/profile-desa-cileles')}}">Profile</a></li>
 									<li class="{{ request()->is('informasi-publik') ? 'current' : '' }}"><a href="{{url('/informasi-publik')}}">Informasi</a></li>
-									<li><a href="#">Sijamil</a></li>
-									<li><a href="#">Sibangenan</a></li>
+									<li class="{{ request()->is('dashboard-sijamil') ? 'current' : '' }}"><a href="{{url('/dashboard-sijamil')}}">Sijamil</a></li>
+									<li class="{{ request()->is('dashboard-publik') ? 'current' : '' }}"><a href="{{url('/dashboard-publik')}}">Sibangenan</a></li>
 									<li class="{{ request()->is('berita-desa') ? 'current' : '' }}"><a href="{{url('berita-desa')}}">Berita</a></li>
 								</ul>
 							</div>

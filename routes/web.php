@@ -87,6 +87,10 @@ Route::get('berita-desa/{judul}', 'BeritaController@single')->name('berita.singl
 Route::resource('informasi-publik', InformasiController::class);
 Route::get('informasi-publik/{id}/download', 'InformasiController@download')->name('informasi.download');
 
+// Sibangenan Publik
+Route::get('/dashboard-publik', 'HomeController@publicsibangenan')->name('publiksibangenan');
+Route::get('/dashboard-sijamil', 'HomeController@publicsijamil')->name('publiksijamil');
+
 Route::get('/datawarga', function () {
     return view('pages/warga-data/index');
 });

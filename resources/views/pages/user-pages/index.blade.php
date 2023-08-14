@@ -22,7 +22,7 @@
 								<h1>Portal <br> Cileles <br> Smart</h1>
 								<div class="text">Transforming Lives, One Smart Step at a Time with Cileles Smart.</div>
 								<div class="btns-box">
-									<a href="contact.html" class="theme-btn btn-style-one clearfix">
+									<a href="{{url('profile-desa-cileles')}}" class="theme-btn btn-style-one clearfix">
 										<span class="btn-wrap">
 											<span class="text-one">Profile Desa</span>
 											<span class="text-two">Profile Desa</span>
@@ -104,7 +104,7 @@
 								Salam sejahtera bagi seluruh masyarakat desa Cileles dan pengunjung. Kami dengan gembira mempersembahkan Cileles Smart, sebuah platform inovatif yang didedikasikan untuk meningkatkan kualitas hidup dan kemajuan desa kita.<br>
 								Melalui Cileles Smart, kami berkomitmen untuk memberikan akses lebih mudah dan cepat kepada Anda terkait informasi, layanan publik, serta berbagai kegiatan dan program yang diadakan di desa ini. Kami percaya bahwa teknologi dapat menjadi alat yang efektif untuk mendorong perkembangan desa, memperkuat partisipasi masyarakat, dan menjalin sinergi yang lebih baik antara warga dan pemerintah.
 								</div>
-								<a class="more-service" href="services.html">Profile Desa<span class="flaticon-next-2"></span></a>
+								<a class="more-service" href="{{url('profile-desa-cileles')}}">Profile Desa<span class="flaticon-next-2"></span></a>
 							</div>
 						</div>
 					</div>
@@ -367,7 +367,7 @@
 							<img src="{{asset('images/'. $kegiatan->gambar)}}" alt="" />
 							<div class="overlay-box">
 								<div class="content">
-									<h4><a href="portfolio-detail.html">{{$kegiatan->judul}}</a></h4>
+									<h4><a href="#">{{$kegiatan->judul}}</a></h4>
 									<div class="title">{{$kegiatan->kategori}}</div>
 								</div>
 							</div>

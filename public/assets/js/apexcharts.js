@@ -115,10 +115,9 @@ $(function() {
         type: 'bar',
         height: '320',
         parentHeightOffset: 0,
-        foreColor: colors.bodyColor,
-        background: colors.cardBg,
+        horizontalAlign: 'left',
         toolbar: {
-          show: false
+          show: true
         },
       },
       theme: {

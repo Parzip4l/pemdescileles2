@@ -29,13 +29,12 @@
 						<!-- Footer Column -->
 						<div class="footer-column col-lg-6 col-md-6 col-sm-12">
 							<div class="footer-widget links-widget">
-								<h6>Usefull Links</h6>
+								<h6>Quick Links</h6>
 								<ul class="page-list">
-									<li><a href="#">Contact us</a></li>
-									<li><a href="#">How it Works</a></li>
-									<li><a href="#">Create</a></li>
-									<li><a href="#">Explore</a></li>
-									<li><a href="#">Terms & Services</a></li>
+									<li><a href="#">Home</a></li>
+									<li><a href="#">Profile Desa</a></li>
+									<li><a href="#">Berita & Informasi</a></li>
+									<li><a href="#">Sibangenan</a></li>
 								</ul>
 							</div>
 						</div>
@@ -50,13 +49,11 @@
 						<!-- Footer Column -->
 						<div class="footer-column col-lg-6 col-md-6 col-sm-12">
 							<div class="footer-widget links-widget">
-								<h6>Community</h6>
+								<h6>Layanan</h6>
 								<ul class="page-list">
-									<li><a href="#">Help Center</a></li>
-									<li><a href="#">Partners</a></li>
-									<li><a href="#">Suggestions</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Newsletters</a></li>
+									<li><a href="#">Sibangenan</a></li>
+									<li><a href="#">Berita dan Informasi</a></li>
+									<li><a href="#">Publikasi Data</a></li>
 								</ul>
 							</div>
 						</div>
@@ -65,10 +62,10 @@
 						<div class="footer-column col-lg-6 col-md-6 col-sm-12">
 							<div class="footer-widget newslatter-widget">
 								<h6>Subscribe Newslatter</h6>
-								<div class="text">Exerci tation ullamcorper suscipit lobortis nisl aliquip ex ea commodo</div>
+								<div class="text">Dapatkan Notifikasi Berita dan Informasi Terbaru Lewat Email Anda</div>
 								<!-- Subscribe Form -->
 								<div class="subscribe-form-two">
-									<form method="post" action="contact.html">
+									<form method="post" action="#">
 										<div class="form-group">
 											<input type="email" name="email" value="" placeholder="Enter Mail" required>
 											<button type="submit" class="submit-btn"><span class="icon flaticon-send"></span></button>
