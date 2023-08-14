@@ -24,14 +24,33 @@ class SibangenanController extends Controller
     {
 
         $userLevel = Auth::user()->level;
+        $urusan = Urusansibangenan::all();
+        $suburusan = Subcategory::all();
 
         $years = Sibangenan::selectRaw('YEAR(created_at) as year')
             ->distinct()
             ->pluck('year');
+
         $selectedYear = request()->query('year');
-        $data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
-            return $query->whereYear('created_at', $selectedYear);
-        })->get();
+
+        
+        $query2 = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
+
+        $userLevel = Auth::user()->level;
+        if ($userLevel !== 1) {
+            
+            $query2->where('sibangenan.namapemohon', Auth::user()->name);
+        }
+
+        
+        if ($selectedYear) {
+            $query2->whereYear('sibangenan.created_at', $selectedYear);
+        }
+
+        
+        $data2 = $query2->get();
 
 
         $urusan = Urusansibangenan::all();
