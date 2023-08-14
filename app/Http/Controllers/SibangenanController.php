@@ -25,23 +25,31 @@ class SibangenanController extends Controller
 
         $userLevel = Auth::user()->level;
 
-        $years = Sibangenan::selectRaw('YEAR(created_at) as year')
-            ->distinct()
-            ->pluck('year');
-        $selectedYear = request()->query('year');
-        $data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
-            return $query->whereYear('created_at', $selectedYear);
-        })->get();
+        
 
 
         $urusan = Urusansibangenan::all();
         $suburusan = Subcategory::all();
 
         if ($userLevel === 1) {
+            $years = Sibangenan::selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->pluck('year');
+        $selectedYear = request()->query('year');
+        $data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
+            return $query->whereYear('created_at', $selectedYear);
+        })->get();
             $query = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
         } else {
+            $years = Sibangenan::selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->pluck('year');
+        $selectedYear = request()->query('year');
+        $data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
+            return $query->whereYear('created_at', $selectedYear);
+        })->get();
             $query = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
             ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
