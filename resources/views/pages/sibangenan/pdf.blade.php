@@ -59,8 +59,8 @@
                             <strong>Permasalahan:</strong> {{ $d->permasalahan }}<br>
                             <strong>Usulan:</strong> {{ $d->usulan }}<br>
                             <strong>Lokasi:</strong> {{ $d->lokasi }}<br>
-                            <strong>Bidang:</strong> {{ $d->urusan }}<br>
-                            <strong>Sub Bidang:</strong> {{ $d->nama_urusan }}
+                            <strong>Bidang:</strong> {{ $d->nama_urusan }}<br>
+                            <strong>Sub Bidang:</strong> {{ $d->suburusan }}
                             <hr>
                         </div>
                     @endforeach
