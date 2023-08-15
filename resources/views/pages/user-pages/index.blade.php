@@ -358,7 +358,7 @@
 				<div class="text">Temukan cerita menarik dari setiap langkah kami. Ikuti perjalanan kami dalam beragam kegiatan.</div>
 			</div>
 			<div class="services-carousel owl-carousel owl-theme">
-				
+			
 				<!-- Project Block -->
 				@foreach ($kegiatan as $kegiatan)
 				<div class="project-block">
@@ -377,6 +377,12 @@
 				@endforeach
 				
 			</div>
+				@if (count($kegiatan) == 0)
+				<div class="no-data text-center">
+					<img src="{{ asset('assets/images/no-access.png') }}" alt="No Data" style="width:30%;" />
+					<h5>Tidak ada Kegiatan.</h5>
+				</div>
+				@endif
 		</div>
 	</section>
 	<!-- End Project Section -->
@@ -408,7 +414,7 @@
 				<!-- Blocks Column -->
 				<div class="blocks-column col-lg-8 col-md-12 col-sm-12">
 					<div class="inner-column">
-					
+					@if (count($berita) > 0)
 						@foreach ($berita as $berita)
 						<!-- News Block -->
 						<div class="news-block">
@@ -440,7 +446,12 @@
 							</div>
 						</div>
 						@endforeach
-						
+					@else
+					<div class="no-data text-center">
+						<img src="{{ asset('assets/images/no-access.png') }}" alt="No Data" style="width:50%;" />
+						<h5>Tidak ada berita yang tersedia saat ini.</h5>
+					</div>
+					@endif
 					</div>
 				</div>
 			</div>
