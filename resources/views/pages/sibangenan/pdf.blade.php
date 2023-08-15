@@ -38,8 +38,8 @@
                 <div class="card-body">
                     <div class="container-fluid d-flex justify-content-between">
                     <div class="col-lg-12  ps-0">
-                        <a href="#" class="noble-ui-logo d-block mt-3 text-center" style="text-align:center; font-size:42px;">SIMA<span>09</span></a>
-                        <p class="text-center" style="font-weight:300;">Catatan Kelahiran Warga Dusun Margalaksana, Desa Hegarmanah, Kecamatan Jatinangor</p>
+                        <img src="{{asset('assets/images/logobaru.png')}}" alt="">
+                        <p class="text-center" style="font-weight:300;">Data Pengajuan Pembangunan Tahun 2023</p>
                     </div>
                     </div>
                     <div class="container-fluid mt-5 w-100">
@@ -48,10 +48,28 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
-                                            <h5 style="margin-bottom:10px;">Data SIBANGENAN</h5>
+                                            <tr>
+                                                <th>Tanggal Pengajuan</th>
+                                                <th>Nama Pemohon</th>
+                                                <th>Asal RW</th>
+                                                <th>Permasalahan</th>
+                                                <th>Indikasi / Gagasan</th>
+                                                <th>Lokasi</th>
+                                                <th>Usul Ke</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                            
+                                            @foreach ($sibangenan as $data)
+                                            <tr>
+                                                <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}</td>
+                                                <td>{{ $d->namapemohon}}</td>
+                                                <td>{{ $d->rw}}</td>
+                                                <td>{{ $d->permasalahan}}</td>
+                                                <td>{{ $d->lokasi}}</td>
+                                                <td>{{ $d->usulan}}</td>
+                                                <td>{{ $d->nama_urusan}}</td>
+                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
