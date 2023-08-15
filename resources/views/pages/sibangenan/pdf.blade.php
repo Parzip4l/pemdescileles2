@@ -36,11 +36,16 @@
             <div class="col-md-8 mx-auto">
                 <div class="card">
                 <div class="card-body">
-                    <div class="container-fluid d-flex justify-content-between">
-                    <div class="col-lg-12  d-flex justify-content-between">
-                        <img src="{{asset('assets/images/logobaru.png')}}" alt="">
-                        <p class="text-center" style="font-weight:300;">Data Pengajuan Pembangunan Tahun 2023</p>
-                    </div>
+                    <div class="container-fluid">
+                        <div class="col-lg-12 d-flex justify-content-between">
+                            <div class="wrap-head">
+                                <img src="{{asset('assets/images/logobaru.png')}}" alt="">
+                            </div>
+                            <div class="text">
+                                <p class="text-center" style="font-weight:300;">Data Pengajuan Pembangunan Tahun 2023</p>
+                            </div>
+                        </div>
+                        <hr>
                     </div>
                     <div class="container-fluid mt-5 w-100">
                         <div class="row">
