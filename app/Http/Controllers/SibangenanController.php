@@ -73,7 +73,7 @@ class SibangenanController extends Controller
         // Masukkan string HTML ke objek Dompdf untuk di-render menjadi file PDF
         $pdf->loadHtml($page);
         // Atur opsi rendering Dompdf
-        $pdf->setPaper('A4', 'portrait');
+        $pdf->setPaper('A4', 'landscape');
 
         // Render file PDF ke dalam buffer output
         $pdf->render();

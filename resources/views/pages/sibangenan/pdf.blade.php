@@ -37,7 +37,7 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="container-fluid d-flex justify-content-between">
-                    <div class="col-lg-12  ps-0">
+                    <div class="col-lg-12  d-flex justify-content-between">
                         <img src="{{asset('assets/images/logobaru.png')}}" alt="">
                         <p class="text-center" style="font-weight:300;">Data Pengajuan Pembangunan Tahun 2023</p>
                     </div>
