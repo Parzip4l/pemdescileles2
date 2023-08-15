@@ -94,7 +94,7 @@
                         $nomor = 1;
                         $userLevel = Auth::user()->level;
                         @endphp
-                        @foreach ($data2 as $d)
+                        @foreach ($data as $d)
                     <tr>
                         <td>{{ $nomor++ }}</td>
                         <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}</td>
@@ -123,7 +123,7 @@
                                         <i data-feather="eye" class="icon-sm me-2"></i>
                                         <span class="">View Detail</span>
                                     </a>
-                                    @if(Auth::user()->level === 1)
+                                    @if(Auth::user()->level = 1)
                                     <a class="dropdown-item d-flex align-items-center" href="{{ route('setujui.usulan', $d->id) }}" onclick="event.preventDefault(); document.getElementById('setujui-usulan-form-{{ $d->id }}').submit();">
                                         <i data-feather="check" class="icon-sm me-2"></i>
                                         <span class="">Setujui Usulan</span>
