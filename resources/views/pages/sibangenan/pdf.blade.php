@@ -58,7 +58,6 @@
                             <strong>Nama Pemohon:</strong> {{ $d->namapemohon }}<br>
                             <strong>Asal RW:</strong> {{ $d->rw }}<br>
                             <strong>Permasalahan:</strong> {{ $d->permasalahan }}<br>
-                            <strong>Indikasi / Gagasan:</strong> {{ $d->indikasi_gagasan }}<br>
                             <strong>Lokasi:</strong> {{ $d->lokasi }}<br>
                             <strong>Bidang:</strong> {{ $d->usul_ke }}
                         </div>
