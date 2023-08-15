@@ -23,14 +23,27 @@ class SibangenanController extends Controller
     public function index()
     {
 
+<<<<<<< HEAD
         $years = Sibangenan::selectRaw('YEAR(created_at) as year')
+=======
+        $userLevel = Auth::user()->level;
+
+        
+
+
+        $urusan = Urusansibangenan::all();
+        $suburusan = Subcategory::all();
+
+        if ($userLevel === 1) {
+            $years = Sibangenan::selectRaw('YEAR(created_at) as year')
+>>>>>>> 681c409a8a980b0bd874494d3a6571ba62168d36
             ->distinct()
             ->pluck('year');
-
         $selectedYear = request()->query('year');
         $data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
             return $query->whereYear('created_at', $selectedYear);
         })->get();
+<<<<<<< HEAD
 
         $urusan = Urusansibangenan::all();
         $suburusan = Subcategory::all();
@@ -49,6 +62,26 @@ class SibangenanController extends Controller
         }
 
         $data = $query2->get();
+=======
+            $query = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
+        } else {
+            $years = Sibangenan::selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->pluck('year');
+        $selectedYear = request()->query('year');
+        $data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
+            return $query->whereYear('created_at', $selectedYear);
+        })->get();
+            $query = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
+            $query->where('sibangenan.namapemohon', Auth::user()->name);
+        }
+
+        $data = $query->get();
+>>>>>>> 681c409a8a980b0bd874494d3a6571ba62168d36
         return view ('pages.sibangenan.index', compact('data','urusan','years','data2','suburusan'));
     }
 
