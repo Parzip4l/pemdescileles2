@@ -458,7 +458,100 @@
 		</div>
 	</section>
 	<!-- End News Section -->
+	<!-- Flying Banner -->
+	<div class="flying-banner">
+    <div class="banner-content">
+        <!-- Konten banner -->
+        <img src="{{asset('assets/images/flyingbanner.jpg')}}" alt="" class="mb-3">
+        <button id="close-banner" class="btn btn-danger">Tutup</button>
+    </div>
+</div>
+<div class="blur-background"></div>
 @endsection
 @push('plugin-styles')
   <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
+@endpush
+@push('custom-scripts')
+<style>
+	.flying-banner {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 9999;
+		background-color: #fff;
+		padding: 10px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		display: none;
+		width: 30%;
+
+		animation: fadeInUp 0.5s ease-in-out;
+	}
+
+	@keyframes fadeInUp {
+		0% {
+			transform: translate(-50%, 100%);
+			opacity: 0;
+		}
+		100% {
+			transform: translate(-50%, -50%);
+			opacity: 1;
+		}
+	}
+
+.banner-content {
+    text-align: center;
+}
+
+/* Gaya latar belakang blur */
+.blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+    display: none;
+    backdrop-filter: blur(5px); /* Efek blur latar belakang (CSS Filter) */
+}
+
+@media (max-width:675px){
+	.flying-banner {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 9999;
+		background-color: #fff;
+		padding: 10px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		display: none;
+		width: 90%;
+	}
+}
+
+/* Gaya tombol close */
+</style>
+<script>
+// Fungsi untuk menampilkan flying banner dan efek blur
+function showBanner() {
+    document.querySelector('.flying-banner').style.display = 'block';
+    document.querySelector('.blur-background').style.display = 'block';
+}
+
+// Fungsi untuk menyembunyikan flying banner dan efek blur
+function hideBanner() {
+    document.querySelector('.flying-banner').style.display = 'none';
+    document.querySelector('.blur-background').style.display = 'none';
+}
+
+// Event listener untuk tombol close
+document.querySelector('#close-banner').addEventListener('click', hideBanner);
+
+// Panggil fungsi showBanner() ketika halaman utama dimuat
+document.addEventListener('DOMContentLoaded', function () {
+    showBanner();
+});
+</script>
 @endpush
