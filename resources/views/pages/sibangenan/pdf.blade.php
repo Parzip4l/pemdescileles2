@@ -52,37 +52,15 @@
                         <hr>
                     </div>
                     <div class="container-fluid mt-5 w-100">
-                        <div class="row">
-                            <div class="col-md-12 ms-auto">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Tanggal Pengajuan</th>
-                                                <th>Nama Pemohon</th>
-                                                <th>Asal RW</th>
-                                                <th>Permasalahan</th>
-                                                <th>Indikasi / Gagasan</th>
-                                                <th>Lokasi</th>
-                                                <th>Usul Ke</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($sibangenan as $d)
-                                            <tr>
-                                                <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}</td>
-                                                <td>{{ $d->namapemohon}}</td>
-                                                <td>{{ $d->rw}}</td>
-                                                <td>{{ $d->permasalahan}}</td>
-                                                <td>{{ $d->lokasi}}</td>
-                                                <td>{{ $d->usulan}}</td>
-                                                <td>{{ $d->nama_urusan}}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="pdf-item mb-4">
+                            <strong>Tanggal Pengajuan:</strong> {{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}<br>
+                            <strong>Nama Pemohon:</strong> {{ $d->namapemohon }}<br>
+                            <strong>Asal RW:</strong> {{ $d->rw }}<br>
+                            <strong>Permasalahan:</strong> {{ $d->permasalahan }}<br>
+                            <strong>Indikasi / Gagasan:</strong> {{ $d->indikasi_gagasan }}<br>
+                            <strong>Lokasi:</strong> {{ $d->lokasi }}<br>
+                            <strong>Usul Ke:</strong> {{ $d->usul_ke }}<br>
+                            <strong>Bidang:</strong> {{ $d->bidang }}
                         </div>
                     </div>
                 </div>
