@@ -124,24 +124,24 @@
 					<!-- Counter Column -->
 					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
 						<div class="inner-block">
-							<div class="counter"><span class="odometer" data-count="{{ $warga }}"></span></div>
-							<div class="counter-text">Total Penduduk</div>
+							<div class="counter"><span class="odometer" data-count="6.502"></span></div>
+							<div class="counter-text">Jiwa</div>
 						</div>
 					</div>
 					
 					<!-- Counter Column -->
 					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
 						<div class="inner-block">
-							<div class="counter"><span class="odometer" data-count="{{ $remaja }}"></span></div>
-							<div class="counter-text">Total Remaja</div>
+							<div class="counter"><span class="odometer" data-count="3.366"></span></div>
+							<div class="counter-text">Total Laki-Laki</div>
 						</div>
 					</div>
 					
 					<!-- Counter Column -->
 					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
 						<div class="inner-block">
-							<div class="counter"><span class="odometer" data-count="{{ $bumil }}"></span></div>
-							<div class="counter-text">Total Ibu Hamil</div>
+							<div class="counter"><span class="odometer" data-count="3.136"></span></div>
+							<div class="counter-text">Total Perempuan</div>
 						</div>
 					</div>
 					
