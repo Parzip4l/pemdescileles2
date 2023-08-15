@@ -123,7 +123,7 @@
                                         <i data-feather="eye" class="icon-sm me-2"></i>
                                         <span class="">View Detail</span>
                                     </a>
-                                    @if(Auth::user()->level === 1)
+                                    @if(Auth::user()->level == 1)
                                     <a class="dropdown-item d-flex align-items-center" href="{{ route('setujui.usulan', $d->id) }}" onclick="event.preventDefault(); document.getElementById('setujui-usulan-form-{{ $d->id }}').submit();">
                                         <i data-feather="check" class="icon-sm me-2"></i>
                                         <span class="">Setujui Usulan</span>
@@ -315,7 +315,7 @@
                         </div>
                     </div>
                 </div>
-                @if($userLevel === 1)
+                @if($userLevel == 1)
                 <div class="row">
                     <div class="col-md-4">
                         <a href="{{ route('sibangenan.download', $d->id) }}" class="mt-4">
