@@ -62,7 +62,8 @@ class SibangenanController extends Controller
         // Ambil semua data yang diperlukan untuk halaman PDF
         $sibangenan = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
-            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
+            ->get();
 
         // Buat objek Dompdf baru
         $pdf = new Dompdf();
