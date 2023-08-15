@@ -57,9 +57,11 @@
                             <strong>Tanggal Pengajuan:</strong> {{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}<br>
                             <strong>Nama Pemohon:</strong> {{ $d->namapemohon }}<br>
                             <strong>Permasalahan:</strong> {{ $d->permasalahan }}<br>
+                            <strong>Usulan:</strong> {{ $d->usulan }}<br>
                             <strong>Lokasi:</strong> {{ $d->lokasi }}<br>
-                            <strong>Bidang:</strong> {{ $d->usulan }}<br>
-                            <strong>Sub Bidang:</strong> {{ $d->nama_urusan }}<br>
+                            <strong>Bidang:</strong> {{ $d->urusan }}<br>
+                            <strong>Sub Bidang:</strong> {{ $d->nama_urusan }}
+                            <hr>
                         </div>
                     @endforeach
                     </div>
