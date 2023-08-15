@@ -87,7 +87,6 @@
                         <th>No</th>
                         <th>Tanggal Pengajuan</th>
                         <th>Nama Pemohon</th>
-                        <th>Asal RW</th>
                         <th>Permasalahan</th>
                         <th>Indikasi / Gagasan</th>
                         <th>Lokasi</th>
@@ -106,7 +105,6 @@
                         <td>{{ $nomor++ }}</td>
                         <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}</td>
                         <td>{{ $d->namapemohon}}</td>
-                        <td>{{ $d->rw}}</td>
                         <td>{{ $d->permasalahan}}</td>
                         <td>{{ $d->lokasi}}</td>
                         <td>{{ $d->usulan}}</td>
