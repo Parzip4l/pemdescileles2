@@ -25,16 +25,16 @@
         <div class="card-header-button-wrap p-2 pt-2" style="margin-top: 30px;">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="{{ url('sibangenan') }}" class="btn btn-primary btn-md w-100">Semua Pengajuan</a>
+                    <a href="{{ url('sibangenan') }}" class="btn btn-primary btn-md w-100 mb-2">Semua Pengajuan</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="{{ url('pengajuan-direvisi') }}" class="btn btn-warning btn-md w-100 text-white">Usulan Direvisi</a>
+                    <a href="{{ url('pengajuan-direvisi') }}" class="btn btn-warning btn-md w-100 text-white mb-2">Usulan Direvisi</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="{{ url('pengajuan-ditolak') }}" class="btn btn-danger btn-md w-100">Usulan Ditolak</a>
+                    <a href="{{ url('pengajuan-ditolak') }}" class="btn btn-danger btn-md w-100 mb-2">Usulan Ditolak</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="{{url('pengajuan-perlu-divalidasi')}}" class="btn btn-success btn-md w-100">Validasi Usulan</a>
+                    <a href="{{url('pengajuan-perlu-divalidasi')}}" class="btn btn-success btn-md w-100 mb-2">Validasi Usulan</a>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                         </ul>
                     </div>
                 @endif
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="year_filter" class="form-label">Filter Berdasarkan Tahun :</label>
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 align-self-center">
-                    <a href="{{ route('generate-pdf') }}" class="btn btn-primary">Download PDF</a>
+                        <a href="{{ route('generate-pdf') }}" class="btn btn-primary w-100" style="margin-top:11px">Download PDF</a>
                     </div>
                 </div>
             <div class="table-responsive">
@@ -87,10 +87,7 @@
                         <th>No</th>
                         <th>Tanggal Pengajuan</th>
                         <th>Nama Pemohon</th>
-                        <th>Permasalahan</th>
-                        <th>Indikasi / Gagasan</th>
-                        <th>Lokasi</th>
-                        <th>Usul Ke</th>
+                        <th>Bidang Urusan</th>
                         <th>Status Pengajuan</th>
                         <th>Aksi</th>
                     </tr>
@@ -105,9 +102,6 @@
                         <td>{{ $nomor++ }}</td>
                         <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}</td>
                         <td>{{ $d->namapemohon}}</td>
-                        <td>{{ $d->permasalahan}}</td>
-                        <td>{{ $d->lokasi}}</td>
-                        <td>{{ $d->usulan}}</td>
                         <td>{{ $d->nama_urusan}}</td>
                         <td>
                             <div class="@if($d->status_pengajuan == 'Ditolak') badge bg-danger @elseif($d->status_pengajuan == 'Disetujui') badge bg-success @else badge bg-warning @endif">
@@ -285,31 +279,43 @@
                             <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('urusan', $d->nama_urusan) }}" required disabled>
                         </div>
                     </div>
-                    <div class="col-md-12">                        
+                    <div class="col-md-12 mb-3">                        
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="form-label">Sub Urusan</label>
                             <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('urusan', $d->suburusan) }}" required disabled>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-md-4">                        
+                    <div class="col-md-6 mb-3">                        
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="form-label">Permasalahan</label>
+                            <textarea name="permasalahan" id="" class="form-control" cols="30" rows="10" disabled>{{ old('urusan', $d->suburusan) }}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">                        
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="form-label">Usulan</label>
-                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('usulan', $d->usulan) }}" required disabled>
+                            <textarea name="permasalahan" id="" class="form-control" cols="30" rows="10" disabled>{{ old('urusan', $d->usulan) }}</textarea>
                         </div>
                     </div>
-                    <div class="col-md-4">                        
-                        <div class="form-group ">
+                    <div class="col-md-6 mb-3">                        
+                        <div class="form-group">
                             <label for="exampleInputUsername1" class="form-label">Lokasi</label>
-                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('lokasi', $d->lokasi) }}" required disabled>
+                            <textarea name="permasalahan" id="" class="form-control" cols="30" rows="10" disabled>{{ old('urusan', $d->lokasi) }}</textarea>
                         </div>
                     </div>
-                    <div class="col-md-4">                        
+                    <div class="col-md-6 mb-3">                        
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="form-label">Status Pengajuan</label>
-                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('status_pengajuan', $d->status_pengajuan) }}" required disabled>
+                            <textarea name="permasalahan" id="" class="form-control" cols="30" rows="10" disabled>{{ old('status_pengajuan', $d->status_pengajuan) }}</textarea>
                         </div>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="{{ route('sibangenan.download', $d->id) }}" class="mt-4">
+                            <div class="download-file-pendukung d-flex">
+                                <img src="{{ asset('assets/icons/download-file.png') }}" alt="">
+                                <h5 class="align-self-center">Download File Pendukung</h5>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="row @if($d->status_pengajuan == 'Ditolak') d-block @elseif($d->status_pengajuan == 'Direvisi') d-block @else d-none @endif mb-2">
@@ -323,18 +329,18 @@
                 @if($userLevel == 1)
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="{{ route('sibangenan.download', $d->id) }}" class="mt-4">
-                            <div class="download-file-pendukung d-flex">
-                                <img src="{{ asset('assets/icons/download-file.png') }}" alt="">
-                                <h5 class="align-self-center">Download File Pendukung</h5>
-                            </div>
-                        </a>
+                    <a class="btn btn-success w-100" href="{{ route('setujui.usulan', $d->id) }}" onclick="event.preventDefault(); document.getElementById('setujui-usulan-form-{{ $d->id }}').submit();">
+                        Setujui Usulan
+                    </a>
+                    </div>
+                    <form id="setujui-usulan-form-{{ $d->id }}" action="{{ route('setujui.usulan', $d->id) }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <div class="col-md-4">
+                        <a href="" class="btn btn-warning w-100 text-white" href="#" data-bs-toggle="modal" data-bs-target="#RevisiPengajuan{{ $d->id}}">Revisi Usulan</a>
                     </div>
                     <div class="col-md-4">
-                        <a href="" class="btn btn-warning w-100 text-white" href="#" data-bs-toggle="modal" data-bs-target="#RevisiPengajuan{{ $d->id}}">Revisi</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a class="btn btn-danger w-100" href="#" data-bs-toggle="modal" data-bs-target="#TolakPengajuan{{ $d->id}}">Tolak</a>
+                        <a class="btn btn-danger w-100" href="#" data-bs-toggle="modal" data-bs-target="#TolakPengajuan{{ $d->id}}">Tolak Usulan</a>
                     </div>
                 </div>
                 @endif
