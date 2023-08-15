@@ -59,7 +59,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($sibangenan as $data)
+                                            @foreach ($sibangenan as $d)
                                             <tr>
                                                 <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}</td>
                                                 <td>{{ $d->namapemohon}}</td>
