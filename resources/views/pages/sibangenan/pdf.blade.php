@@ -56,10 +56,10 @@
                         <div class="pdf-item mb-4">
                             <strong>Tanggal Pengajuan:</strong> {{ \Carbon\Carbon::parse($d->created_at)->format('d M Y') }}<br>
                             <strong>Nama Pemohon:</strong> {{ $d->namapemohon }}<br>
-                            <strong>Asal RW:</strong> {{ $d->rw }}<br>
                             <strong>Permasalahan:</strong> {{ $d->permasalahan }}<br>
                             <strong>Lokasi:</strong> {{ $d->lokasi }}<br>
-                            <strong>Bidang:</strong> {{ $d->usul_ke }}
+                            <strong>Bidang:</strong> {{ $d->usulan }}<br>
+                            <strong>Sub Bidang:</strong> {{ $d->nama_urusan }}<br>
                         </div>
                     @endforeach
                     </div>
