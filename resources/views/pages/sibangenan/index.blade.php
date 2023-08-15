@@ -60,18 +60,25 @@
                         </ul>
                     </div>
                 @endif
-                <div class="mb-3">
-                    <label for="year_filter" class="form-label">Filter Berdasarkan Tahun :</label>
-                    <select class="form-select" id="year_filter">
-                    <option value="">Semua Data</option>
-                    @php
-                    $currentYear = date('Y');
-                    $endYear = $currentYear + 5; // Display the current year and the next five years
-                    @endphp
-                    @for ($year = $currentYear; $year <= $endYear; $year++)
-                        <option value="{{ $year }}">{{ $year }}</option>
-                    @endfor
-                    </select>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="year_filter" class="form-label">Filter Berdasarkan Tahun :</label>
+                            <select class="form-select" id="year_filter">
+                            <option value="">Semua Data</option>
+                                @php
+                                    $currentYear = date('Y');
+                                    $endYear = $currentYear + 5;
+                                @endphp
+                                @for ($year = $currentYear; $year <= $endYear; $year++)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                    <a href="{{ route('generate-pdf') }}" class="btn btn-primary">Download PDF</a>
+                    </div>
                 </div>
             <div class="table-responsive">
                 <table id="dataTableExample" class="table">

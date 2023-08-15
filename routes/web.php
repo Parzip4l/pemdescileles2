@@ -60,6 +60,9 @@ Route::middleware('auth.user')->group(function () {
 
     // informasi publik
     Route::get('publikasi-data', 'InformasiController@viewinformasi')->name('informasi.data');
+
+    // Download Data
+    Route::get('download-pdf', 'SibangenanController@generatePdf')->name('generate-pdf');
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth

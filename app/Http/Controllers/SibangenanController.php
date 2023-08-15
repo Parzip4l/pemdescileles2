@@ -12,6 +12,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use PDF;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 class SibangenanController extends Controller
 {
@@ -51,6 +55,43 @@ class SibangenanController extends Controller
         $data = $query2->get();
         return view ('pages.sibangenan.index', compact('data','urusan','years','data2','suburusan'));
     }
+
+    // PDF Download
+    public function generatePdf(Request $request)
+    {
+        // Ambil semua data yang diperlukan untuk halaman PDF
+        $sibangenan = Sibangenan::all();
+
+        // Buat objek Dompdf baru
+        $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', true);
+        $pdf->set_option('isHtml5ParserEnabled', true);
+
+        // Render view blade.php ke string HTML
+        $page = View::make('pages.sibangenan.pdf', compact('sibangenan'))->render();
+
+        // Masukkan string HTML ke objek Dompdf untuk di-render menjadi file PDF
+        $pdf->loadHtml($page);
+        // Atur opsi rendering Dompdf
+        $pdf->setPaper('A4', 'portrait');
+
+        // Render file PDF ke dalam buffer output
+        $pdf->render();
+        $output = $pdf->output();
+
+        // Buat nama file PDF yang akan disimpan di direktori storage
+        $fileName = 'sibangenan_all.pdf';
+
+        // Simpan file PDF di direktori storage
+        Storage::put($fileName, $pdf->output());
+
+        // Ambil URL dari file PDF yang telah disimpan
+        $url = Storage::path($fileName);
+
+        // Redirect pengguna ke URL file PDF yang telah disimpan
+        return response()->download($url);
+    }
+
 
     public function ditolak()
     {
