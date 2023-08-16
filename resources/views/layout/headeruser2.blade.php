@@ -95,7 +95,8 @@
                 <div class="nav-logo"><a href="{{url('/')}}"><img src="{{ asset('assets/images/logocilelessmartwhite.png')}}" alt="Barnix" title=""></a></div>
 				<!-- Search -->
 				<div class="search-box">
-					<form method="post" action="contact.html">
+					@csrf
+					<form method="post" action="">
 						<div class="form-group">
 							<input type="search" name="search-field" value="" placeholder="SEARCH HERE" required>
 							<button type="submit"><span class="icon flaticon-search-1"></span></button>
