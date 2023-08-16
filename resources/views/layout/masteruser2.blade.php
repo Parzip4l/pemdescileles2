@@ -30,6 +30,7 @@
   <!-- CSRF Token -->
   <meta name="_token" content="{{ csrf_token() }}">
   
+  
   <link rel="shortcut icon" href="{{ asset('assets/images/icon.ico') }}">
 </head>
 <body data-base-url="{{url('/')}}">

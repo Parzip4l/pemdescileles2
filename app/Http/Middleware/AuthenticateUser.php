@@ -19,8 +19,8 @@ class AuthenticateUser
     {
         if (Auth::check()) {
             return $next($request);
+            $response->header('Content-Security-Policy', "frame-ancestors 'self'");
         }
-
         return redirect('/login');
     }
 }

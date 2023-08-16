@@ -66,6 +66,7 @@
 								<!-- Subscribe Form -->
 								<div class="subscribe-form-two">
 									<form method="post" action="#">
+										@csrf
 										<div class="form-group">
 											<input type="email" name="email" value="" placeholder="Enter Mail" required>
 											<button type="submit" class="submit-btn"><span class="icon flaticon-send"></span></button>

@@ -18,6 +18,7 @@ class Authenticate extends Middleware
     {
         if (Auth::check()) {
             return $next($request);
+            $response->header('Content-Security-Policy', "frame-ancestors 'self'");
         }
 
         return redirect('/login'); // Ganti "/login" dengan URL halaman login di aplikasi Anda.

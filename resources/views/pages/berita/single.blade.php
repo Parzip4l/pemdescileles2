@@ -62,6 +62,7 @@
 								<h4>search here</h4>
 							</div>
 							<form method="POST">
+								@csrf
 								<div class="form-group">
 									<input type="search" name="search" placeholder="Search Berita" required>
 									<button type="submit"><span class="icon fa fa-search"></span></button>
