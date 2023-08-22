@@ -20,7 +20,7 @@
 								<ul class="social-box">
 									<li><a href="https://www.facebook.com/" class="fa fa-facebook-f"></a></li>
 									<li><a href="https://www.twitter.com/" class="fa fa-twitter"></a></li>
-									<li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
+									<li><a href="https://www.instagram.com/pemdescileles/" class="fa fa-instagram"></a></li>
 									<li><a href="https://www.youtube.com/" class="fa fa-youtube-play"></a></li>
 								</ul>
 							</div>
@@ -31,10 +31,10 @@
 							<div class="footer-widget links-widget">
 								<h6>Quick Links</h6>
 								<ul class="page-list">
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Profile Desa</a></li>
-									<li><a href="#">Berita & Informasi</a></li>
-									<li><a href="#">Sibangenan</a></li>
+									<li><a href="{{url('/')}}">Home</a></li>
+									<li><a href="{{url('/profile-desa-cileles')}}">Profile Desa</a></li>
+									<li><a href="{{url('/berita-desa')}}">Berita dan Informasi</a></li>
+									<li><a href="{{url('/dashboard-publik')}}">Sibangenan</a></li>
 								</ul>
 							</div>
 						</div>
@@ -51,9 +51,10 @@
 							<div class="footer-widget links-widget">
 								<h6>Layanan</h6>
 								<ul class="page-list">
-									<li><a href="#">Sibangenan</a></li>
-									<li><a href="#">Berita dan Informasi</a></li>
-									<li><a href="#">Publikasi Data</a></li>
+									<li><a href="{{url('/dashboard-publik')}}">Sibangenan</a></li>
+									<li><a href="{{url('/dashboard-sijamil')}}">Sijamil</a></li>
+									<li><a href="{{url('/berita-desa')}}">Berita dan Informasi</a></li>
+									<li><a href="{{url('/informasi-publik')}}">Publikasi Data</a></li>
 								</ul>
 							</div>
 						</div>
