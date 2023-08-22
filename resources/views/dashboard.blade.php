@@ -135,6 +135,35 @@
   </div>
 </div> <!-- row -->
 
+<!-- sibangenan dashboard -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title" style="font-family: 'Poppins', sans-serif!important; font-weight:500!important; font-size:14px!important;">Total Pengajuan Berdasarkan Tahun</h6>
+                <div id="apexBar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title" style="font-family: 'Poppins', sans-serif!important; font-weight:500!important; font-size:14px!important;">Total Berdasarkan Status Pengajuan</h6>
+                <p class="text-muted">Data Tahun 2023</p>
+                <div id="apexPie"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title" style="font-family: 'Poppins', sans-serif!important; font-weight:500!important; font-size:14px!important;">Total Berdasarkan Jenis Urusan Pengajuan</h6>
+                <p class="text-muted">Data Tahun 2023</p>
+                <div id="apexBar2"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
   <div class="col-12 col-xl-12 grid-margin stretch-card">
     <div class="card overflow-hidden">
@@ -187,18 +216,17 @@
 @endpush
 
 @push('custom-scripts')
-  <script src="{{ asset('assets/js/dashboard.js') }}"></script>
-  <script src="{{ asset('assets/js/apexcharts.js') }}"></script>
-  <script src="{{ asset('assets/js/chartjs.js') }}"></script>
-  <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: @json($dataremaja),
-        options: {
-            // Customize chart options here as needed
-        }
-    });
+<script src="{{ asset('assets/js/dashboard.js') }}"></script>
+<script src="{{ asset('assets/js/chartjs.js') }}"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: @json($dataremaja),
+    options: {
+        // Customize chart options here as needed
+    }
+});
 </script>
 <script>
     var ctx = document.getElementById('ChartBumil').getContext('2d');
@@ -209,5 +237,220 @@
             // Customize chart options here as needed
         }
     });
+</script>
+<script>
+    var colors = {
+        primary: '#008FFB',
+        warning: '#FFB64D',
+        danger: '#FF5370',
+        info: '#00C9E6',
+        bodyColor: '#333',
+        cardBg: '#fff',
+    };
+
+    var fontFamily = 'Arial, sans-serif';
+
+    var options = {
+        chart: {
+            height: 300,
+            type: "pie",
+            foreColor: colors.bodyColor,
+            background: colors.cardBg,
+            toolbar: {
+                show: true
+            },
+        },
+        theme: {
+            mode: 'light'
+        },
+        tooltip: {
+            theme: 'light'
+        },
+        colors: [colors.warning, colors.primary, colors.danger, colors.info],
+        legend: {
+            show: true,
+            position: "top",
+            horizontalAlign: 'center',
+            fontFamily: fontFamily,
+            itemMargin: {
+                horizontal: 8,
+                vertical: 0
+            },
+        },
+        stroke: {
+            colors: ['rgba(0,0,0,0)']
+        },
+        dataLabels: {
+            enabled: false
+        },
+        series: <?php echo json_encode($totals); ?>,
+        labels: <?php echo json_encode($statuses); ?>
+    };
+
+    var chart = new ApexCharts(document.querySelector("#apexPie"), options);
+    chart.render();
+</script>
+<script>
+    var colors = {
+        primary: '#132047',
+        gridBorder: '#D6D6D6'
+    };
+
+    var fontFamily = 'Arial, sans-serif';
+
+    var options = {
+        chart: {
+            type: 'bar',
+            height: '320',
+            parentHeightOffset: 0,
+            horizontalAlign: 'left',
+            toolbar: {
+                show: true
+            },
+        },
+        theme: {
+            mode: 'light'
+        },
+        tooltip: {
+            theme: 'light'
+        },
+        colors: [colors.primary],
+        grid: {
+            padding: {
+                bottom: -4
+            },
+            borderColor: colors.gridBorder,
+            xaxis: {
+                lines: {
+                    show: false
+                }
+            }
+        },
+        series: [{
+            name: 'Pengajuan',
+            data: <?php echo json_encode($totalss); ?>
+        }],
+        
+        xaxis: {
+            type: 'date',
+            categories: <?php echo json_encode($years); ?>,
+            axisBorder: {
+                color: colors.gridBorder,
+            },
+            axisTicks: {
+                color: colors.gridBorder,
+            },
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return Math.floor(val); // Menampilkan nilai tanpa desimal
+                }
+            }
+        },
+        legend: {
+            show: true,
+            position: "top",
+            horizontalAlign: 'center',
+            fontFamily: fontFamily,
+            itemMargin: {
+                horizontal: 8,
+                vertical: 0
+            },
+        },
+        stroke: {
+            width: 0
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 4
+            }
+        }
+    }
+
+    var apexBarChart = new ApexCharts(document.querySelector("#apexBar"), options);
+    apexBarChart.render();
+</script>
+
+<script>
+    var colors = {
+        primary: '#008FFB',
+        gridBorder: '#D6D6D6'
+    };
+
+    var fontFamily = 'Arial, sans-serif';
+
+    var options = {
+        chart: {
+            type: 'bar',
+            height: '320',
+            parentHeightOffset: 0,
+            horizontalAlign: 'left',
+            toolbar: {
+                show: true
+            },
+        },
+        theme: {
+            mode: 'light'
+        },
+        tooltip: {
+            theme: 'light'
+        },
+        colors: [colors.primary],
+        grid: {
+            padding: {
+                bottom: -4
+            },
+            borderColor: colors.gridBorder,
+            xaxis: {
+                lines: {
+                    show: false
+                }
+            }
+        },
+        series: [{
+            name: 'Pengajuan',
+            data: <?php echo json_encode($urusan2); ?>
+        }],
+        
+        xaxis: {
+            type: 'text',
+            categories: <?php echo json_encode($urusan1); ?>,
+            axisBorder: {
+                color: colors.gridBorder,
+            },
+            axisTicks: {
+                color: colors.gridBorder,
+            },
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return Math.floor(val); // Menampilkan nilai tanpa desimal
+                }
+            }
+        },
+        legend: {
+            show: true,
+            position: "top",
+            horizontalAlign: 'center',
+            fontFamily: fontFamily,
+            itemMargin: {
+                horizontal: 8,
+                vertical: 0
+            },
+        },
+        stroke: {
+            width: 0
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 4
+            }
+        }
+    }
+
+    var apexBarChart = new ApexCharts(document.querySelector("#apexBar2"), options);
+    apexBarChart.render();
 </script>
 @endpush

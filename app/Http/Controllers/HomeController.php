@@ -9,6 +9,8 @@ use App\Remaja;
 use App\Bumil;
 use App\Warga;
 use App\Sibangenan;
+use App\Urusansibangenan;
+use App\Subcategory;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -46,12 +48,24 @@ class HomeController extends Controller
             ->orderBy('year')
             ->get();
 
+        $sibangenandataurusan = Sibangenan::select('suburusan', DB::raw('count(*) as total'))
+            ->groupBy('suburusan')
+            ->pluck('total', 'suburusan');
+
+        $urusan1 = $sibangenandataurusan->keys()->toArray();
+        $urusan2 = $sibangenandataurusan->values()->toArray();
+
         $statuses = $sibangenanData->keys()->toArray();
         $totals = $sibangenanData->values()->toArray();
 
         $years = $yearlyData->pluck('year')->toArray();
         $totalss = $yearlyData->pluck('total')->toArray();
-        return view('pages.user-pages.publik-sibangenan', compact('statuses','totals','years','totalss'));
+
+        $urusan = DB::table('subcategories')
+            ->join('urusansibangenan', 'subcategories.category_id', '=', 'urusansibangenan.id')
+            ->select('subcategories.*', 'urusansibangenan.nama', 'urusansibangenan.level')
+            ->get();
+        return view('pages.user-pages.publik-sibangenan', compact('statuses','totals','years','totalss','urusan','urusan1','urusan2'));
     }
 
     public function publicsijamil()

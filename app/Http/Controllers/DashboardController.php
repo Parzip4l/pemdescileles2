@@ -8,6 +8,7 @@ use App\Warga;
 use App\Sibangenan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     /**
@@ -82,6 +83,28 @@ class DashboardController extends Controller
             ],
         ];
 
+        $sibangenanData = Sibangenan::select('status_pengajuan', DB::raw('count(*) as total'))
+            ->groupBy('status_pengajuan')
+            ->pluck('total', 'status_pengajuan');
+
+        $sibangenandataurusan = Sibangenan::select('suburusan', DB::raw('count(*) as total'))
+            ->groupBy('suburusan')
+            ->pluck('total', 'suburusan');
+        
+        $yearlyData = Sibangenan::selectRaw('YEAR(created_at) as year, COUNT(*) as total')
+            ->groupBy('year')
+            ->orderBy('year')
+            ->get();
+        
+        $urusan1 = $sibangenandataurusan->keys()->toArray();
+        $urusan2 = $sibangenandataurusan->values()->toArray();
+
+        $statuses = $sibangenanData->keys()->toArray();
+        $totals = $sibangenanData->values()->toArray();
+
+        $years = $yearlyData->pluck('year')->toArray();
+        $totalss = $yearlyData->pluck('total')->toArray();
+
         return view('dashboard',
         compact(
             'remaja',
@@ -92,7 +115,8 @@ class DashboardController extends Controller
             'sibangenan',
             'ditolak',
             'direvisi',
-            'direview'
+            'direview',
+            'statuses','totals','years','totalss', 'urusan1','urusan2'
         ));
     }
 

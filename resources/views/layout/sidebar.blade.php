@@ -77,7 +77,7 @@
       @if(Auth::check() && Auth::user()->level == 1)
       <li class="nav-item {{ active_class(['apps/calendar']) }}">
         <a href="{{ url('/apps/calendar') }}" class="nav-link">
-          <i class="link-icon" data-feather="clipboard"></i>
+          <i class="link-icon" data-feather="heart"></i>
           <span class="link-title">Data Kesehatan</span>
         </a>
       </li>
