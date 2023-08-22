@@ -160,6 +160,12 @@
           </ul>
         </div>
       </li>
+      <li class="nav-item {{ active_class(['user-log']) }}">
+        <a href="{{ url('user-log') }}" class="nav-link">
+          <i class="link-icon" data-feather="activity"></i>
+          <span class="link-title">User Activity</span>
+        </a>
+      </li>
       <li class="nav-item {{ active_class(['setting-page']) }}">
         <a href="{{ url('setting-page') }}" class="nav-link">
           <i class="link-icon" data-feather="settings"></i>

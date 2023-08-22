@@ -7,6 +7,7 @@ use App\Sibangenan;
 use App\Urusansibangenan;
 use App\User;
 use App\Subcategory;
+use App\UserActivity;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
@@ -225,6 +226,15 @@ class SibangenanController extends Controller
         }
         
         $sibangenan->save();
+        $new_value = $sibangenan->attributesToArray(); 
+        $namauser = Auth::user()->name;
+        UserActivity::create([
+            'action' => 'Create',
+            'model' => 'Sibangenan',
+            'user_id' => auth()->id(),
+            'user_name' => $namauser,
+            'new_values' => json_encode($new_value)
+        ]);
         return redirect()->route('sibangenan.index')->with('success', 'Pengajuan Berhasil Dibuat');
     }
 
@@ -355,7 +365,16 @@ class SibangenanController extends Controller
     public function destroy($id)
     {
         $sibangenan = Sibangenan::find($id);
+        $old_value = $sibangenan->attributesToArray();
         $sibangenan->delete();
+        $namauser = Auth::user()->name;
+        UserActivity::create([
+            'action' => 'Delete',
+            'model' => 'Sibangenan',
+            'user_id' => auth()->id(),
+            'user_name' => $namauser,
+            'old_values' => json_encode($old_value)
+        ]);
         return redirect()->route('sibangenan.index')->with('success', 'Data Pengajuan berhasil dihapus.');
     }
 }
