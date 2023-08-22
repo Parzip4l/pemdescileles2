@@ -65,7 +65,7 @@ Route::middleware('auth.user')->group(function () {
     Route::get('download-pdf', 'SibangenanController@generatePdf')->name('generate-pdf');
 
     // User Activity Data
-    Route::resource('user-log', UserActivityController::class);
+    Route::resource('user-log', UseractivityController::class);
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth
