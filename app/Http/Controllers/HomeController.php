@@ -12,6 +12,8 @@ use App\Sibangenan;
 use App\Urusansibangenan;
 use App\Subcategory;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -27,6 +29,11 @@ class HomeController extends Controller
         $remaja = Remaja::all()->count();
         $bumil = Bumil::all()->count();
         $warga = Warga::all()->count();
+
+        // instagram Embed 
+        $accessToken = 'IGQWROWk5NMFcxT2hkekZADSEd3NkJoejdCMDcta2c2dmhqSjR1SS03QUdKVWxIWjFFYXVvVjBIMW1BenFDVy11TUE2ZAkFja3FFZATFJSUlHU09ZAXzZARdFFyTC14X04yLXgyb3RrSDJvT2UyU2paamRpYjFlREJhZA2cZD';
+        $userId = '1921920344';
+
         return view ('pages.user-pages.index', compact('berita','kegiatan','bumil','remaja','warga'));
     }
 

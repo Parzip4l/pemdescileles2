@@ -10,7 +10,8 @@
     "require": {
         "php": "^8.0",
         "barryvdh/laravel-dompdf": "^2.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "dymantic/laravel-instagram-feed": "^3.3",
+        "guzzlehttp/guzzle": "^7.7",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7"
