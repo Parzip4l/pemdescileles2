@@ -69,6 +69,9 @@ Route::middleware('auth.user')->group(function () {
 
     // ProgramUnggulan Data
     Route::resource('program-unggulan', ProgramUnggulanController::class);
+
+    // Kepala Desa
+    Route::resource('kepala-desa', KadesController::class);
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth

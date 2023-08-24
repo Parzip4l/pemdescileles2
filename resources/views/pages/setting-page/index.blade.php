@@ -72,6 +72,14 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-md-3 col-sm-6 mb-2">
+                        <div class="custom-button-setting">
+                            <a href="{{ url('kepala-desa') }}">
+                                <img src="{{ asset('assets/icons/kades.png') }}" alt="" class="text-center">
+                                <h5>Kepala Desa</h5>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

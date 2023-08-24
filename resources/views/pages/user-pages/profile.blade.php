@@ -48,6 +48,33 @@ menjadi bagian dari Kecamatan Jatinangor<br><br> Desa Cileles Secara Geografis T
 	</section>
 	<!-- End About Section -->
 
+    <!-- History Kepala Desa -->
+    <section class="history-kepala-desa section-p">
+        <div class="auto-container">                      
+            <div class="sec-title-two dark centered mb-6">
+				<h2>Sejarah Kepemimpinan</h2>
+			</div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                        <div class="owl-carousel owl-carousel2 owl-theme">
+                            @foreach ($kades as $kades)
+                            <div class="item timeline-step">
+                                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="{{ $kades->nama }}" data-content="{{ $kades->nama }}" data-original-title="{{ $kades->dari_tahun }} - {{ $kades->sampai_tahun }}">
+                                    <div class="inner-circle"></div>
+                                    <p class="h6 mt-4 mb-1">{{ $kades->dari_tahun }} - {{ $kades->sampai_tahun }}</p>
+                                    <p class="h6 text-muted mb-0 mb-lg-0">{{ $kades->nama }}</p>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Luas Wilayah -->
     <section class="counter-wrap section-p">
 		<div class="auto-container">
             <div class="sec-title-two dark centered mb-0">
@@ -338,3 +365,24 @@ menjadi bagian dari Kecamatan Jatinangor<br><br> Desa Cileles Secara Geografis T
         </div>
     </section>
 @endsection
+
+@push('custom-scripts')
+<script>
+    $('.owl-carousel2').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script>
+@endpush

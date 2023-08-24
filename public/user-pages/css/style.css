@@ -4474,6 +4474,59 @@ section.counter-wrap.mb-6 {
 	border-color: #07071C
 }
 
+/* Timeline */
+.timeline-steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.timeline-steps .timeline-step {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 1rem
+}
+
+@media (min-width:768px) {
+    .timeline-content::after {
+		content: "";
+		display: block;
+		border-top: 0.25rem dotted #07071C;
+		width: 55px;
+		position: absolute;
+		left: -45px;
+		top: 0.3125rem;
+	}
+}
+
+.timeline-steps .timeline-content {
+    width: 10rem;
+    text-align: center
+}
+
+.timeline-steps .timeline-content .inner-circle {
+    border-radius: 1.5rem;
+    height: 1rem;
+    width: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #069550;
+}
+
+.timeline-steps .timeline-content .inner-circle:before {
+    content: "";
+    background-color: #069550;
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    min-width: 3rem;
+    border-radius: 6.25rem;
+    opacity: .5
+}
+
 .accordion-box .block .acc-btn{
 	position:relative;
 	cursor:pointer;
@@ -4489,10 +4542,6 @@ section.counter-wrap.mb-6 {
 	-moz-transition:all 500ms ease;
 	-webkit-transition:all 500ms ease; 
 	font-family:var(--font-family-Poppins);
-}
-
-.accordion-box .block .acc-btn.active{
-	
 }
 
 .accordion-box .block .icon-outer{

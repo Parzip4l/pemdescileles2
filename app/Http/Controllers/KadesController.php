@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pengurus;
-use App\ProgramUnggulan;
 use App\Kades;
+use App\UserActivity;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 
-class ProfileDesaController extends Controller
+class KadesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +18,8 @@ class ProfileDesaController extends Controller
      */
     public function index()
     {
-        $pengurus = Pengurus::orderBy('created_at', 'asc')->get();
-        $program = ProgramUnggulan::orderBy('created_at', 'asc')->get();
         $kades = Kades::orderBy('created_at', 'asc')->get();
-        return view ('pages.user-pages.profile', compact('pengurus','program','kades'));
+        return view('pages.setting-page.kades.index', compact('kades'));
     }
 
     /**
@@ -40,7 +40,33 @@ class ProfileDesaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'dari_tahun' => 'required',
+            'sampai_tahun' => 'required',
+            'pemimpin_sekarang' => 'required'
+        ]);
+
+        $uuid = Str::uuid()->toString();
+        
+        $kades = new Kades();
+        $kades->id = $uuid;
+        $kades->nama = $request->input('nama');
+        $kades->dari_tahun = $request->input('dari_tahun');
+        $kades->sampai_tahun = $request->input('sampai_tahun');
+        $kades->pemimpin_sekarang = $request->input('pemimpin_sekarang');
+        
+        $kades->save();
+        $new_value = $kades->attributesToArray(); 
+        $namauser = Auth::user()->name;
+        UserActivity::create([
+            'action' => 'Create',
+            'model' => 'Kepala Desa',
+            'user_id' => auth()->id(),
+            'user_name' => $namauser,
+            'new_values' => json_encode($new_value)
+        ]);
+        return redirect()->route('kepala-desa.index')->with('success', 'Data Kepala Desa Berhasil Dibuat');
     }
 
     /**
