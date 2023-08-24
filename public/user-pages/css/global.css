@@ -2132,6 +2132,13 @@ img{
 	font-family:var(--font-family-Poppins);
 }
 
+.sec-title-two h3{
+	font-weight:500;
+	color:var(--color-nine);
+	margin-top:var(--margin-top-25);
+	font-family:var(--font-family-Poppins);
+}
+
 .sec-title-two .text{
 	line-height:30px;
 	font-size:var(--font-16);

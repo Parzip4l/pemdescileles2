@@ -95,6 +95,9 @@ Route::get('berita-desa', 'HomeController@beritapage')->name('berita-desa');
 Route::get('berita-desa/search', 'HomeController@beritasearch')->name('berita.search');
 Route::get('berita-desa/{judul}', 'BeritaController@single')->name('berita.single');
 
+// Demografi
+Route::get('demografi-desa', 'ProfileDesaController@demografi')->name('demografi.desa');
+
 // Informasi Page
 Route::resource('informasi-publik', InformasiController::class);
 Route::get('informasi-publik/{id}/download', 'InformasiController@download')->name('informasi.download');

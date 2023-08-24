@@ -22,6 +22,10 @@ class ProfileDesaController extends Controller
         return view ('pages.user-pages.profile', compact('pengurus','program','kades'));
     }
 
+    public function demografi()
+    {
+        return view ('pages.user-pages.demografi-desa');
+    }
     /**
      * Show the form for creating a new resource.
      *
