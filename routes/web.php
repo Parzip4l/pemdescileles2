@@ -66,6 +66,9 @@ Route::middleware('auth.user')->group(function () {
 
     // User Activity Data
     Route::resource('user-log', UseractivityController::class);
+
+    // ProgramUnggulan Data
+    Route::resource('program-unggulan', ProgramUnggulanController::class);
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth

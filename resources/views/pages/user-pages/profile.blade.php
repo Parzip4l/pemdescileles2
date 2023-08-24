@@ -16,7 +16,7 @@
 	<!-- End Page Title -->
 	
 	<!-- About Section -->
-    <section class="about-section">
+    <section class="about-section mb-2">
 		<div class="auto-container">
             <div class="gallery-box">
 				<div class="row clearfix">
@@ -35,13 +35,24 @@
 				</div>
 			</div>
 			<h2>Mengenal Lebih Dekat Luas Wilayah dan Potensi Desa</h2>
-			<div class="text">Desa Cileles Secara Geografis Terletak Di Kecamatan Jatinangor, Kabupaten Sumedang, Provinsi Jawa Barat, Luas Wilayah Desa Cileles 320Ha<sup>2</sup>, Bentuk Permukaan Tanah Pegunungan Ketinggian Tepat Dari Permukaan Laut 400 s/d 800 MDPL dan Suhu Rata Rata harian 23-28°C, Letak Koordinat Desa Cileles Yaitu Lintang 6055'01,25"S Bujur 107046'48,45"T.</div>
+			<div class="text">Desa Cileles merupakan salah satu desa yang berada di kecamatan Jatinangor
+kabupaten Sumedang. Desa Cileles berdiri pada sekitar abad ke 16 yang mana pada
+waktu itu masih dalam bentuk kerajaan, sehingga tampuk Pemerintahan pada waktu
+itu adalah raja dan pada suatu Aktifitas ekonomi masyarakat desa Cileles pada jaman
+dulu adalah dalam bidang pertanian, dan menjual hasil pertanian, dalam bidang
+kerajinan yaitu membuat anyaman bambu atau lebih dikenal dengan “BILIK.”<br><br>
+Wilayah Desa Cileles dahulu terbilang cukup luas sehingga dimekarkan menjadi dua
+desa yaitu Desa Cilayung sebelah Utara dan Desa Cileles di sebelah Selatan yang
+menjadi bagian dari Kecamatan Jatinangor<br><br> Desa Cileles Secara Geografis Terletak Di Kecamatan Jatinangor, Kabupaten Sumedang, Provinsi Jawa Barat, Luas Wilayah Desa Cileles 320Ha<sup>2</sup>, Bentuk Permukaan Tanah Pegunungan Ketinggian Tepat Dari Permukaan Laut 400 s/d 800 MDPL dan Suhu Rata Rata harian 23-28°C, Letak Koordinat Desa Cileles Yaitu Lintang 6055'01,25"S Bujur 107046'48,45"T.</div>
 		</div>
 	</section>
 	<!-- End About Section -->
 
-    <section class="counter-wrap">
+    <section class="counter-wrap section-p">
 		<div class="auto-container">
+            <div class="sec-title-two dark centered mb-0">
+				<h2>Luas Wilayah Berdasarkan Penggunaan Lahan</h2>
+			</div>
 			<div class="outer-container">
 				
                 <div class="testimonial-carousel owl-carousel owl-theme">
@@ -229,7 +240,9 @@
     <!-- About Section -->
     <section class="bataswilayah-section mb-4">
 		<div class="auto-container">
-			<h2 class="mb-4">Batas Wilayah Desa Cileles</h2>
+            <div class="sec-title-two dark  mb-0">
+				<h2>Batas Wilayah</h2>
+			</div>
 		</div>
 	</section>
 	<!-- End About Section -->
@@ -243,19 +256,19 @@
                     <ul class="">
                         <li>
                             <span class="icon fa fa-map-marker"></span>
-                            Sebelah Utara <br> Desa Cilayung
+                            Sebelah Utara <br> Desa Cilayung Kecamatan Jatinangor
                         </li>
                         <li>
                             <span class="icon fa fa-map-marker"></span>
-                            Sebelah Timur <br> Desa Hegarmanah
+                            Sebelah Timur <br> Desa Hegarmanah Kecamatan Jatinangor
                         </li>
                         <li>
                             <span class="icon fa fa-map-marker"></span>
-                            Sebelah Selatan <br> Desa Kutamandiri
+                            Sebelah Selatan <br> Desa Kutamandiri Kecamatan Tanjungsari
                         </li>
                         <li>
                             <span class="icon fa fa-map-marker"></span>
-                            Sebelah Barat <br> Desa Cibeusi 
+                            Sebelah Barat <br> Desa Cibeusi Kecamatan Jatinangor
                         </li>
                     </ul>
                 </div>
@@ -272,8 +285,8 @@
 	<section class="team-section">
 		<div class="auto-container">
 			<!-- Sec Title Four -->
-			<div class="sec-title-four light centered">
-				<h2>Jajaran Kepengurusan Pemerintah Desa Cileles</h2>
+			<div class="sec-title-two light centered">
+				<h2>Perangkat Desa Cileles</h2>
 			</div>
 			<div class="row clearfix">
 			
@@ -302,4 +315,26 @@
 			</div>
 		</div>
 	</section>
+    <!-- Program Unggulan -->
+    <section class="program-unggulan-wrap section-p">
+        <div class="auto-container">
+            <div class="sec-title-two dark centered">
+				<h2>Program Unggulan</h2>
+			</div>
+            <div class="row clearfix">
+                <ul class="accordion-box">
+                @foreach($program as $program)
+                <li class="accordion block">
+					<div class="acc-btn"><div class="icon-outer"><span class="icon fa fa-angle-up"></span></div>{{$program->nama}}</div>
+					<div class="acc-content">
+						<div class="content">
+							<div class="text">{!!$program->deskripsi !!}</div>
+						</div>
+					</div>
+				</li>
+                @endforeach
+                </ul>
+            </div>
+        </div>
+    </section>
 @endsection

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Pengurus;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\UserActivity;
+use Illuminate\Support\Facades\Auth;
 
 class PengurusController extends Controller
 {
@@ -138,7 +140,16 @@ class PengurusController extends Controller
     public function destroy($id)
     {
         $pengurus = Pengurus::find($id);
+        $old_value = $pengurus->attributesToArray();
         $pengurus->delete();
+        $namauser = Auth::user()->name;
+        UserActivity::create([
+            'action' => 'Delete',
+            'model' => 'Pengurus',
+            'user_id' => auth()->id(),
+            'user_name' => $namauser,
+            'old_values' => json_encode($old_value)
+        ]);
         return redirect()->route('pengurus.index')->with('success', 'Data Pengurus berhasil dihapus.');
     }
 }

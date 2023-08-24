@@ -166,7 +166,16 @@ class SibangenanController extends Controller
         $sibangenan = Sibangenan::findOrFail($id);
         if ($sibangenan->status_pengajuan !== 'Disetujui') {
             $sibangenan->status_pengajuan = 'Disetujui';
+            $oldvalue = $sibangenan->attributesToArray();
             $sibangenan->save();
+            $namauser = Auth::user()->name;
+            UserActivity::create([
+                'action' => 'Update',
+                'model' => 'Sibangenan',
+                'user_id' => auth()->id(),
+                'user_name' => $namauser,
+                'old_values' => json_encode($oldvalue)
+            ]);
         }
         return redirect()->route('sibangenan.index')->with('success', 'Data Pengajuan Berhasil Diupdate.');
     }
@@ -332,7 +341,17 @@ class SibangenanController extends Controller
             $sibangenan = Sibangenan::findOrFail($id);
             $sibangenan->keterangan_penolakan = $request->keterangan_penolakan;
             $sibangenan->status_pengajuan = $request->status_pengajuan;
+            $old_value = $sibangenan->attributesToArray();
             $sibangenan->save();
+
+            $namauser = Auth::user()->name;
+            UserActivity::create([
+                'action' => 'Update',
+                'model' => 'Sibangenan',
+                'user_id' => auth()->id(),
+                'user_name' => $namauser,
+                'old_values' => json_encode($old_value)
+            ]);
             return redirect()->route('sibangenan.index')->with('success', 'Data Pengajuan Berhasil Diupdate.');
         }catch (\Exception $e) {
             // Handle other unexpected errors
@@ -347,7 +366,19 @@ class SibangenanController extends Controller
             $sibangenan = Sibangenan::findOrFail($id);
             $sibangenan->keterangan_penolakan = $request->keterangan_penolakan;
             $sibangenan->status_pengajuan = $request->status_pengajuan;
+            $old_value = $sibangenan->attributesToArray();
             $sibangenan->save();
+            $new_value = $sibangenan->attributesToArray(); 
+
+            $namauser = Auth::user()->name;
+            UserActivity::create([
+                'action' => 'Update',
+                'model' => 'Sibangenan',
+                'user_id' => auth()->id(),
+                'user_name' => $namauser,
+                'old_values' => json_encode($old_value),
+                'new_values' => json_encode($new_value)
+            ]);
             return redirect()->route('sibangenan.index')->with('success', 'Data Pengajuan Berhasil Diupdate.');
         }catch (\Exception $e) {
             // Handle other unexpected errors

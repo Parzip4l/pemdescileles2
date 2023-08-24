@@ -64,6 +64,14 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-md-3 col-sm-6 mb-2">
+                        <div class="custom-button-setting">
+                            <a href="{{ url('program-unggulan') }}">
+                                <img src="{{ asset('assets/icons/authorization.png') }}" alt="" class="text-center">
+                                <h5>Program Unggulan</h5>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

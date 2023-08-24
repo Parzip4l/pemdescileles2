@@ -70,7 +70,7 @@
                           <form action="{{ route('pengurus.destroy', $data->id) }}" method="POST" id="delete_warga">
                                 @csrf
                                 @method('DELETE')
-                                  <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog()">
+                                  <a class="dropdown-item d-flex align-items-center" href="#" onClick="showDeleteDataDialog('{{ $data->id }}')">
                                   <i data-feather="trash" class="icon-sm me-2"></i>
                                   <span class="">Delete</span>
                               </a>
@@ -343,18 +343,49 @@
 @push('custom-scripts')
 <script src="{{ asset('assets/js/data-table.js') }}"></script>
 <script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
-  <script>
-    function showDeleteDataDialog() {
+<script>
+    function showDeleteDataDialog(id) {
         Swal.fire({
             title: 'Hapus Data',
-            text: 'Anda Yakin Akan Menghapus Data Pengurus Ini?',
+            text: 'Anda Yakin Akan Menghapus Data Ini?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Delete',
         }).then((result) => {
             if (result.isConfirmed) {
                 // Perform the delete action here (e.g., send a request to delete the data)
-                document.getElementById("delete_warga").submit();
+                // Menggunakan ID yang diteruskan sebagai parameter ke dalam URL delete route
+                const deleteUrl = "{{ route('pengurus.destroy', ':id') }}".replace(':id', id);
+                fetch(deleteUrl, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                }).then((response) => {
+                    // Handle the response as needed (e.g., show alert if data is deleted successfully)
+                    if (response.ok) {
+                        Swal.fire({
+                            title: 'Data Berhasil Dihapus',
+                            icon: 'success',
+                        }).then(() => {
+                            window.location.reload(); // Refresh halaman setelah menutup alert
+                        });
+                    } else {
+                        // Handle error response if needed
+                        Swal.fire({
+                            title: 'Gagal Menghapus Data',
+                            text: 'Terjadi kesalahan saat menghapus data.',
+                            icon: 'error',
+                        });
+                    }
+                }).catch((error) => {
+                    // Handle fetch error if needed
+                    Swal.fire({
+                        title: 'Gagal Menghapus Data',
+                        text: 'Terjadi kesalahan saat menghapus data.',
+                        icon: 'error',
+                    });
+                });
             }
         });
     }

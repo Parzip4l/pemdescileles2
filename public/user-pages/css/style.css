@@ -4471,7 +4471,7 @@ section.counter-wrap.mb-6 {
 .accordion-box .block.active-block{
 	padding-top:var(--padding-top-10);
 	background-color:var(--white-color);
-	border-color:var(--color-fourtyone);
+	border-color: #07071C
 }
 
 .accordion-box .block .acc-btn{
@@ -5748,6 +5748,16 @@ section.counter-wrap.mb-6 {
 	color:var(--color-thirtyeight);
 	margin-top:var(--margin-top-30);
 	font-family:var(--font-family-Nunito);
+}
+
+.section-p {
+	padding: 100px 0;
+}
+
+.program-unggulan-wrap .icon img {
+    background: rgb(88 105 155 / 25%);
+    padding: 10px;
+    border-radius: 60px;
 }
 
 /***
