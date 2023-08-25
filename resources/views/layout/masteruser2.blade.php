@@ -32,6 +32,7 @@
   
   
   <link rel="shortcut icon" href="{{ asset('assets/images/icon.ico') }}">
+  <script src="{{asset('user-pages/js/jquery.js')}}"></script>
 </head>
 <body data-base-url="{{url('/')}}">
 

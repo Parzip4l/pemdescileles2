@@ -1,3 +1,56 @@
+<section class="trial-section-two">
+	<div class="pattern-layer" style="background-image: url('{{asset('images/background/pattern-3.png')}}')"></div>
+	<div class="auto-container">
+		<div class="inner-container">
+			<div class="row clearfix">
+				<!-- Title Column -->
+				<div class="title-column col-lg-6 col-md-12 col-sm-12 align-self-center">
+					<div class="inner-column">
+						<div class="sec-title-four light">
+							<div class="title">Kritik & Saran</div>
+							<h2>Berikan Kritik & Saran Anda Untuk Kemajuan Bersama</h2>
+						</div>
+					</div>
+				</div>
+				<!-- Form Column -->
+				<div class="form-column col-lg-6 col-md-12 col-sm-12">
+					<div class="inner-column">
+						
+						<!-- Trail Form -->
+						<div class="trail-form">
+							
+							<form method="POST" action="{{ route('kritik.store') }}">
+								@csrf
+								<div class="form-group">
+									<input type="text" name="nama" placeholder="Nama Lengkap" required>
+								</div>
+								
+								<div class="form-group">
+									<input type="text" name="nohp" placeholder="Nomor Telepon" required>
+								</div>
+
+								<div class="form-group">
+									<input type="text" name="kritik" placeholder="Kritik & Saran Anda" required>
+								</div>
+								
+								<div class="form-group">
+									<button class="theme-btn btn-style-thirteen" type="submit">
+										<span class="txt">Kirim</span>
+									</button>
+								</div>
+								
+							</form>
+								
+						</div>
+						<!-- End Default Form -->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 <!-- Footer Style Two / Style Two -->
 <footer class="footer-style-two style-two">
 	<div class="auto-container">
@@ -126,3 +179,33 @@
 	</svg>
 </div>
 <!-- scrollToTop end -->
+@if(session('show_modal'))
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header centered">
+                    <h5 class="modal-title" id="thankYouModalLabel" style="font-family:'Poppins'!important;">Terima Kasih</h5>
+					<button type="button" class="close btn" data-bs-dismiss="modal" aria-label="Tutup">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body centered">
+					<div class="image">
+						<img src="{{ asset('assets/images/robotics.png')}}" alt="" style="height:200px;">
+					</div>
+					<div class="text">
+						Terimakasih atas kritik dan saran yang Anda berikan.
+					</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#thankYouModal').modal('show');
+        });
+    </script>
+@endif

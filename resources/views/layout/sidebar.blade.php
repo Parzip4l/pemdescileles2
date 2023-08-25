@@ -87,6 +87,12 @@
           <span class="link-title">Publikasi Data</span>
         </a>
       </li>
+      <li class="nav-item {{ active_class(['kritik-saran-page']) }}">
+        <a href="{{ url('/kritik-saran-page') }}" class="nav-link">
+          <i class="link-icon" data-feather="compass"></i>
+          <span class="link-title">Kritik & Saran</span>
+        </a>
+      </li>
       @endif
       <li class="nav-item nav-category">Informasi Publik</li>
       <li class="nav-item {{ active_class(['berita']) }}">

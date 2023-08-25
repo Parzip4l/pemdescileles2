@@ -14,6 +14,9 @@ use App\Subcategory;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
+use App\Kritik;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class HomeController extends Controller
 {
@@ -97,5 +100,31 @@ class HomeController extends Controller
         $berita = Berita::where('judul', $judul)->firstOrFail();
         $tes = Berita::orderBy('created_at', 'desc')->take(4)->get();
         return view('pages.berita.single', compact('berita','tes'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'nohp' => 'required',
+            'kritik' => 'required'
+        ]);
+
+        $uuid = Str::uuid()->toString();
+        
+        $kritiksaran = new Kritik();
+        $kritiksaran->id = $uuid;
+        $kritiksaran->nama = $request->input('nama');
+        $kritiksaran->nohp = $request->input('nohp');
+        $kritiksaran->kritik = $request->input('kritik');
+        $kritiksaran->save();
+        return redirect()->back()->with('success','Terimakasih Telah Memberikan Kritik & Saran Kepada Kami.')
+        ->with('show_modal', true);
+    }
+
+    public function kritiksaran()
+    {
+        $kritik = Kritik::all();
+        return view('pages.kritik.index',compact('kritik'));
     }
 }

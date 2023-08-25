@@ -95,6 +95,10 @@ Route::get('berita-desa', 'HomeController@beritapage')->name('berita-desa');
 Route::get('berita-desa/search', 'HomeController@beritasearch')->name('berita.search');
 Route::get('berita-desa/{judul}', 'BeritaController@single')->name('berita.single');
 
+// Kritik Dan Saran
+Route::post('kritik-saran', 'HomeController@store')->name('kritik.store');
+Route::get('kritik-saran-page', 'HomeController@kritiksaran')->name('kritik.index');
+
 // Demografi
 Route::get('demografi-desa', 'ProfileDesaController@demografi')->name('demografi.desa');
 
