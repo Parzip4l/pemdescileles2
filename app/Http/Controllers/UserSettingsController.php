@@ -63,6 +63,20 @@ class UserSettingsController extends Controller
         }
     }
 
+    public function changePassword(Request $request, $id)
+    {
+        try {
+            $user = UserSettings::findOrFail($id);
+            $user->update([
+                'password' => bcrypt($request->input('password')),
+            ]);
+    
+            return redirect()->back()->with('success', 'Password Berhasil Diupdate.');
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors());
+        }
+    }
+
     /**
      * Display the specified resource.
      *

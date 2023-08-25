@@ -42,7 +42,7 @@
                 <td>{{$data->model}}</td>
                 <td>{{$data->created_at}}</td>
                 <td>
-                    <a href="" class="btn btn-sm btn-primary">Lihat Detail</a>
+                    <a href="" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#UserActivity{{ $data->id }}">Lihat Detail</a>
                 </td>
                 @endforeach
               </tr>
@@ -53,6 +53,57 @@
     </div>
   </div>
 </div>
+
+<!-- Modal Detail User Activity -->
+@foreach ($logs as $d) 
+<div class="modal fade bd-example-modal-lg" id="UserActivity{{ $d->id }}" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-4">
+            <div class="modal-header">
+                <h4>Detail User Activity</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+            <div class="detail-pengajuan-sibangenan p-4">
+                <div class="row mb-4">
+                    <div class="col-md-4">                        
+                        <div class="form-group mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('user_name', $d->user_name) }}" required disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-4">                        
+                        <div class="form-group mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Action</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('action', $d->action) }}" required disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-4">                        
+                        <div class="form-group mb-3">
+                            <label for="exampleInputUsername1" class="form-label">Model</label>
+                            <input type="text" class="form-control" name="namapemohon" placeholder="Nama Pemohon" value="{{ old('model', $d->model) }}" required disabled>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">                        
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="form-label">Data Lama</label>
+                            <textarea name="kritik" id="" class="form-control" cols="30" rows="10" disabled>{{ $d->old_values }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">                        
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="form-label">Data Baru</label>
+                            <textarea name="kritik" id="" class="form-control" cols="30" rows="10" disabled>{{ $d->new_values }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+@endforeach
+
 @endsection
 
 <!-- Modal Tambah User -->

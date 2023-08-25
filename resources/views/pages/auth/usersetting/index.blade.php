@@ -62,8 +62,7 @@
                             <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                         </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item d-flex align-items-center" href=""><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                                <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#bumildatadetail"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View Detail</span></a>
+                                <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#ModalEditPass{{$data->id}}"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Ganti Password</span></a>
                                     <form action="{{ route('user-settings.destroy', $data->id) }}" method="POST" id="deleteBerita" class="hapusremaja">
                                     @csrf
                                     @method('DELETE')
@@ -129,6 +128,36 @@
   </div>
 </div>
 
+@foreach($user as $d)
+<div class="modal fade bd-example-modal-lg remaja" id="ModalEditPass{{$d->id}}" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content p-4">
+        <h4 class="pb-2">Ganti Password Pemilik Akun Dengan Username {{$d->name}}</h4>
+        <hr>
+        <form class="forms-sample" action="{{ route('pass.update', $d->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="exampleInputUsername1" class="form-label">Password Baru</label>
+                        <input type="password" class="form-control" id="passwordInput" autocomplete="off" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="authCheck">
+                        <label class="form-check-label" for="authCheck">
+                            Show Password
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary me-2">Submit</button>    
+        </form>
+    </div>
+  </div>
+</div>
+@endforeach
+
 @push('plugin-scripts')
   <script src="{{ asset('assets/plugins/datatables-net/jquery.dataTables.js') }}"></script>
   <script src="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.js') }}"></script>
@@ -153,5 +182,17 @@
             }
         });
     }
+</script>
+<script>
+  const authCheck = document.getElementById('authCheck');
+  const passwordInput = document.getElementById('passwordInput');
+
+  authCheck.addEventListener('change', function() {
+    if (authCheck.checked) {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  });
 </script>
 @endpush

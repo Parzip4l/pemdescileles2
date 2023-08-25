@@ -72,6 +72,9 @@ Route::middleware('auth.user')->group(function () {
 
     // Kepala Desa
     Route::resource('kepala-desa', KadesController::class);
+
+    // Ganti Pass
+    Route::put('/user-settings/{id}/update-password', 'UserSettingsController@changePassword')->name('pass.update');
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth
