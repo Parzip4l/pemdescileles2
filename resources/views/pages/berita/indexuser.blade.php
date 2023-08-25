@@ -64,7 +64,7 @@
 										<li><span class="flaticon-calendar"></span> {{$berita->created_at->format('d M Y')}}</li>
 									</ul>
 									<h3><a href="{{ route('berita.single', $berita->judul) }}">{{ $berita->judul }}</a></h3>
-									<div class="text singkat">{!! $berita->konten !!}</div>
+									<div class="text singkat">{!! $berita->excerpt !!}</div>
 									<a class="read-more" href="{{ route('berita.single', $berita->judul) }}">Baca Selengkapnya</a>
 								</div>
 							</div>

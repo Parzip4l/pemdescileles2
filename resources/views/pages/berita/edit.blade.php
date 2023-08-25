@@ -43,6 +43,11 @@
           </div>
 
           <div class="mb-3">
+            <label for="exampleInputNumber1" class="form-label">Excerpt (Deskripsi Singkat)</label>
+            <textarea name="excerpt" id="tinymceExample" cols="30" rows="10" class="form-control">{{$berita->excerpt}}</textarea>
+          </div>
+
+          <div class="mb-3">
             <label for="exampleInputNumber1" class="form-label">Penulis</label>
             <input type="text" class="form-control" name="penulis" value="{{$berita->penulis}}" required>
           </div>

@@ -50,6 +50,7 @@ class BeritaController extends Controller
         $berita->konten = $request->input('konten');
         $berita->kategori = $request->input('kategori');
         $berita->penulis = $request->input('penulis');
+        $berita->excerpt = $request->input('excerpt');
         
         if ($request->hasFile('gambar')) {
             $image = $request->file('gambar');
@@ -112,6 +113,7 @@ class BeritaController extends Controller
             $berita->konten = $request->konten;
             $berita->kategori = $request->kategori;
             $berita->penulis = $request->penulis;
+            $berita->excerpt = $request->excerpt;
             if ($request->hasFile('gambar')) {
                 $image = $request->file('gambar');
                 $filename = time() . '.' . $image->getClientOriginalExtension();

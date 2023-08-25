@@ -422,6 +422,7 @@
 										<!-- Middle Content -->
 										<div class="middle-content">
 											<h4><a href="{{ route('berita.single', $berita->judul) }}">{{ $berita->judul}}</a></h4>
+											{!! $berita->excerpt !!}
 										</div>
 									</div>
 									<div class="col-md-3">

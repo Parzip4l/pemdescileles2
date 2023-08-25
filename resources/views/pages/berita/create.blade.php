@@ -42,6 +42,11 @@
           </div>
 
           <div class="mb-3">
+            <label for="exampleInputNumber1" class="form-label">Deskripsi Singkat</label>
+            <textarea class="form-control" name="excerpt" id="tinymceExample" rows="10"></textarea>
+          </div>
+
+          <div class="mb-3">
             <label for="exampleInputNumber1" class="form-label">Gambar</label>
             <input type="file" class="form-control" name="gambar">
           </div>
