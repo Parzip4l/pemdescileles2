@@ -198,6 +198,17 @@ class SibangenanController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user = auth()->user();
+        $currentYear = now()->year;
+        $applicationCount = Sibangenan::where('namapemohon', $user->name)
+            ->whereYear('created_at', $currentYear)
+            ->count();
+
+        if ($applicationCount >= 3) {
+            return redirect()->route('sibangenan.index')->with('error', 'Anda telah mencapai batas permohonan untuk tahun ini.');
+        }
+
         $request->validate([
             'namapemohon' => 'required',
             'rw' => 'required',

@@ -124,7 +124,7 @@
 					<!-- Counter Column -->
 					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
 						<div class="inner-block">
-							<div class="counter"><span class="odometer" data-count="6502"></span></div>
+							<div class="counter"><span class="odometer" data-count="6419"></span></div>
 							<div class="counter-text">Jiwa</div>
 						</div>
 					</div>
@@ -132,7 +132,7 @@
 					<!-- Counter Column -->
 					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
 						<div class="inner-block">
-							<div class="counter"><span class="odometer" data-count="3366"></span></div>
+							<div class="counter"><span class="odometer" data-count="3267"></span></div>
 							<div class="counter-text">Total Laki-Laki</div>
 						</div>
 					</div>
@@ -140,7 +140,7 @@
 					<!-- Counter Column -->
 					<div class="counter-block col-lg-4 col-md-6 col-sm-12">
 						<div class="inner-block">
-							<div class="counter"><span class="odometer" data-count="3136"></span></div>
+							<div class="counter"><span class="odometer" data-count="3152"></span></div>
 							<div class="counter-text">Total Perempuan</div>
 						</div>
 					</div>
