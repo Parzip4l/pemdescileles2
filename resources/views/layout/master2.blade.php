@@ -23,6 +23,7 @@ License: For each use you must have a valid license purchased only from above li
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <meta name="google-site-verification" content="PA26qfan6-ZHohDXlOck5W7WozJpx1rEzUpJA7Da2fQ" />
   <!-- End fonts -->
   
   <!-- CSRF Token -->

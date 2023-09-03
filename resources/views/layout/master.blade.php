@@ -35,6 +35,7 @@ License: For each use you must have a valid license purchased only from above li
   <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/plugins/@mdi/css/materialdesignicons.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+  <meta name="google-site-verification" content="PA26qfan6-ZHohDXlOck5W7WozJpx1rEzUpJA7Da2fQ" />
   <!-- end plugin css -->
 
   @stack('plugin-styles')

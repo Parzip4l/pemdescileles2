@@ -33,6 +33,7 @@
   
   <link rel="shortcut icon" href="{{ asset('assets/images/icon.ico') }}">
   <script src="{{asset('user-pages/js/jquery.js')}}"></script>
+  <meta name="google-site-verification" content="PA26qfan6-ZHohDXlOck5W7WozJpx1rEzUpJA7Da2fQ" />
 </head>
 <body data-base-url="{{url('/')}}">
 
