@@ -114,7 +114,7 @@
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label">Riwayat Penambahan Darah</label>
-                            <select name="penambahan_darah" id="" class="form-control" required> 
+                            <select name="tambahan_darah" id="" class="form-control" required> 
                                 <option value="YA">YA</option>
                                 <option value="TIDAK">TIDAK</option>
                             </select>
@@ -136,7 +136,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">Umur Kehamilan</label>
+                            <label class="form-label">Umur Kehamilan (Hitungan Minggu)</label>
                             <input type="number" class="form-control" placeholder="Umur Kehamilan" name="umur_kehamilan" required>
                         </div>
                     </div>

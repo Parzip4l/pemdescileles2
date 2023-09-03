@@ -7679,6 +7679,17 @@ span.luas {
 	font-family:var(--font-family-DMSans);
 }
 
+.sijamil-demografi h5, .sijamil-demografi h4 {
+	font-family: 'Poppins';
+	font-weight: 500;
+}
+
+.card-title.custom-demografi.centered h6 {
+	font-family: 'Poppins';
+	font-weight: 500;
+	font-size: 13px;
+}
+
 /* Tag List */
 
 .tag-list{

@@ -69,10 +69,10 @@ class BumilController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nik' => 'required|unique:bumil',
+            'nik' => 'required',
             'nomorkk' => 'required',
             'nama' => 'required',
-            'usia' => 'required|numeric',
+            'usia' => 'required',
             'rt' => 'required',
             'rw' => 'required',
             'nama_suami' => 'required',

@@ -80,7 +80,61 @@ class HomeController extends Controller
 
     public function publicsijamil()
     {
-        return view('pages.user-pages.publik-sijamil');
+        $lakiLakiTotal = Remaja::where('jenis_kelamin', 'Laki-Laki')->count();
+        $PerempuanTotal = Remaja::where('jenis_kelamin', 'Laki-Laki')->count();
+        $bumiltotal = Bumil::all()->count();
+
+        $remajaTambahDarah = Remaja::selectRaw('DATE_FORMAT(created_at, "%M %Y") as month, COUNT(*) as total')
+            ->where('tambahan_darah', 'Ya')
+            ->groupBy('month')
+            ->pluck('total', 'month');
+        $remajadarah1 = $remajaTambahDarah->keys()->toArray();
+        $remajadarah2 = $remajaTambahDarah->values()->toArray();
+
+        $remajaAnemiadata = Remaja::selectRaw('DATE_FORMAT(created_at, "%M %Y") as month, COUNT(*) as total')
+            ->where('pemeriksaan_anemia', 'Ya')
+            ->groupBy('month')
+            ->pluck('total', 'month');
+        $anemiaremaja1 = $remajaAnemiadata->keys()->toArray();
+        $anemiaremaja2 = $remajaAnemiadata->values()->toArray();
+
+        $BumilDarah = Bumil::selectRaw('DATE_FORMAT(created_at, "%M %Y") as month, COUNT(*) as total')
+            ->where('tambahan_darah', 'Ya')
+            ->groupBy('month')
+            ->pluck('total', 'month');
+        $bumildarah1 = $BumilDarah->keys()->toArray();
+        $bumildarah2 = $BumilDarah->values()->toArray();
+
+        $KBPasca = Bumil::select('jenis_kb', DB::raw('count(*) as total'))
+            ->groupBy('jenis_kb')
+            ->pluck('total', 'jenis_kb');
+
+        $KBPasca1 = $KBPasca->keys()->toArray();
+        $KBPasca2 = $KBPasca->values()->toArray();
+
+        $Kelahiran = Bumil::selectRaw('DATE_FORMAT(tanggal_perkiraan_lahir, "%M %Y") as month, COUNT(*) as total')
+            ->groupBy('month')
+            ->pluck('total', 'month');
+        $Kelahiran1 = $Kelahiran->keys()->toArray();
+        $Kelahiran2 = $Kelahiran->values()->toArray();
+
+        return view('pages.user-pages.publik-sijamil',
+        compact(
+            'lakiLakiTotal',
+            'PerempuanTotal',
+            'bumiltotal',
+            'remajadarah1',
+            'remajadarah2',
+            'anemiaremaja1',
+            'anemiaremaja2',
+            'bumildarah1',
+            'bumildarah2',
+            'KBPasca1',
+            'KBPasca2',
+            'Kelahiran1',
+            'Kelahiran2'
+            )
+    );
     }
 
     public function beritasearch(Request $request)
