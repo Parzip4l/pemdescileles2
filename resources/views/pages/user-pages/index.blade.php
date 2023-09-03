@@ -447,14 +447,13 @@
 	</section>
 	<!-- End News Section -->
 	<!-- Flying Banner -->
-	<div class="flying-banner">
-    <div class="banner-content">
-        <!-- Konten banner -->
-        <img src="{{asset('assets/images/flyingbanner.jpg')}}" alt="" class="mb-3">
-        <button id="close-banner" class="btn btn-danger">Tutup</button>
-    </div>
-</div>
-<div class="blur-background"></div>
+	<!-- <div class="flying-banner">
+		<div class="banner-content">
+			<img src="{{asset('assets/images/flyingbanner.jpg')}}" alt="" class="mb-3">
+			<button id="close-banner" class="btn btn-danger">Tutup</button>
+		</div>
+	</div>
+	<div class="blur-background"></div> -->
 @endsection
 @push('plugin-styles')
   <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
