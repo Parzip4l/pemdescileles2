@@ -37,7 +37,10 @@ class SibangenanController extends Controller
             return $query->whereYear('created_at', $selectedYear);
         })->get();
 
-        $urusan = Urusansibangenan::all();
+        $urusans = Urusansibangenan::all();
+        $urusan2 = $urusans->sortBy('urutan');
+        $urusan = $urusan2->values();
+
         $suburusan = Subcategory::all();
 
         $query2 = DB::table('sibangenan')
