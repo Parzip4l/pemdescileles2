@@ -46,7 +46,8 @@ class SibangenanController extends Controller
 
         $query2 = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
-            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan');
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
+            ->orderBy('sibangenan.created_at', 'desc');
 
         $userLevel = Auth::user()->level;
 
@@ -85,7 +86,7 @@ class SibangenanController extends Controller
             $pdf->loadHtml($html);
 
             // Atur opsi rendering
-            $pdf->setPaper('A4', 'landscape');
+            $pdf->setPaper('A4', 'potrait');
 
             // Render PDF
             $pdf->render();
@@ -95,7 +96,7 @@ class SibangenanController extends Controller
             // atau menyimpannya ke storage atau lokasi lainnya
             // Jika ingin langsung mengirimkan sebagai respons, gunakan response()
             // Contoh: Simpan ke storage
-            $pdf->stream('generated_pdf.pdf');
+            $pdf->stream('Data_Semua_Usulan_sibangenan_2023.pdf');
             
             // Jika ingin mengirim sebagai respons
             // return $pdf->stream('generated_pdf.pdf');
