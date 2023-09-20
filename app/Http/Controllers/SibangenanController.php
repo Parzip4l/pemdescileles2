@@ -90,7 +90,7 @@ class SibangenanController extends Controller
         $fileName = 'sibangenan_all.pdf';
 
         // Simpan file PDF di direktori storage
-        Storage::put($fileName, $pdf->output());
+        Storage::put($fileName, $output());
 
         // Ambil URL dari file PDF yang telah disimpan
         $url = Storage::path($fileName);
