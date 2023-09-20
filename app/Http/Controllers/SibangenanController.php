@@ -63,26 +63,46 @@ class SibangenanController extends Controller
 
     // PDF Download
     public function generatePdf(Request $request)
-{
-    try {
-        // Lokasi file PDF yang sudah ada di dalam storage
-        $filePath = storage_path("app/sibangenan_all.pdf");
+    {
+        try {
+            // Ambil data yang diperlukan untuk halaman PDF, misalnya dari database
+            $sibangenan = DB::table('sibangenan')
+                ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+                ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
+                ->get();
 
-        // Periksa apakah file PDF ada
-        if (file_exists($filePath)) {
-            // Ambil nama file
-            $fileName = 'sibangenan_all.pdf';
 
-            // Kembalikan file PDF sebagai respons
-            return response()->download($filePath, $fileName);
-        } else {
-            // Jika file PDF tidak ditemukan, lempar exception
-            throw new \Exception('PDF file not found');
+            // Buat objek Dompdf baru
+            $pdfOptions = new Options();
+            $pdfOptions->set('isRemoteEnabled', true);
+            $pdfOptions->set('isHtml5ParserEnabled', true);
+            $pdf = new Dompdf($pdfOptions);
+
+            // Render view blade.php ke dalam string HTML
+            $html = view('pages.sibangenan.pdf', compact('sibangenan'))->render();
+
+            // Load HTML ke dalam objek Dompdf
+            $pdf->loadHtml($html);
+
+            // Atur opsi rendering
+            $pdf->setPaper('A4', 'landscape');
+
+            // Render PDF
+            $pdf->render();
+
+            // Simpan atau kirimkan PDF sebagai respons
+            // Jika ingin menyimpan PDF, Anda bisa menggunakan file_put_contents
+            // atau menyimpannya ke storage atau lokasi lainnya
+            // Jika ingin langsung mengirimkan sebagai respons, gunakan response()
+            // Contoh: Simpan ke storage
+            $pdf->stream('generated_pdf.pdf');
+            
+            // Jika ingin mengirim sebagai respons
+            // return $pdf->stream('generated_pdf.pdf');
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
         }
-    } catch (\Exception $e) {
-        return response()->json(['error' => $e->getMessage()]);
     }
-}
 
 
     public function ditolak()
@@ -247,39 +267,44 @@ class SibangenanController extends Controller
     }
 
     public function downloadFiles($id)
-    {
-        $sibangenan = Sibangenan::findOrFail($id);
-        $filePaths = json_decode($sibangenan->dokumen_pendukung, true);
-		
-		if (!is_array($filePaths) || empty($filePaths)) {
-			return redirect()->back()->with('error', 'Tidak ada file yang tersedia untuk diunduh.');
-		}
+{
+    $sibangenan = Sibangenan::findOrFail($id);
+    $filePaths = json_decode($sibangenan->dokumen_pendukung, true);
+    
+    if (!is_array($filePaths) || empty($filePaths)) {
+        return redirect()->back()->with('error', 'Tidak ada file yang tersedia untuk diunduh.');
+    }
 
-        // Zip the files before download
-        $zip = new \ZipArchive();
-        $zipFileName = 'download_files_' . time() . '.zip';
-        $zip->open($zipFileName, \ZipArchive::CREATE);
+    // Zip the files before download
+    $zip = new \ZipArchive();
+    $zipFileName = 'download_files_' . time() . '.zip';
+    $zip->open($zipFileName, \ZipArchive::CREATE);
 
-        foreach ($filePaths as $path) {
-            $file = storage_path('app/' . $path);
-            if (file_exists($file)) {
-                $zip->addFile($file, basename($path));
-            }
+    foreach ($filePaths as $path) {
+        $file = storage_path('app/' . $path);
+        if (file_exists($file)) {
+            $zip->addFile($file, basename($path));
         }
+    }
 
-        $zip->close();
+    $zip->close();
 
-        if ($fileExists) {
+    if (file_exists($zipFileName)) {
         $headers = [
             'Content-Type' => 'application/zip',
         ];
 
-        return response()->download($zipFileName, 'download_files.zip', $headers)->deleteFileAfterSend();
-		} else {
-			// Tampilkan alert jika tidak ada file yang ditemukan
-			return redirect()->back()->with('error', 'Tidak ada file yang tersedia untuk diunduh.');
-		}
+        $namaPemohon = $sibangenan->namapemohon;
+
+        // Buat nama file ZIP sesuai dengan nama pemohon
+        $zipFileNameWithExtension = $namaPemohon . '_files.zip';
+
+        return response()->download($zipFileName, $zipFileNameWithExtension, $headers);
+    } else {
+        // Tampilkan alert jika tidak ada file yang ditemukan
+        return redirect()->back()->with('error', 'Tidak ada file yang tersedia untuk diunduh.');
     }
+}
 
     /**
      * Display the specified resource.

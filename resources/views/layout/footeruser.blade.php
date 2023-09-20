@@ -115,17 +115,15 @@
 						<!-- Footer Column -->
 						<div class="footer-column col-lg-6 col-md-6 col-sm-12">
 							<div class="footer-widget newslatter-widget">
-								<h6>Subscribe Newslatter</h6>
-								<div class="text">Dapatkan Notifikasi Berita dan Informasi Terbaru Lewat Email Anda</div>
+								<h6>Login Aplikasi</h6>
+								<div class="text">Silahkan Login Untuk Bisa Mengajukan Pembangunan</div>
 								<!-- Subscribe Form -->
 								<div class="subscribe-form-two">
-									<form method="post" action="#">
-										@csrf
-										<div class="form-group">
-											<input type="email" name="email" value="" placeholder="Enter Mail" required>
-											<button type="submit" class="submit-btn"><span class="icon flaticon-send"></span></button>
-										</div>
-									</form>
+									<a href="{{url('/login')}}" class="theme-btn btn-style-thirteen w-100">
+										<span class="btn-wrap w-100">
+											<span class="txt w-100">Login</span>
+										</span>
+									</a>
 								</div>
 							</div>
 						</div>
