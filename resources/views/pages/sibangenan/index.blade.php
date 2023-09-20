@@ -234,7 +234,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Dokumen Pendukung</label>
-                            <input type="file" class="form-control" name="dokumen_pendukung[]" multiple>
+                            <input type="file" class="form-control" name="dokumen_pendukung[]" multiple required>
                             <p class="text-danger">Upload 3 Dokumen Pendukung Dalam Bentuk PDF <br>(SURAT PENGANTAR RW,RENCANA ANGGARAN BIAYA(RAB) & FOTO LOKASI)</p>
                             <input type="hidden" name="status_pengajuan" value="Verifikasi">
                         </div>

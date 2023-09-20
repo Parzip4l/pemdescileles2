@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,42 +63,26 @@ class SibangenanController extends Controller
 
     // PDF Download
     public function generatePdf(Request $request)
-    {
-        // Ambil semua data yang diperlukan untuk halaman PDF
-        $sibangenan = DB::table('sibangenan')
-            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
-            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
-            ->get();
+{
+    try {
+        // Lokasi file PDF yang sudah ada di dalam storage
+        $filePath = storage_path("app/sibangenan_all.pdf");
 
-        // Buat objek Dompdf baru
-        $pdf = new Dompdf();
-        $pdf->set_option('isRemoteEnabled', true);
-        $pdf->set_option('isHtml5ParserEnabled', true);
+        // Periksa apakah file PDF ada
+        if (file_exists($filePath)) {
+            // Ambil nama file
+            $fileName = 'sibangenan_all.pdf';
 
-        // Render view blade.php ke string HTML
-        $page = View::make('pages.sibangenan.pdf', compact('sibangenan'))->render();
-
-        // Masukkan string HTML ke objek Dompdf untuk di-render menjadi file PDF
-        $pdf->loadHtml($page);
-        // Atur opsi rendering Dompdf
-        $pdf->setPaper('A4', 'landscape');
-
-        // Render file PDF ke dalam buffer output
-        $pdf->render();
-        $output = $pdf->output();
-
-        // Buat nama file PDF yang akan disimpan di direktori storage
-        $fileName = 'sibangenan_all.pdf';
-
-        // Simpan file PDF di direktori storage
-        Storage::put($fileName, $output);
-
-        // Ambil URL dari file PDF yang telah disimpan
-        $url = Storage::path($fileName);
-
-        // Redirect pengguna ke URL file PDF yang telah disimpan
-        return response()->download($url);
+            // Kembalikan file PDF sebagai respons
+            return response()->download($filePath, $fileName);
+        } else {
+            // Jika file PDF tidak ditemukan, lempar exception
+            throw new \Exception('PDF file not found');
+        }
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()]);
     }
+}
 
 
     public function ditolak()
@@ -265,6 +250,10 @@ class SibangenanController extends Controller
     {
         $sibangenan = Sibangenan::findOrFail($id);
         $filePaths = json_decode($sibangenan->dokumen_pendukung, true);
+		
+		if (!is_array($filePaths) || empty($filePaths)) {
+			return redirect()->back()->with('error', 'Tidak ada file yang tersedia untuk diunduh.');
+		}
 
         // Zip the files before download
         $zip = new \ZipArchive();
@@ -280,13 +269,16 @@ class SibangenanController extends Controller
 
         $zip->close();
 
-        // Set proper headers for the download
+        if ($fileExists) {
         $headers = [
             'Content-Type' => 'application/zip',
         ];
 
-        // Download the zip file
         return response()->download($zipFileName, 'download_files.zip', $headers)->deleteFileAfterSend();
+		} else {
+			// Tampilkan alert jika tidak ada file yang ditemukan
+			return redirect()->back()->with('error', 'Tidak ada file yang tersedia untuk diunduh.');
+		}
     }
 
     /**
