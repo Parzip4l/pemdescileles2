@@ -60,11 +60,9 @@
         </a>
         <div class="collapse {{ show_class(['sijamil']) }}" id="sijamilcomponent">
           <ul class="nav sub-menu">
-            @if(Auth::check() && Auth::user()->level == 1)
             <li class="nav-item">
               <a href="{{ url('sijamil') }}" class="nav-link {{ active_class(['sijamil']) }}">Semua Data</a>
             </li>
-            @endif
             <li class="nav-item">
               <a href="{{ url('remajadata') }}" class="nav-link {{ active_class(['remajadata']) }}">Data Remaja</a>
             </li>
