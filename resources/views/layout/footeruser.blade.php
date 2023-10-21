@@ -88,6 +88,7 @@
 									<li><a href="{{url('/profile-desa-cileles')}}">Profile Desa</a></li>
 									<li><a href="{{url('/berita-desa')}}">Berita dan Informasi</a></li>
 									<li><a href="{{url('/dashboard-publik')}}">Sibangenan</a></li>
+									<li><a href="https://cilelessmart.sumedangkab.go.id/informasi-publik/5a42c08b-0a15-42f5-ad73-d0d148b4b147/download">Manual Book</a></li>
 								</ul>
 							</div>
 						</div>
