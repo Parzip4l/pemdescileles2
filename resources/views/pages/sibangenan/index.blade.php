@@ -18,7 +18,8 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <h6 class="card-title mb-0 align-self-center">Usulan Pembangunan</h6>
-            <div class="col-md-3">
+            <div class="col-md-6 d-flex">
+                <a href="#" class="btn btn-primary btn-md w-100 me-2" data-bs-toggle="modal" data-bs-target=".tutor-video">Video Tutorial</a>
                 <a href="#" class="btn btn-success btn-md w-100" data-bs-toggle="modal" data-bs-target=".sibangenan"> Buat Pengajuan</a>
             </div>
         </div>  
@@ -156,6 +157,19 @@
         </div>
   </div>
 </div>
+
+<!-- Modal Video -->
+<div class="modal fade bd-example-modal-lg tutor-video" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-4">
+            <video width="100%" height="auto" controls autoplay>
+                <source src="{{ asset('assets/images/tutor.mp4') }}" type="video/mp4" >
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
 <!-- Modal Buat Pengajuan -->
 <div class="modal fade bd-example-modal-lg sibangenan" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
