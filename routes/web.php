@@ -117,6 +117,31 @@ Route::get('/datawarga', function () {
     return view('pages/warga-data/index');
 });
 
+Route::get('/esip', function () {
+    return view('pages/esip/index');
+});
+
+Route::group(['prefix' => 'esip'], function(){
+    Route::get('/catatan-kelahiran', function () {
+        return view('pages/esip/form1/index');
+    });
+    Route::get('/register-bayi', function () {
+        return view('pages/esip/form2/index');
+    });
+    Route::get('/register-balita', function () {
+        return view('pages/esip/form3/index');
+    });
+    Route::get('/bgm', function () {
+        return view('pages/esip/bgm/index');
+    });
+    Route::get('/databumil', function () {
+        return view('pages/esip/databumil/index');
+    });
+    Route::get('/skdn', function () {
+        return view('pages/esip/skdn/index');
+    });
+});
+
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";

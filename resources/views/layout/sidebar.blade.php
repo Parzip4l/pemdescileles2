@@ -73,10 +73,10 @@
         </div>
       </li>
       @if(Auth::check() && Auth::user()->level == 1)
-      <li class="nav-item {{ active_class(['apps/calendar']) }}">
-        <a href="{{ url('/apps/calendar') }}" class="nav-link">
+      <li class="nav-item {{ active_class(['esip']) }}">
+        <a href="{{ url('/esip') }}" class="nav-link">
           <i class="link-icon" data-feather="heart"></i>
-          <span class="link-title">Data Kesehatan</span>
+          <span class="link-title">E-SIP</span>
         </a>
       </li>
       <li class="nav-item {{ active_class(['publikasi-data']) }}">
