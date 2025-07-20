@@ -159,19 +159,20 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'nohp' => 'required',
-            'kritik' => 'required'
+            'nama' => 'required|string|max:100',
+            'nohp' => 'required|regex:/^08[0-9]{8,13}$/',
+            'kritik' => 'required|string|max:5000'
         ]);
 
         $uuid = Str::uuid()->toString();
         
         $kritiksaran = new Kritik();
         $kritiksaran->id = $uuid;
-        $kritiksaran->nama = $request->input('nama');
+        $kritiksaran->nama = strip_tags($request->input('nama'));
         $kritiksaran->nohp = $request->input('nohp');
-        $kritiksaran->kritik = $request->input('kritik');
+        $kritiksaran->kritik = strip_tags($request->input('kritik'));
         $kritiksaran->save();
+        
         return redirect()->back()->with('success','Terimakasih Telah Memberikan Kritik & Saran Kepada Kami.')
         ->with('show_modal', true);
     }

@@ -47,10 +47,24 @@
       </li>
       @endif
       <li class="nav-item {{ active_class(['sibangenan']) }}">
-        <a href="{{ url('/sibangenan') }}" class="nav-link">
+        <a class="nav-link" data-bs-toggle="collapse" href="#sibangenanComponent" role="button" aria-expanded="{{ is_active_route(['sijamilaal']) }}" aria-controls="sibangenanComponent">
           <i class="link-icon" data-feather="briefcase"></i>
           <span class="link-title">Si Bangenan</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
+        <div class="collapse {{ show_class(['']) }}" id="sibangenanComponent">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="{{ url('sibangenan') }}" class="nav-link {{ active_class(['sibangenan']) }}">Data Sibangenan</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('#') }}" class="nav-link {{ active_class(['#']) }}">Data Realisasi</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('#') }}" class="nav-link {{ active_class(['#']) }}">Publikasi Data</a>
+            </li>
+          </ul>
+        </div>
       </li>
       <li class="nav-item {{ active_class(['sijamilaal']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#sijamilcomponent" role="button" aria-expanded="{{ is_active_route(['sijamilaal']) }}" aria-controls="sijamilcomponent">
