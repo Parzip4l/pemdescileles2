@@ -58,7 +58,7 @@
               <a href="{{ url('sibangenan') }}" class="nav-link {{ active_class(['sibangenan']) }}">Data Sibangenan</a>
             </li>
             <li class="nav-item">
-              <a href="{{ url('#') }}" class="nav-link {{ active_class(['#']) }}">Data Realisasi</a>
+              <a href="{{ route('realisasi.sibangenan') }}" class="nav-link {{ active_class(['realisasi-sibangenan']) }}">Data Realisasi</a>
             </li>
             <li class="nav-item">
               <a href="{{ url('#') }}" class="nav-link {{ active_class(['#']) }}">Publikasi Data</a>

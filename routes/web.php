@@ -32,6 +32,8 @@ Route::middleware('auth.user')->group(function () {
     Route::resource('setting-page', SettingPageUserController::class);
     // sibangenan
     Route::resource('sibangenan', SibangenanController::class);
+    Route::get('/realisasi-sibangenan', 'SibangenanController@realisasi')->name('realisasi.sibangenan');
+
     Route::get('/pengajuan-ditolak', 'SibangenanController@ditolak')->name('ditolak');
     Route::get('/pengajuan-direvisi', 'SibangenanController@direvisi')->name('direvisi');
     Route::get('/pengajuan-perlu-divalidasi', 'SibangenanController@monitor')->name('monitor');

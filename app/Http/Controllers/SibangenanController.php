@@ -62,6 +62,56 @@ class SibangenanController extends Controller
         return view ('pages.sibangenan.index', compact('data','urusan','years','data2','suburusan'));
     }
 
+    public function realisasi()
+    {
+
+        $years = Sibangenan::selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->orderBy('year', 'asc')
+            ->pluck('year')
+            ->toArray();
+        if (!empty($years)) {
+            $minYear = $years[0];
+            $previousYear = $minYear - 1;
+
+            $hasPreviousYear = Sibangenan::whereYear('created_at', $previousYear)->exists();
+
+            if ($hasPreviousYear) {
+                array_unshift($years, $previousYear); // tambahkan tahun sebelumnya jika ada data
+            }
+        }
+
+        $selectedYear = request()->query('year');
+        $data2 = Sibangenan::when($selectedYear, function ($query) use ($selectedYear) {
+            return $query->whereYear('created_at', $selectedYear);
+        })->get();
+
+        $urusans = Urusansibangenan::all();
+        $urusan2 = $urusans->sortBy('urutan');
+        $urusan = $urusan2->values();
+
+        $suburusan = Subcategory::all();
+
+        $query2 = DB::table('sibangenan')
+            ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
+            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
+            ->where('sibangenan.status_pengajuan', '=', 'Disetujui') 
+            ->orderBy('sibangenan.created_at', 'desc');
+            
+
+        $userLevel = Auth::user()->level;
+
+        if ($userLevel == 1) {
+            
+        } else {
+
+            $query2->where('sibangenan.namapemohon', Auth::user()->name);
+        }
+
+        $data = $query2->get();
+        return view ('pages.sibangenan.realisasi', compact('data','urusan','years','data2','suburusan'));
+    }
+
     // PDF Download
     public function generatePdf(Request $request)
     {
