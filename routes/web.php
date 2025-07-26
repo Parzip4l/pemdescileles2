@@ -10,8 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\RealisasiController;
+use App\Realisasi;
 
-// Middleware
+// Middleware   
 Route::middleware('auth.user')->group(function () {
     // Dahsboard
     Route::resource('dashboard', DashboardController::class);
@@ -75,8 +77,26 @@ Route::middleware('auth.user')->group(function () {
     // Kepala Desa
     Route::resource('kepala-desa', KadesController::class);
 
+    // Realisasi
+    Route::post('/realisasi/store', [RealisasiController::class, 'store'])->name('realisasi.store');
+
     // Ganti Pass
     Route::put('/user-settings/{id}/update-password', 'UserSettingsController@changePassword')->name('pass.update');
+
+    // Stream Realisasi
+
+    Route::get('/realisasi/pdf/{id}', function ($id) {
+        $realisasi = Realisasi::findOrFail($id);
+
+        $filePath = $realisasi->file_path;
+
+        if (!$filePath || !Storage::disk('public')->exists($filePath)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+        $fullPath = storage_path('app/public/' . $filePath);
+
+        return response()->file($fullPath);
+    })->name('realisasi.pdf');
 });
 Route::get('/filterData', [RemajaController::class, 'filterData'])->name('filterData');
 // Auth

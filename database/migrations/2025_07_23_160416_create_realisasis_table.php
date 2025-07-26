@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('userlevel', function (Blueprint $table) {
+        Schema::create('realisasis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->integer('level');
+            $table->uuid('pengajuan_id');
+            $table->decimal('nominal', 15, 2);
+            $table->string('file_path');
             $table->timestamps();
+
+            $table->foreign('pengajuan_id')->references('id')->on('sibangenan')->onDelete('cascade');
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userlevel');
+        Schema::dropIfExists('realisasis');
     }
 };

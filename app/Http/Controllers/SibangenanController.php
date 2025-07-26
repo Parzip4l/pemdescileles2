@@ -94,8 +94,15 @@ class SibangenanController extends Controller
 
         $query2 = DB::table('sibangenan')
             ->join('urusansibangenan', 'sibangenan.urusan', '=', 'urusansibangenan.id')
-            ->select('sibangenan.*', 'urusansibangenan.nama as nama_urusan')
-            ->where('sibangenan.status_pengajuan', '=', 'Disetujui') 
+            ->leftJoin('realisasis', 'realisasis.pengajuan_id', '=', 'sibangenan.id') // JOIN dengan realisasi
+            ->select(
+                'sibangenan.*',
+                'urusansibangenan.nama as nama_urusan',
+                'realisasis.id as realisasi_id',
+                'realisasis.nominal as nominal_realisasi',
+                'realisasis.file_path as file_realisasi'
+            )
+            ->where('sibangenan.status_pengajuan', '=', 'Disetujui')
             ->orderBy('sibangenan.created_at', 'desc');
             
 
